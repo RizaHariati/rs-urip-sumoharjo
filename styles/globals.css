@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,48 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@layer base {
+  h1 {
+    @apply text-2xl font-bold;
+  }
+}
+@layer components {
+  .main-pages-container {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    height: calc(100vh - 128px);
+
+    @apply bg-stone-400;
+  }
+  .home-background {
+    background-image: url("/images/university-hospital-ulm-1366020_1920.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* --------------------------- side menu -------------------------- */
+  .side-menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    place-items: center;
+    @apply w-full h-full;
+  }
+  .side-menu-item {
+    border: 1px solid;
+    @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer bg-stone-100 bg-opacity-80 hover:bg-opacity-90 active:bg-stone-50 transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400;
+  }
+  .side-menu-text {
+    @apply font-semibold text-lg;
+  }
+  .side-menu-info {
+    @apply text-sm  text-stone-600 text-center leading-3 transition-all opacity-0 h-0;
+  }
+
+  .side-menu-item:hover .side-menu-info {
+    @apply opacity-100 h-8;
+  }
+  /* --------------------------- side menu -------------------------- */
 }
