@@ -21,7 +21,16 @@ a {
 
 @layer base {
   h1 {
-    @apply text-2xl font-bold;
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-semibold;
+  }
+  h4 {
+    @apply text-xl font-semibold;
+  }
+  h5 {
+    @apply text-lg font-semibold;
   }
 }
 @layer components {
@@ -29,15 +38,73 @@ a {
     display: grid;
     grid-template-columns: 5fr 2fr;
     height: calc(100vh - 128px);
-
-    @apply bg-stone-400;
+    @apply bg-clrBaseLightActive;
   }
   .home-background {
-    background-image: url("/images/university-hospital-ulm-1366020_1920.jpg");
+    background-image: url("/images/healthcare.jpg");
     background-position: center;
     background-size: cover;
   }
 
+  /* -------------------------- advertising ------------------------- */
+
+  .ad-container {
+    @apply w-full flex items-center justify-center transition-all overflow-hidden;
+  }
+  .ad-slides-container {
+    @apply rounded-md shadow-md border-clrBorder   bg-clrBaseLightHover overflow-hidden absolute opacity-100;
+    width: 700px;
+    height: 260px;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in;
+  }
+
+  /* -------------------------- advertising ------------------------- */
+
+  /* ---------------------------- navbar ---------------------------- */
+  .ambulance {
+    @apply h-10 fixed right-0 bg-red-800 py-3 px-4 text-clrBaseLight rounded-l-md shadow-sm cursor-pointer flex items-center justify-start transition-all;
+    bottom: 23vh;
+  }
+
+  .link-light {
+    @apply text-clrBaseLight hover:text-clrBaseLightHover active:text-clrBaseLightActive transition-all;
+  }
+  .link-icon {
+    @apply relative;
+  }
+  .navbar-comment {
+    @apply absolute top-12 left-0 z-20 bg-clrBaseLight bg-opacity-80 py-2 px-4 rounded-sm transition-all opacity-0;
+  }
+  .link-icon:hover .navbar-comment {
+    @apply opacity-100;
+  }
+  .menu {
+    @apply absolute w-72 rounded-md shadow-md shadow-clrTextMedium bg-clrBaseLight top-16 right-0 px-5 py-5 z-10 font-medium transition-all overflow-hidden text-center;
+  }
+  .menu-item {
+    @apply grid space-x-3 w-full border-b-clrPrimaryDark hover:border-clrBorder py-2 transition-all cursor-pointer;
+  }
+  .menu-item-text {
+    @apply text-clrTextDark text-left transition-all;
+  }
+  .menu-item-icon {
+    @apply text-xl text-clrPrimaryDark mr-2 transition-all;
+  }
+
+  .menu-item:hover .menu-item-text {
+    @apply text-clrBorder;
+  }
+
+  .menu-item:hover .menu-item-icon {
+    @apply text-clrBorder;
+  }
+
+  /* ---------------------------- navbar ---------------------------- */
   /* --------------------------- side menu -------------------------- */
   .side-menu-container {
     display: grid;
@@ -48,17 +115,29 @@ a {
   }
   .side-menu-item {
     border: 1px solid;
-    @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer bg-stone-100 bg-opacity-80 hover:bg-opacity-90 active:bg-stone-50 transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400;
+    @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer  bg-clrBaseLight bg-opacity-80 hover:bg-opacity-90 active:bg-clrBaseLightActive transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400;
   }
   .side-menu-text {
     @apply font-semibold text-lg;
   }
   .side-menu-info {
-    @apply text-sm  text-stone-600 text-center leading-3 transition-all opacity-0 h-0;
+    @apply text-sm  text-clrTextMedium text-center leading-3 transition-all opacity-0 h-0;
   }
 
   .side-menu-item:hover .side-menu-info {
     @apply opacity-100 h-8;
   }
+  .side-menu-item:active .side-menu-info {
+    @apply opacity-100 h-8;
+  }
   /* --------------------------- side menu -------------------------- */
+
+  /* -------------------------- main pages -------------------------- */
+  /* -------------------------- main pages -------------------------- */
+
+  /* -------------------------- find doctor ------------------------- */
+  .logo-btn {
+    @apply text-clrBaseLight h-10 pl-3 pr-7 rounded-full hover:bg-opacity-90 active:bg-opacity-80;
+  }
+  /* -------------------------- find doctor ------------------------- */
 }

@@ -1,7 +1,6 @@
 import {
   faBed,
   faCalendarCheck,
-  faCoffee,
   faFileLines,
   faGifts,
   faSyringe,
@@ -66,7 +65,7 @@ const SideMenu = () => {
       <Link href="/main/patient-data">
         <div className="side-menu-item ">
           <FontAwesomeIcon icon={faFileLines} className="text-2xl" />
-          <p className="side-menu-text">Data Pasien</p>
+          <p className="side-menu-text">Informasi Pasien</p>
           <p className="side-menu-info">
             Akses info medis pasien secara online
           </p>
