@@ -1,15 +1,24 @@
 import { faAmbulance } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { closeAdBlock, closeDropMenu } from "../../slice/layoutSlice";
 import Advertising from "./Advertising";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   useState;
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onWheel={() => {
+        dispatch(closeDropMenu());
+        dispatch(closeAdBlock());
+      }}
+    >
       <Advertising />
       <Navbar />
       {children}

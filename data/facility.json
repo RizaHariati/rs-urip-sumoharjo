@@ -1,0 +1,200 @@
+[
+  {
+    "id": "fas1",
+    "title": "Magnetic resonance imaging (MRI)",
+    "img": "mri5",
+    "info": [
+      {
+        "text": "Merupakan pemeriksaan organ tubuh yang dilakukan dengan menggunakan teknologi magnet dan gelombang radio."
+      }
+    ],
+    "category": "unggulan"
+  },
+  {
+    "id": "fas2",
+    "title": "Vitrektomy",
+    "img": "vitrektomy",
+    "info": [
+      {
+        "text": "Vitrektomy adalah operasi untuk rnenghilangkan badan kaca atau vitreus (jelly bening seperti kaca) dari dalam bola mata."
+      }
+    ],
+    "category": "unggulan"
+  },
+  {
+    "id": "fas3",
+    "title": "Endoscopy",
+    "img": "endoscopy_1",
+    "info": [
+      {
+        "text": "Mesin endoscopy digunakan untuk tindakan endoscopy diagnostic baik saluran cerna bagian atas maupun bagian bawah."
+      }
+    ],
+    "category": "unggulan"
+  },
+  {
+    "id": "fas4",
+    "title": "CT Scan 16 Slice",
+    "img": "ct-scan",
+    "info": [
+      {
+        "text": "Fasilitas radiologi yang canggih ditangani oleh tenaga medis dan paramedis yang terlatih dan berpengalaman di bidangnya  "
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas5",
+    "title": "Instalasi Gawat Darurat (24 Jam)",
+    "img": "icu",
+    "info": [
+      {
+        "text": "Menyediakan penanganan awal bagi pasien yang menderita sakit dan cedera, yang dapat mengancam kelangsungan hidupnya."
+      },
+      {
+        "text": "Selalu siaga dokter dari berbagai spesialisasi bersama sejumlah perawat dan dokter jaga, memberikan pelayanan awal 24 jam sehari, 7 hari seminggu."
+      }
+    ],
+    "category": "rawat-jalan"
+  },
+  {
+    "id": "fas6",
+    "title": "Poli. Bedah Umum",
+    "img": "bedahUmum",
+    "info": [
+      {
+        "text": "Menyediakan Ahli bedah umum dapat mendiagnosa beberapa jenis penyakit, terkait dengan perut dan organ-organ yang terhubung. "
+      },
+      { "text": "Juga mengobati pasien luka bakar" }
+    ],
+    "category": "rawat-jalan"
+  },
+  {
+    "id": "fas7",
+    "title": "Endoscopy THT",
+    "img": "endoscopy-tht",
+    "info": [
+      {
+        "text": "Mendeteksi penyakit yang terjadi pada organ yang terkait dengan telinga, hidung, dan tenggorokan. Ini termasuk dengan bronkus, esofagus, dan laring. "
+      },
+      {
+        "text": "Juga digunakan untuk melakukan pemeriksaan meluruh pada sinus dan polip"
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas8",
+    "title": "Oto Acoustic Emission OAE",
+    "img": "oae_1",
+    "info": [
+      {
+        "text": "Skrining (deteksi dini) atau tes pendengaran bayi baru lahir yang menangkap emisi pada koklea. "
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas9",
+    "title": "Audiometri",
+    "img": "audiometri",
+    "info": [
+      {
+        "text": "Audiometri adalah pemeriksaan untuk mengevaluasi fungsi pendengaran.  "
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas10",
+    "title": "Timpanometri",
+    "img": "timponometri",
+    "info": [
+      {
+        "text": "Timpanometri adalah pemeriksaan telinga yang berguna untuk menentukan keadaan di telinga tengah.  "
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas11",
+    "title": "Brain Evoked Response Auditory (BERA)",
+    "img": "bera",
+    "info": [
+      {
+        "text": "Pemeriksaan untuk melihat ambang dengar pada telinga anak.  "
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas12",
+    "title": "UltraSonoGrafi (USG 3D)",
+    "img": "usg",
+    "info": [
+      {
+        "text": "Digunakan dalam pemeriksaan organ abdomen (ginjal, buli-buli, prostat, hepar, lien, gallblader, payudara dan pembuluh darah pada extremitas atas I bawah)  "
+      }
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "id": "fas13",
+    "title": "Digital Radiography",
+    "img": "dradiologi",
+    "info": [
+      {
+        "text": "Radiografi digital adalah bentuk radiografi yang menggunakan pelat yang peka terhadap sinar x untuk secara langsung menangkap data selama pemeriksaan pasien, segera mentransfernya ke sistem komputer tanpa menggunakan kaset perantara."
+      }
+    ],
+    "category": "poliklinik"
+  },
+
+  {
+    "id": "fas14",
+    "title": "Echo Cardiogram (USG Jantung)",
+    "img": "echocardiogram",
+    "info": [
+      {
+        "text": "Melihat gelombang gelombang frekuensi yang disebut ultrasound dari bilik-bilik jantung. "
+      }
+    ],
+    "category": "poliklinik"
+  },
+
+  {
+    "id": "fas15",
+    "title": "Farmasi",
+    "img": "farmasi",
+    "info": [
+      {
+        "text": "Dibawah pimpinan apoteker yang kompeten siap menyediakan obat-obatan untuk unit perawatan dan bidang – bidang lain"
+      }
+    ],
+    "category": "penunjang-klinik"
+  },
+
+  {
+    "id": "fas16",
+    "title": "Instalasi Gizi",
+    "img": "instalasi-gizi",
+    "info": [
+      {
+        "text": "Memberikan pelayanan gizi yang penting untuk mempercepat proses penyembuhan terhadap pasien"
+      }
+    ],
+    "category": "penunjang-klinik"
+  },
+
+  {
+    "id": "fas17",
+    "title": "Ruang Operasi",
+    "img": "ruang-operasi",
+    "info": [
+      {
+        "text": "Ruang Operasi RS Urip Sumoharjo adalah salah satu fasilitas rumah sakit yg dirancang sesuai dengan standar akreditasi RS dengan konsep lingkungan yg aman dan nyaman yang dilengkapi dengan fasilitas modern serta tim dokter dan tenaga paramedis yg profesional dan kompeten."
+      }
+    ],
+    "category": "penunjang-klinik"
+  }
+]

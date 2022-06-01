@@ -4,6 +4,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    transitionDuration: {
+      DEFAULT: "250ms",
+    },
     extend: {
       colors: {
         clrPrimaryDark: "#026110",

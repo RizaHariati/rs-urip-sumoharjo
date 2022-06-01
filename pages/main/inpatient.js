@@ -45,7 +45,7 @@ const Inpatient = () => {
         <div className="px-10 py-5">
           {/* --------------------------- subheader -------------------------- */}
 
-          <div className="grid grid-cols-2 space-x-5 place-items-end ">
+          <div className="grid grid-cols-2 gap-5 place-items-end">
             <p className="text-right">
               Ruang Rawat Inap RS Urip Sumoharjo terbagi atas ruang perawatan
               dewasa, ruang perawatan anak, ruang perawatan kebidanan, ruang
@@ -57,7 +57,7 @@ const Inpatient = () => {
               src="/images/doctorvisit.jpg"
               height={200}
               width={400}
-              className="object-cover"
+              className="object-cover rounded-sm"
             />
           </div>
           {/* --------------------------- subheader -------------------------- */}

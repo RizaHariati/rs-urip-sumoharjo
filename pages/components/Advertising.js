@@ -8,10 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import adData from "../../data/advertising.json";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleAdBlock } from "../../slice/layoutSlice";
 const Advertising = () => {
-  const [openAd, setOpenAd] = useState(false);
   const [index, setIndex] = useState(1);
-
+  const dispatch = useDispatch();
+  const adBlock = useSelector((state) => state.layout.adBlock);
   useEffect(() => {
     if (index > adData.length - 1) {
       setIndex(1);
@@ -21,7 +23,7 @@ const Advertising = () => {
   }, [index]);
 
   useEffect(() => {
-    if (openAd) {
+    if (adBlock) {
       const interval = setInterval(() => {
         setIndex((prev) => prev + 1);
       }, 4000);
@@ -29,7 +31,7 @@ const Advertising = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [openAd]);
+  }, [adBlock]);
 
   const handleNext = () => {
     setIndex(index + 1);
@@ -42,18 +44,18 @@ const Advertising = () => {
           <FontAwesomeIcon icon={faHandHoldingHeart} className="text-2xl" />
           <h3 className="text-xl font-semibold">Kepedulian Kami</h3>
         </div>
-        <button onClick={() => setOpenAd(!openAd)}>
+        <button onClick={() => dispatch(toggleAdBlock())}>
           <FontAwesomeIcon
-            icon={openAd ? faCaretUp : faCaretDown}
+            icon={adBlock ? faCaretUp : faCaretDown}
             className={
-              openAd
+              adBlock
                 ? "text-3xl text-clrPrimaryDark animate-none"
                 : "text-3xl text-clrPrimaryDark animate-bounce"
             }
           />
         </button>
       </div>
-      <div className={openAd ? "h-80 ad-container " : "h-0 ad-container"}>
+      <div className={adBlock ? "h-80 ad-container " : "h-0 ad-container"}>
         <div className="relative h-80 w-full">
           {adData.map((item) => {
             const { id, title, image, info } = item;

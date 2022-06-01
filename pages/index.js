@@ -30,9 +30,7 @@ const Home = () => {
         </div>
         <SideMenu />
       </div>
-      <articles className="h-32 block bg-stone-100">
-        this will be articles
-      </articles>
+      <div className="h-32 block bg-stone-100">this will be articles</div>
     </div>
   );
 };

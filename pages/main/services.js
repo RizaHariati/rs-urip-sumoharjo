@@ -1,19 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SideMenu from "../components/SideMenu";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
+import facilities from "../../data/facility.json";
+import Modal from "../components/Modal";
+
 const Services = () => {
   const [facility, setFacility] = useState("");
+  const [facilityList, setFacilityList] = useState([]);
+  const [openModal, setOpenModal] = useState({ opened: false, facility: {} });
+  const facilityCategories = [
+    ...new Set(facilities.map((item) => item.category)),
+  ];
+
+  useEffect(() => {
+    if (facility) {
+      const list = facilities.filter((item) =>
+        item.title.toLowerCase().includes(facility.toLowerCase())
+      );
+      return setFacilityList(list);
+    }
+  }, [facility]);
+
   return (
     <div className="main-pages-container">
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
         <div className="w-fit py-2 px-10 text-clrTextDark">
-          <h2 className="py-2 border-b-2 border-b-clrBorder ">
-            Fasilitas dan Poliklinik
-          </h2>
+          <h2 className="py-2 border-b-2 border-b-clrBorder ">Fasilitas</h2>
           <h5>
             Fasilitas Medis dan Non Medis Terbaik Kami sesuai Perkembangan
             Teknologi Terkini
@@ -24,7 +40,7 @@ const Services = () => {
           {/* --------------------------- subheader -------------------------- */}
 
           <div
-            className="grid space-x-10 place-items-center "
+            className="grid space-x-10 place-items-center mb-5 "
             style={{ gridTemplateColumns: "3fr 5fr" }}
           >
             <Image
@@ -33,10 +49,10 @@ const Services = () => {
               width={400}
               className="object-cover"
             />
-            <div className="relative w-full">
-              <h3 className="text-right mb-3">
+            <div className="relative l">
+              <h5 className="text-right mb-3 text-clrTextMedium">
                 Silahkan cari fasilitas yang Anda butuhkan
-              </h3>
+              </h5>
               <form className="w-full flex rounded-full overflow-hidden shadow-sm  ">
                 <input
                   autoComplete="false"
@@ -47,7 +63,6 @@ const Services = () => {
                   className="w-full p-2 px-5 h-10 outline-none"
                   onChange={(e) => {
                     e.preventDefault();
-                    setdoctorList([]);
                     setFacility(e.target.value);
                   }}
                 />
@@ -64,14 +79,79 @@ const Services = () => {
           {/* --------------------------- subheader -------------------------- */}
 
           {/*  ------------------------- facility list ------------------------ */}
-          <div></div>
+          {!facility && (
+            <div>
+              {facilityCategories.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <h3>{item}</h3>
+                    <div className="w-20 h-1 bg-clrPrimaryDark mt-1 mb-3"></div>
+                    <div className="facility-list">
+                      {facilities
+                        .filter((facilityItem) => {
+                          return facilityItem.category === item;
+                        })
+                        .map((facilityItem, index) => {
+                          return (
+                            <FacilityButton
+                              key={index}
+                              item={facilityItem}
+                              setOpenModal={setOpenModal}
+                            />
+                          );
+                        })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+          {facility && facilityList && (
+            <div className="facility-list">
+              {facilityList.map((item, index) => {
+                return (
+                  <FacilityButton
+                    key={index}
+                    item={item}
+                    setOpenModal={setOpenModal}
+                  />
+                );
+              })}
+            </div>
+          )}
+          {facility && facilityList.length < 1 && (
+            <div>
+              <h5>Tidak ditemukan fasilitas dengan kata kunci tersebut</h5>
+            </div>
+          )}
           {/*  ------------------------- facility list ------------------------ */}
         </div>
       </div>
-
+      {/*  ----------------------------- modal ---------------------------- */}
+      {openModal.opened && (
+        <Modal facility={openModal.facility} setOpenModal={setOpenModal} />
+      )}
+      {/*  ----------------------------- modal ---------------------------- */}
       <SideMenu />
     </div>
   );
 };
 
 export default Services;
+
+const FacilityButton = ({ item, setOpenModal }) => {
+  const { id, title, img } = item;
+  return (
+    <button
+      key={id}
+      className="facility-list-btn"
+      style={{
+        backgroundImage: `url('/images/pelayanan-fasilitas/small/${img}.jpg')`,
+      }}
+      onClick={() => setOpenModal({ opened: true, facility: item })}
+    >
+      <h5 className="z-20 leading-4">{title}</h5>
+      <div className=" transition-all bg-clrTextMedium hover:bg-clrBorder active:bg-clrBaseLightActive bg-opacity-40 mix-blend-multiply absolute w-full h-full top-0 left-0"></div>
+    </button>
+  );
+};

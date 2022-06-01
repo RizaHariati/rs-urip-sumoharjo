@@ -1,0 +1,67 @@
+[
+  {
+    "id": "lay1",
+    "title": "Poliklinik",
+    "img": "admin",
+    "hari": "Senin s/d Sabtu",
+    "jam": "08:00 s.d 21:00 ",
+    "telp": [
+      { "index": 1, "nomor": "Poliklinik 1 : 0811 7257 438 " },
+      { "index": 2, "nomor": "Poliklinik 2 : 0811 7257 430 " }
+    ],
+    "info": [
+      {
+        "text": "Poliklinik kami diperkuat dengan 16 bidang spesialisasi kedokteran siap memenuhi kebutuhan anda menyelenggarakan Pelayanan Kesehatan yang bermutu, ramah dan profesional"
+      },
+      {
+        "text": "Menyelenggarakan pelayanan kesehatan yang berorientasi pada perkembangan tekhnologi dengan berbagai fasilitas terkini"
+      }
+    ]
+  },
+  {
+    "id": "lay2",
+    "title": "Rawat Jalan / Gawat Darurat",
+    "img": "instalasi-gawat-darurat",
+    "hari": "Senin s/d Sabtu",
+    "jam": "08:00 s.d 21:00 ",
+    "telp": [{ "index": 1, "nomor": " 0811 7257 438 " }],
+
+    "info": [
+      {
+        "text": "Unit Gawat Darurat (24 jam)"
+      },
+      {
+        "text": "Poli Bedah umum"
+      }
+    ]
+  },
+  {
+    "id": "lay3",
+    "title": "Fisioterapi",
+    "img": "fisioterapi",
+    "hari": "Senin s/d Jum'at",
+    "jam": "08:00 s.d 20:00 ",
+    "telp": [{ "index": 1, "nomor": " 0811 7257 438 " }],
+    "info": [
+      {
+        "text": "Mengembalikan fungsi tubuh setelah terkena penyakit atau cedera. "
+      }
+    ]
+  },
+  {
+    "id": "lay4",
+    "title": "Hemodialisa",
+    "img": "hemodialisa",
+    "hari": "Senin s/d Sabtu",
+    "jam": "08:00 s.d 21:00 ",
+    "telp": [{ "index": 1, "nomor": "0811 7270 538 " }],
+    "info": [
+      {
+        "text": "Saat ini kami memiliki 33 unit mesin cuci darah yang digunakan untuk melayani pasien reguler maupun pasien CITO."
+      },
+      {
+        "text": "Hemodialisa adalah metode pencucian darah dengan membuang cairan berlebih dan zat-zat yang berbahaya bagi tubuh melalui alat dialysis untuk menggantikan fungsi ginjal yang rusak."
+      }
+    ]
+  }
+]
