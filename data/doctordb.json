@@ -412,5 +412,41 @@
     "hari": "Senin Rabu, Kamis dan Sabtu",
     "jam": "Pkl 17.00 s/d 19.00",
     "gender": "male"
+  },
+  {
+    "id": "dok47",
+    "nama": "Mamie Wahdi, Sp.U",
+    "waktu": "Sore",
+    "poli": "Umum",
+    "hari": "Senin Rabu, Kamis dan Sabtu",
+    "jam": "Pkl 17.00 s/d 19.00",
+    "gender": "male"
+  },
+  {
+    "id": "dok48",
+    "nama": "Conny Widiyanti, Med.Cos",
+    "waktu": "Sore",
+    "poli": "Umum",
+    "hari": "Selasa, Rabu, Kamis dan Sabtu",
+    "jam": "Pkl 17.00 s/d 19.00",
+    "gender": "female"
+  },
+  {
+    "id": "dok47",
+    "nama": "Ferry Ferdian Nugraha",
+    "waktu": "Pagi",
+    "poli": "Umum",
+    "hari": "Senin s/d Sabtu",
+    "jam": "Pkl 10.00 s/d 19.00",
+    "gender": "male"
+  },
+  {
+    "id": "dok48",
+    "nama": "Nunik Wulandari, Med.Cos",
+    "waktu": "Pagi",
+    "poli": "Umum",
+    "hari": "Senin s/d Sabtu",
+    "jam": "Pkl 10.00 s/d selesai",
+    "gender": "female"
   }
 ]

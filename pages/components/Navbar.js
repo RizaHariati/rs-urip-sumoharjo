@@ -3,6 +3,7 @@ import {
   faBars,
   faBriefcase,
   faFileLines,
+  faHomeAlt,
   faHomeUser,
   faMosque,
 } from "@fortawesome/free-solid-svg-icons";
@@ -49,7 +50,7 @@ const Navbar = () => {
 
         <Link href="/">
           <a className="link-light ">
-            <FontAwesomeIcon icon={faHomeUser} className="text-2xl" />
+            <FontAwesomeIcon icon={faHomeAlt} className="text-2xl" />
           </a>
         </Link>
 

@@ -10,34 +10,30 @@ const patientSlice = createSlice({
       gender: "",
       age: 0,
       address: "",
-      phone: "",
+      phone: 0,
     },
     selfAppointment: true,
     appointmentData: {
-      appointmentRequester: {
-        requesterName: "",
-        requesterRelationship: "",
-        requesterPhone: "",
-      },
-      appointmentPatient: {
-        name: "",
-        email: "",
-        gender: "",
-        age: 0,
-        address: "",
-        phone: "",
-      },
+      requesterName: "",
+      requesterRelationship: "",
+      requesterPhone: {},
+      name: "",
+      email: "",
+      gender: "",
+      age: {},
+      address: "",
+      phone: {},
       appointmentPurpose: "",
+      appointmentLocation: "",
     },
   },
   reducers: {
-    requestForOther: (state) => {
-      state.selfAppointment = false;
-    },
-    requestforSelf: (state) => {
-      state.selfAppointment = true;
+    handleRequester: (state, action) => {
+      const { appointmentData, selfAppointment } = action.payload;
+      state.appointmentData = appointmentData;
+      state.selfAppointment = selfAppointment;
     },
   },
 });
-export const { requestForOther, requestforSelf } = patientSlice.actions;
+export const { handleRequester } = patientSlice.actions;
 export default patientSlice;
