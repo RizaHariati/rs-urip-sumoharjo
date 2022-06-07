@@ -1,12 +1,186 @@
-import React from "react";
+import {
+  faCheck,
+  faMinusCircle,
+  faMoneyBillWave,
+  faPhone,
+  faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
 import SideMenu from "../components/SideMenu";
+import data_paket from "../../data/data_paketkesehatan.json";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { handleRequestApplication } from "../../slice/patientSlice";
 
 const SpecialPackage = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [openInfo, setOpenInfo] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const handleClick = (id) => {
+    if (id === selectedIndex) {
+      setOpenInfo(true);
+    } else {
+      setOpenInfo(id);
+    }
+  };
   return (
     <div className="main-pages-container">
-      <div className="h-full">
-        <h1>Special Package</h1>
+      <div className="main-page">
+        {/* ---------------------------- header ---------------------------- */}
+
+        <div className="w-fit py-2 px-10 text-clrTextDark">
+          <h2 className="py-2 border-b-2 border-b-clrBorder ">
+            Paket Pemeriksaan
+          </h2>
+          <h5>
+            Berikut adalah bundel paket kami, yang ditawarkan dengan harga yang
+            menarik. Pendaftaran dibuka setiap hari bisa melalui online maupun
+            menghubungi <FontAwesomeIcon icon={faPhone} /> 0811 7270 537
+          </h5>
+        </div>
+        {/* ---------------------------- header ---------------------------- */}
+
+        <div className="px-10 py-5">
+          {/* --------------------------- subheader -------------------------- */}
+
+          <div className="">
+            <div className="special-package-image"></div>
+          </div>
+          {/* --------------------------- subheader -------------------------- */}
+          <div className=" w-full mb-5">
+            <h2 className="py-2 border-b-2 border-b-clrBorder text-right my-10 ">
+              Pilihan Paket
+            </h2>
+            <div className="">
+              {data_paket.map((item_paket) => {
+                const { id, title, price, pemeriksaan, laboratorium } =
+                  item_paket;
+                return (
+                  <div
+                    key={id}
+                    className="w-full mb-5 bg-clrBaseLightHover px-5 rounded-sm shadow-sm "
+                  >
+                    <div
+                      className="grid grid-cols-3 items-center w-full border-b-clrBorder py-5"
+                      style={
+                        openInfo === id
+                          ? {
+                              borderBottomWidth: "1px",
+                              gridTemplateColumns: "4fr 4fr 1fr",
+                            }
+                          : {
+                              borderBottomWidth: "0px",
+                              gridTemplateColumns: "4fr 4fr 1fr",
+                            }
+                      }
+                    >
+                      <h4 className="text-base">{title}</h4>
+                      <p className="text-sm">
+                        <FontAwesomeIcon
+                          icon={faMoneyBillWave}
+                          className="text-clrPrimaryMedium mr-2 text-sm"
+                        />
+                        {`Harga : ${price}`}
+                      </p>
+                      <p
+                        className="text-right w-full text-md cursor-pointer"
+                        onClick={() => handleClick(id)}
+                      >
+                        {openInfo === id ? (
+                          <FontAwesomeIcon
+                            icon={faMinusCircle}
+                            className="text-clrPrimaryMedium text-md "
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faPlusCircle}
+                            className="text-clrPrimaryMedium text-md "
+                          />
+                        )}
+                      </p>
+                    </div>
+                    {openInfo === id && (
+                      <>
+                        <div
+                          className="w-full border-b-clrBorder py-5"
+                          style={{ borderBottomWidth: "1px" }}
+                        >
+                          <h5>Pemeriksaan</h5>
+                          {pemeriksaan.map((item, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className="grid"
+                                style={{ gridTemplateColumns: "1fr 12fr" }}
+                              >
+                                <FontAwesomeIcon
+                                  icon={faCheck}
+                                  className="text-clrPrimaryMedium "
+                                />
+                                <p>{item}</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="w-full py-5">
+                          <h5>Laboratorium</h5>
+                          {laboratorium.map(({ id, info }) => {
+                            return (
+                              <div
+                                key={id}
+                                className="grid"
+                                style={{ gridTemplateColumns: "1fr 12fr" }}
+                              >
+                                <FontAwesomeIcon
+                                  icon={faCheck}
+                                  className="text-clrPrimaryMedium "
+                                />
+                                <p className="leading-5 mb-1">{info}</p>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="w-full h-10 mb-5 text-right">
+                          <button
+                            onClick={() => {
+                              dispatch(
+                                handleRequestApplication({
+                                  appointmentData: {
+                                    requesterName: "",
+                                    requesterRelationship: "",
+                                    requesterPhone: "",
+                                    name: "",
+                                    email: "",
+                                    gender: "",
+                                    age: "",
+                                    address: "",
+                                    phone: "",
+                                    appointmentPurpose: "laboratorium",
+                                    appointmentLocation: "facility",
+                                  },
+                                  selfAppointment: true,
+                                })
+                              );
+                              router.push("/main/schedule-appointment");
+                            }}
+                            className="btn w-fit bg-clrPrimaryDark mx-10 mb-5"
+                          >
+                            Mendaftar
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
+
       <SideMenu />
     </div>
   );

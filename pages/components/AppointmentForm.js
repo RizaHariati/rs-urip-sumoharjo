@@ -23,20 +23,13 @@ import { MyTextInput, Radio } from "./AppointmentFormInputs";
 import FindPurpose from "../../utlis/FindPurpose";
 import * as Yup from "yup";
 import AppointmentFormModal from "./AppointmentFormModal";
-
-let initValues = {
-  requesterName: "",
-  requesterRelationship: "",
-  requesterPhone: "",
-  name: "",
-  email: "",
-  gender: "",
-  age: "",
-  address: "",
-  phone: "",
-  appointmentPurpose: "Umum",
-  appointmentLocation: "specialization",
-};
+import { useDispatch, useSelector } from "react-redux";
+import {
+  handleRequestApplication,
+  handleResetApplication,
+} from "../../slice/patientSlice";
+import { useRouter } from "next/router";
+import AppointmentConfirmModal from "./AppointmentConfirmModal";
 
 const relationshipOptions = [
   { id: 0, label: "Saya Orang tua/wali dari Pasien", value: "orang tua/wali" },
@@ -51,14 +44,31 @@ const gender = [
   { id: 1, label: "Male", value: "male" },
 ];
 
+/* ---------------------------------------------------------------- */
+/*                    start of the main function                    */
+/* ---------------------------------------------------------------- */
 const AppointmentForm = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const appointmentTemp = useSelector(
+    (state) => state.patients.appointmentTemp
+  );
+  const reduxSelfAppointment = useSelector(
+    (state) => state.patients.selfAppointment
+  );
   const [purpose, setPurpose] = useState("");
-  const [purposeValue, setPurposeValue] = useState("Umum");
+  const [purposeValue, setPurposeValue] = useState(
+    appointmentTemp.appointmentPurpose
+  );
   const [purposeList, setPurposeList] = useState([]);
-  const [selfAppointment, setSelfAppointment] = useState(true);
+  const [selfAppointment, setSelfAppointment] = useState(reduxSelfAppointment);
   const [openModal, setOpenModal] = useState({
     status: false,
     appointment: { selfAppointment: true, values: "" },
+  });
+  const [openConfirmModal, setOpenConfirmModal] = useState({
+    status: false,
+    confirmedName: "",
   });
 
   const handleChangePurpose = (e) => {
@@ -74,6 +84,7 @@ const AppointmentForm = () => {
     return setPurposeList(list);
   }, [purpose]);
 
+  /* -------------------- validation alternatives ------------------- */
   const validationSchema1 = Yup.object({
     name: Yup.string().required("Nama harus diisi"),
     email: Yup.string()
@@ -111,21 +122,25 @@ const AppointmentForm = () => {
       .typeError("Nomor telepon harus dalam bentuk angka")
       .required("Telepon tidak boleh kosong"),
   });
+  /* -------------------- validation alternatives ------------------- */
   return (
     <div className="main-form">
       <h3 className="mb-5">Formulir Pendaftaran online</h3>
-      {openModal.status && (
-        <AppointmentFormModal data={openModal.appointment} />
-      )}
+
       <Formik
-        initialValues={initValues}
+        initialValues={appointmentTemp}
         validationSchema={
           selfAppointment ? validationSchema1 : validationSchema2
         }
         validateOnBlur={true}
         validateOnChange={false}
         onSubmit={(values, { setSubmitting }) => {
-          console.log("validation successful");
+          dispatch(
+            handleRequestApplication({
+              appointmentData: values,
+              selfAppointment,
+            })
+          );
           setTimeout(() => {
             setOpenModal({
               status: true,
@@ -134,13 +149,30 @@ const AppointmentForm = () => {
             setSubmitting(false);
           }, 400);
         }}
+        enableReinitialize
       >
         {(formik) => (
           <form onSubmit={formik.handleSubmit}>
+            {openModal.status && (
+              <AppointmentFormModal
+                data={openModal.appointment}
+                setOpenModal={setOpenModal}
+                formik={formik}
+                setOpenConfirmModal={setOpenConfirmModal}
+              />
+            )}
+            {openConfirmModal.status && (
+              <AppointmentConfirmModal
+                setOpenConfirmModal={setOpenConfirmModal}
+                confirmedName={openConfirmModal.confirmedName}
+                formik={formik}
+              />
+            )}
             <div className="sub-form">
               <div className="form-title">
                 <h5>Informasi Pendaftar</h5>
               </div>
+              {/*  -------------------- setting selfAppointment ------------------- */}
               <div>
                 <p>
                   Apakah Anda mendaftar sebagai pasien atau mendaftarkan orang
@@ -184,6 +216,7 @@ const AppointmentForm = () => {
                   </button>
                 </div>
               </div>
+              {/*  -------------------- setting selfAppointment ------------------- */}
               {!selfAppointment && (
                 /* ------------------------ Requester info ------------------------ */
                 <div className="form-input-container">
@@ -410,7 +443,7 @@ const AppointmentForm = () => {
                                 <button
                                   type="button"
                                   key={indexpurpose}
-                                  className="block h-7 hover:text-clrTextMedium transition-all"
+                                  className="block h-7 hover:text-clrPrimaryDark transition-all w-full text-left "
                                   onClick={async () => {
                                     setPurposeValue(itempurpose);
                                     formik.setFieldValue(
@@ -453,11 +486,11 @@ const AppointmentForm = () => {
                 </button>
 
                 <button
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-
-                    console.log("reset");
+                  type="reset"
+                  onClick={() => {
+                    formik.resetForm();
+                    dispatch(handleResetApplication());
+                    router.reload(window.location.pathname);
                   }}
                   className=" bg-clrPrimaryMedium logo-btn h-7"
                 >

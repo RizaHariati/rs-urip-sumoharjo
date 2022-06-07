@@ -1,8 +1,6 @@
 import {
   faCheck,
-  faCheckCircle,
   faInfoCircle,
-  faMoneyBillTransfer,
   faMoneyBillWave,
   faPhone,
   faUsers,
@@ -12,8 +10,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 import SideMenu from "../components/SideMenu";
 import data_inap from "../../data/data_inap.json";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { handleRequestApplication } from "../../slice/patientSlice";
 
 const Inpatient = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [openInfo, setOpenInfo] = useState("");
   const [indexCard, setIndexCard] = useState(null);
 
@@ -107,7 +110,7 @@ const Inpatient = () => {
 
                       {openInfo === id && (
                         <div
-                          className="col-span-2 grid grid-cols-2 px-10 py-5"
+                          className="col-span-2 grid grid-cols-2 px-10 py-5 w-full "
                           style={{ borderTop: "1px solid lightGray" }}
                         >
                           {fasilitas.map((item, index) => {
@@ -124,6 +127,34 @@ const Inpatient = () => {
                             );
                           })}
                         </div>
+                      )}
+                      {openInfo === id && (
+                        <button
+                          onClick={() => {
+                            dispatch(
+                              handleRequestApplication({
+                                appointmentData: {
+                                  requesterName: "",
+                                  requesterRelationship: "",
+                                  requesterPhone: "",
+                                  name: "",
+                                  email: "",
+                                  gender: "",
+                                  age: "",
+                                  address: "",
+                                  phone: "",
+                                  appointmentPurpose: kelas,
+                                  appointmentLocation: "bed",
+                                },
+                                selfAppointment: true,
+                              })
+                            );
+                            router.push("/main/schedule-appointment");
+                          }}
+                          className="btn w-fit bg-clrPrimaryDark mx-10 mb-5"
+                        >
+                          Mendaftar
+                        </button>
                       )}
                     </div>
                   </div>

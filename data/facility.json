@@ -196,5 +196,16 @@
       }
     ],
     "category": "penunjang-klinik"
+  },
+  {
+    "id": "fas17",
+    "title": "Laboratorium",
+    "img": "laboratorium",
+    "info": [
+      {
+        "text": "Laboratorium Urip Sumoharjo merupakan fasilitas pelayanan kesehatan yang melaksanakan pengukuran, penetapan dan pengujian untuk penentuan jenis penyakit, penyebab penyakit, dan kondisi kesehatan. Unit laboratorium RS Urip Sumoharjo memberikan pelayanan 24 jam dan sudah mendapatkan sertifikasi international, ISO 9002."
+      }
+    ],
+    "category": "penunjang-klinik"
   }
 ]

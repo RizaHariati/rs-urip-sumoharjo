@@ -1,8 +1,12 @@
 import { faBan, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { handleConfirmApplication } from "../../slice/patientSlice";
 
-const AppointmentFormModal = ({ data }) => {
+const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
+  const dispatch = useDispatch();
+
   const {
     selfAppointment,
     values: {
@@ -59,15 +63,28 @@ const AppointmentFormModal = ({ data }) => {
               <button
                 type="submit"
                 onClick={() => {
+                  const confirmedName = selfAppointment
+                    ? patientData.name
+                    : requesterName;
                   setOpenModal({
                     status: false,
-                    appointment: data,
+                    appointment: { selfAppointment: true, values: "" },
                   });
+                  setOpenConfirmModal({
+                    status: true,
+                    confirmedName,
+                  });
+                  dispatch(
+                    handleConfirmApplication({
+                      appointmentData: data.values,
+                      selfAppointment: data.selfAppointment,
+                    })
+                  );
                 }}
                 className=" bg-clrPrimaryDark logo-btn h-7"
               >
                 <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
-                Setujui
+                Setuju
               </button>
 
               <button
@@ -104,18 +121,28 @@ const PatientData = ({ patientData }) => {
     appointmentPurpose,
     appointmentLocation,
   } = patientData;
+
   return (
     <div className="leading-5 mb-5 ">
       <h5>Patient Data</h5>
-
       <p>Name pasien : {name}</p>
       <p>Email : {email}</p>
       <p>Jenis kelamin : {gender}</p>
       <p>Usia : {age} tahun</p>
       {address && <p>Alamat : {address}</p>}
       <p>Nomor telepon : {phone}</p>
-      <p>Tujuan kunjungan :{appointmentPurpose}</p>
-      <p>{appointmentLocation}</p>
+      {appointmentLocation === "doctor" && (
+        <p> {`Konsultasi ke dokter ${appointmentPurpose}`}</p>
+      )}
+      {appointmentLocation === "specialization" && (
+        <p> {`Konsultasi ke poli ${appointmentPurpose}`}</p>
+      )}
+      {appointmentLocation === "facility" && (
+        <p> {`Menggunakan fasilitas  ${appointmentPurpose}`}</p>
+      )}
+      {appointmentLocation === "bed" && (
+        <p> {`Rawat inap di ruang kelas  ${appointmentPurpose}`}</p>
+      )}
     </div>
   );
 };

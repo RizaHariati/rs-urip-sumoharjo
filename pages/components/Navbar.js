@@ -16,13 +16,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleDropMenu } from "../../slice/layoutSlice";
+import { closeDropMenu, toggleDropMenu } from "../../slice/layoutSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full h-20 bg-clrPrimaryDark flex justify-between items-center px-10 text-clrBaseLight">
+    <div className="w-full h-20 bg-clrPrimaryDark flex justify-between items-center px-10 text-clrBaseLight sticky top-0 z-30">
       <div className="link-icon">
         <div className="navbar-comment">
           <p className=" text-clrTextDark ">Home</p>
@@ -72,52 +72,52 @@ export default Navbar;
 
 const MenuItems = () => {
   const dropMenu = useSelector((state) => state.layout.dropMenu);
+  const dispatch = useDispatch();
   return (
-    <div className={dropMenu ? "menu h-fit " : "menu h-0 py-0"}>
+    <div className={dropMenu ? "menu h-fit" : "menu h-0 py-0"}>
       <div>
-        <Link href="/">
-          <a
+        <Link href="/hospital/about">
+          <button
             className="menu-item"
             style={{
               borderBottomWidth: "1px",
               gridTemplateColumns: "1fr 8fr",
             }}
+            onClick={() => dispatch(closeDropMenu())}
           >
             <FontAwesomeIcon icon={faMosque} className=" menu-item-icon " />
             <p className="menu-item-text" style={{ borderBottomWidth: "1px" }}>
               Tentang RS Urip Sumoharjo
             </p>
-          </a>
+          </button>
         </Link>
 
-        <Link href="/">
-          <a>
-            <div
-              className="menu-item"
-              style={{
-                borderBottomWidth: "1px",
-                gridTemplateColumns: "1fr 8fr",
-              }}
-            >
-              <FontAwesomeIcon icon={faFileLines} className="menu-item-icon " />
-              <p className="menu-item-text">Hak dan Kewajiban Pasien</p>
-            </div>
-          </a>
+        <Link href="/hospital/termandconditions">
+          <button
+            className="menu-item"
+            style={{
+              borderBottomWidth: "1px",
+              gridTemplateColumns: "1fr 8fr",
+            }}
+            onClick={() => dispatch(closeDropMenu())}
+          >
+            <FontAwesomeIcon icon={faFileLines} className="menu-item-icon " />
+            <p className="menu-item-text">Hak dan Kewajiban Pasien</p>
+          </button>
         </Link>
 
-        <Link href="/">
-          <a>
-            <div
-              className="menu-item"
-              style={{
-                borderBottomWidth: "1px",
-                gridTemplateColumns: "1fr 8fr",
-              }}
-            >
-              <FontAwesomeIcon icon={faBriefcase} className="menu-item-icon " />
-              <p className="menu-item-text">Lowongan Kerja</p>
-            </div>
-          </a>
+        <Link href="/hospital/jobopportunity">
+          <button
+            className="menu-item"
+            style={{
+              borderBottomWidth: "1px",
+              gridTemplateColumns: "1fr 8fr",
+            }}
+            onClick={() => dispatch(closeDropMenu())}
+          >
+            <FontAwesomeIcon icon={faBriefcase} className="menu-item-icon " />
+            <p className="menu-item-text">Lowongan Kerja</p>
+          </button>
         </Link>
       </div>
       <div className=" mt-5 space-x-5">
@@ -125,7 +125,7 @@ const MenuItems = () => {
           <a>
             <FontAwesomeIcon
               icon={faInstagram}
-              className=" text-purple-500 text-3xl cursor-pointer"
+              className=" text-purple-500  text-3xl cursor-pointer"
             />
           </a>
         </Link>

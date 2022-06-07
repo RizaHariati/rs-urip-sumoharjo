@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
         <FontAwesomeIcon icon={faAmbulance} className="text-2xl mr-4" />
         Ambulance : (0721)700323
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

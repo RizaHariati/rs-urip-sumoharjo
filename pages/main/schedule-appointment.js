@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import SideMenu from "../components/SideMenu";
 import polyclinics from "../../data/polyclinics.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

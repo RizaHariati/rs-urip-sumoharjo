@@ -18,6 +18,9 @@ module.exports = {
         clrBaseLightActive: "#d6d3d1",
         clrBorder: "#a8a29e",
       },
+      backgroundImage: {
+        hospital: "url('/images/slider2.jpg')",
+      },
     },
   },
   plugins: [],

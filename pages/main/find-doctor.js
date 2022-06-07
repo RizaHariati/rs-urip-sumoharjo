@@ -14,7 +14,9 @@ import React, { useState, useEffect } from "react";
 import SideMenu from "../components/SideMenu";
 import doctordb from "../../data/doctordb.json";
 const allSpecialization = [...new Set(doctordb.map((doctor) => doctor.poli))];
-
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { handleRequestApplication } from "../../slice/patientSlice";
 const FindDoctor = (props) => {
   const { female, male } = props;
   const [searchName, setSearchName] = useState(false);
@@ -215,7 +217,9 @@ const FindDoctor = (props) => {
 
 export default FindDoctor;
 
-const DoctorList = ({ doctorlist, male, female, handleSubmit }) => {
+const DoctorList = ({ doctorlist, male, female }) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   return (
     <div className="doctor-card-container">
       {doctorlist.map((item, index) => {
@@ -228,11 +232,7 @@ const DoctorList = ({ doctorlist, male, female, handleSubmit }) => {
 
         const picture = image.picture.thumbnail;
         return (
-          <button
-            key={index}
-            className="doctor-card"
-            onClick={() => handleSubmit(item.nama)}
-          >
+          <div key={index} className="doctor-card">
             <div className="text-left">
               <div className="flex space-x-3 items-end w-full justify-start border-b-2 border-b-clrBorder mb-2 pb-2">
                 <Image
@@ -273,8 +273,34 @@ const DoctorList = ({ doctorlist, male, female, handleSubmit }) => {
                   Jam : {jam}
                 </p>
               </div>
+              <button
+                onClick={() => {
+                  dispatch(
+                    handleRequestApplication({
+                      appointmentData: {
+                        requesterName: "",
+                        requesterRelationship: "",
+                        requesterPhone: "",
+                        name: "",
+                        email: "",
+                        gender: "",
+                        age: "",
+                        address: "",
+                        phone: "",
+                        appointmentPurpose: nama,
+                        appointmentLocation: "doctor",
+                      },
+                      selfAppointment: true,
+                    })
+                  );
+                  router.push("/main/schedule-appointment");
+                }}
+                className="btn bg-clrPrimaryDark block float-right mt-2"
+              >
+                Mendaftar
+              </button>
             </div>
-          </button>
+          </div>
         );
       })}
     </div>
@@ -283,11 +309,11 @@ const DoctorList = ({ doctorlist, male, female, handleSubmit }) => {
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    "https://randomuser.me/api/?gender=female&inc=picture&results=46"
+    "https://randomuser.me/api/?gender=female&inc=picture&results=100"
   );
   const female = await res.json();
   const res2 = await fetch(
-    "https://randomuser.me/api/?gender=male&inc=picture&results=46"
+    "https://randomuser.me/api/?gender=male&inc=picture&results=100"
   );
   const male = await res2.json();
   return {
