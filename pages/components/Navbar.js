@@ -4,7 +4,6 @@ import {
   faBriefcase,
   faFileLines,
   faHomeAlt,
-  faHomeUser,
   faMosque,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -14,7 +13,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDropMenu, toggleDropMenu } from "../../slice/layoutSlice";
 
@@ -41,10 +40,7 @@ const Navbar = () => {
       <div className="flex space-x-5 items-center">
         <div className="flex flex-col border-r-2 border-clrBaseLight px-5">
           <Link href="/main/patient-data">
-            <a className="link-light text-sm">Login dokter</a>
-          </Link>
-          <Link href="/main/patient-data">
-            <a className="link-light text-sm">Login pasien</a>
+            <a className="link-light text-base">Login pasien</a>
           </Link>
         </div>
 

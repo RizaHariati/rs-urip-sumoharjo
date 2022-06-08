@@ -50,122 +50,8 @@ const Register = ({ setOpenRegister }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   return (
-    <div className="sub-form px-0 pt-7">
-      <div className="form-title">
-        <h5>Register</h5>
-      </div>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        validateOnBlur={true}
-        validateOnChange={false}
-        onSubmit={(values, { setSubmitting }) => {
-          dispatch(setlogin());
-          setTimeout(() => {
-            router.reload(window.location.pathname);
-            setOpenRegister(false);
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {(formik) => (
-          <form onSubmit={formik.handleSubmit}>
-            <div className="form-input-container ">
-              <div className="form-input-item">
-                <MyTextInput
-                  label="Nama Pasien"
-                  id="name"
-                  name="name"
-                  placeholder="Masukkan nama pasien"
-                  type="text"
-                  icon={faUser}
-                />
-              </div>
-
-              <div className="form-input-item">
-                <MyTextInput
-                  label="Email Pasien"
-                  id="email"
-                  name="email"
-                  placeholder="Masukkan email"
-                  type="email"
-                  icon={faEnvelope}
-                />
-              </div>
-
-              <div className="form-input-item">
-                <MyTextInput
-                  label="Password"
-                  id="password"
-                  name="password"
-                  placeholder="Masukkan password"
-                  type="password"
-                  icon={faLock}
-                />
-              </div>
-              <div role="group" className="form-input-item">
-                <label>
-                  <FontAwesomeIcon icon={faVenusMars} className="form-icon" />
-                  gender
-                </label>
-                {formik.errors.gender ? (
-                  <div className="error">
-                    {formik.touched.gender && formik.errors.gender}
-                  </div>
-                ) : null}
-                {gender.map((item) => {
-                  const { id, label, value } = item;
-                  return (
-                    <Radio key={id} label={label} name="gender" value={value} />
-                  );
-                })}
-              </div>
-
-              <div className="form-input-item">
-                <MyTextInput
-                  label="Usia"
-                  id="age"
-                  name="age"
-                  placeholder="Usia..."
-                  type="number"
-                  icon={faUserClock}
-                />
-              </div>
-
-              <div className="form-input-item">
-                <MyTextInput
-                  label="Alamat"
-                  id="address"
-                  name="address"
-                  placeholder="Alamat..."
-                  type="text"
-                  icon={faHouseChimneyUser}
-                />
-              </div>
-
-              <div className="form-input-item">
-                <MyTextInput
-                  label="Nomor Telepon"
-                  id="phone"
-                  name="phone"
-                  placeholder="Nomor Telepon..."
-                  type="number"
-                  icon={faPhone}
-                />
-              </div>
-            </div>
-            <div className="flex space-x-5 my-3 w-full justify-center">
-              <button
-                type="submit"
-                className=" bg-clrPrimaryDark  logo-btn h-7"
-              >
-                <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
-                Register
-              </button>
-            </div>
-          </form>
-        )}
-      </Formik>
+    <>
+      {" "}
       <div className="w-full flex justify-center ">
         <p className="mr-1">Sudah ada akun? Silahkan</p>
         <button
@@ -176,7 +62,129 @@ const Register = ({ setOpenRegister }) => {
           login
         </button>
       </div>
-    </div>
+      <div className="sub-form px-0 pt-7 mt-5">
+        <div className="form-title">
+          <h5>Register</h5>
+        </div>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          validateOnBlur={true}
+          validateOnChange={false}
+          onSubmit={(values, { setSubmitting }) => {
+            dispatch(setlogin());
+            setTimeout(() => {
+              router.reload(window.location.pathname);
+              setOpenRegister(false);
+              setSubmitting(false);
+            }, 400);
+          }}
+        >
+          {(formik) => (
+            <form onSubmit={formik.handleSubmit}>
+              <div className="form-input-container ">
+                <div className="form-input-item">
+                  <MyTextInput
+                    label="Nama Pasien"
+                    id="name"
+                    name="name"
+                    placeholder="Masukkan nama pasien"
+                    type="text"
+                    icon={faUser}
+                  />
+                </div>
+
+                <div className="form-input-item">
+                  <MyTextInput
+                    label="Email Pasien"
+                    id="email"
+                    name="email"
+                    placeholder="Masukkan email"
+                    type="email"
+                    icon={faEnvelope}
+                  />
+                </div>
+
+                <div className="form-input-item">
+                  <MyTextInput
+                    label="Password"
+                    id="password"
+                    name="password"
+                    placeholder="Masukkan password"
+                    type="password"
+                    icon={faLock}
+                  />
+                </div>
+                <div role="group" className="form-input-item">
+                  <label>
+                    <FontAwesomeIcon icon={faVenusMars} className="form-icon" />
+                    gender
+                  </label>
+                  {formik.errors.gender ? (
+                    <div className="error">
+                      {formik.touched.gender && formik.errors.gender}
+                    </div>
+                  ) : null}
+                  {gender.map((item) => {
+                    const { id, label, value } = item;
+                    return (
+                      <Radio
+                        key={id}
+                        label={label}
+                        name="gender"
+                        value={value}
+                      />
+                    );
+                  })}
+                </div>
+
+                <div className="form-input-item">
+                  <MyTextInput
+                    label="Usia"
+                    id="age"
+                    name="age"
+                    placeholder="Usia..."
+                    type="number"
+                    icon={faUserClock}
+                  />
+                </div>
+
+                <div className="form-input-item">
+                  <MyTextInput
+                    label="Alamat"
+                    id="address"
+                    name="address"
+                    placeholder="Alamat..."
+                    type="text"
+                    icon={faHouseChimneyUser}
+                  />
+                </div>
+
+                <div className="form-input-item">
+                  <MyTextInput
+                    label="Nomor Telepon"
+                    id="phone"
+                    name="phone"
+                    placeholder="Nomor Telepon..."
+                    type="number"
+                    icon={faPhone}
+                  />
+                </div>
+              </div>
+              <div className="flex space-x-5 my-3 w-full justify-center">
+                <button
+                  type="submit"
+                  className=" bg-clrPrimaryDark  logo-btn h-7"
+                >
+                  <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
+                  Register
+                </button>
+              </div>
+            </form>
+          )}
+        </Formik>
+      </div>
+    </>
   );
 };
 

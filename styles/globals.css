@@ -33,13 +33,13 @@
     @apply text-4xl font-bold;
   }
   h2 {
-    @apply text-3xl font-semibold;
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold;
   }
   h3 {
-    @apply text-2xl font-semibold capitalize;
+    @apply text-xl md:text-2xl font-semibold capitalize;
   }
   h4 {
-    @apply text-xl font-semibold;
+    @apply text-lg md:text-xl font-semibold;
   }
   h5 {
     @apply text-lg font-semibold;
@@ -66,6 +66,21 @@
   .error {
     @apply text-xs text-red-600;
   }
+  .gridwithbackground {
+    @apply grid grid-cols-4 mx-auto;
+    background-image: url("/images/slider2.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+  @media (max-width: 1000px) {
+    .main-pages-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      height: calc(100vh - 128px);
+      @apply bg-clrBaseLightActive;
+    }
+  }
+
   /* -------------------------- advertising ------------------------- */
 
   .ad-container {
@@ -135,10 +150,16 @@
   }
   .side-menu-item {
     border: 1px solid;
-    @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer p-2  bg-clrBaseLight bg-opacity-80 hover:bg-opacity-90 active:bg-clrBaseLightActive transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400;
+    @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer p-2  bg-clrBaseLight bg-opacity-80 hover:bg-opacity-90 active:bg-clrBaseLightActive transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400 text-center leading-5;
+  }
+  .side-menu-title {
+    @apply w-full flex flex-col gap-2 items-center justify-center;
+  }
+  .side-menu-icon {
+    @apply text-2xl;
   }
   .side-menu-text {
-    @apply font-semibold text-lg;
+    @apply font-semibold text-lg text-center;
   }
   .side-menu-info {
     @apply text-sm  text-clrTextMedium text-center leading-3 transition-all opacity-0 h-0;
@@ -150,6 +171,29 @@
   .side-menu-item:active .side-menu-info {
     @apply opacity-100 h-8;
   }
+
+  @media (max-width: 1000px) {
+    .side-menu-container {
+      grid-row: 1;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      @apply h-40;
+    }
+
+    .side-menu-title {
+      @apply w-full flex flex-row gap-2 items-center justify-center;
+    }
+    .side-menu-icon {
+      @apply text-lg;
+    }
+    .side-menu-text {
+      @apply text-base;
+    }
+    .side-menu-info {
+      @apply text-sm leading-3;
+    }
+  }
+
   /* --------------------------- side menu -------------------------- */
 
   /* -------------------------- main pages -------------------------- */

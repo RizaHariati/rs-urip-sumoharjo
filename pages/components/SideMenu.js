@@ -22,8 +22,11 @@ const SideMenu = () => {
           className="side-menu-item "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <FontAwesomeIcon icon={faUserDoctor} className="text-2xl" />
-          <p className="side-menu-text">Cari Dokter</p>
+          <div className="side-menu-title">
+            <FontAwesomeIcon icon={faUserDoctor} className="text-2xl" />
+            <p className="side-menu-text">Cari Dokter</p>
+          </div>
+
           <p className="side-menu-info">
             Dapatkan informasi jadwal dokter anda
           </p>
@@ -35,8 +38,14 @@ const SideMenu = () => {
           className="side-menu-item "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <FontAwesomeIcon icon={faCalendarCheck} className="text-2xl" />
-          <p className="side-menu-text">Pendaftaran</p>
+          <div className="side-menu-title">
+            <FontAwesomeIcon
+              icon={faCalendarCheck}
+              className="side-menu-icon "
+            />
+            <p className="side-menu-text">Pendaftaran</p>
+          </div>
+
           <p className="side-menu-info">
             Buat janji temu dengan dokter/ mendaftar kefasilitas kami secara
             online
@@ -49,8 +58,11 @@ const SideMenu = () => {
           className="side-menu-item "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <FontAwesomeIcon icon={faSyringe} className="text-2xl" />
-          <p className="side-menu-text">Fasilitas dan Klinik</p>
+          <div className="side-menu-title">
+            <FontAwesomeIcon icon={faSyringe} className="side-menu-icon " />
+            <p className="side-menu-text">Fasilitas dan Klinik</p>
+          </div>
+
           <p className="side-menu-info">
             Temukan jadwal fasilitas dan klinik yang anda butuhkan
           </p>
@@ -62,8 +74,11 @@ const SideMenu = () => {
           className="side-menu-item "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <FontAwesomeIcon icon={faBed} className="text-2xl" />
-          <p className="side-menu-text">Rawat Inap</p>
+          <div className="side-menu-title">
+            <FontAwesomeIcon icon={faBed} className="side-menu-icon " />
+            <p className="side-menu-text">Rawat Inap</p>
+          </div>
+
           <p className="side-menu-info">
             Kelas rawat inap beserta fasilitas penunjang
           </p>
@@ -75,8 +90,11 @@ const SideMenu = () => {
           className="side-menu-item "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <FontAwesomeIcon icon={faGifts} className="text-2xl" />
-          <p className="side-menu-text">Paket Kesehatan</p>
+          <div className="side-menu-title">
+            <FontAwesomeIcon icon={faGifts} className="side-menu-icon " />
+            <p className="side-menu-text">Paket Kesehatan</p>
+          </div>
+
           <p className="side-menu-info">
             Berbagai paket kesehatan sesuai kebutuhan anda
           </p>
@@ -88,8 +106,10 @@ const SideMenu = () => {
           className="side-menu-item "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <FontAwesomeIcon icon={faFileLines} className="text-2xl" />
-          <p className="side-menu-text">Informasi Pasien</p>
+          <div className="side-menu-title">
+            <FontAwesomeIcon icon={faFileLines} className="side-menu-icon " />
+            <p className="side-menu-text">Informasi Pasien</p>
+          </div>
           <p className="side-menu-info">
             Akses info medis pasien secara online
           </p>
