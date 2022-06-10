@@ -38,8 +38,8 @@ const Advertising = () => {
   };
 
   return (
-    <div className="w-full bg-clrBaseLight">
-      <div className="h-12 border-b border-b-clrBorder px-10 flex items-center justify-between">
+    <div className="w-full bg-clrBaseLight ">
+      <div className="h-12 border-b border-b-clrBorder px-5 md:px-10 lg:px-20 flex items-center justify-between">
         <div className="flex space-x-2 text-clrPrimaryDark">
           <FontAwesomeIcon icon={faHandHoldingHeart} className="text-2xl" />
           <h3 className="text-xl font-semibold">Kepedulian Kami</h3>
@@ -63,14 +63,14 @@ const Advertising = () => {
               <div
                 className={
                   index === parseInt(id)
-                    ? "ad-slides-container"
+                    ? "ad-slides-container "
                     : "ad-slides-container opacity-0 left-0"
                 }
                 key={id}
               >
                 <button
                   onClick={() => handleNext()}
-                  className="w-10 h-10 bottom-5 right-5 bg-clrPrimaryDark shadow-clrPrimaryBorder cursor-pointer shadow-md absolute z-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all active:bg-opacity-80"
+                  className="w-7 h-7  md:w-10 md:h-10 bottom-5 right-5 bg-clrPrimaryDark shadow-clrPrimaryBorder cursor-pointer shadow-md absolute z-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all active:bg-opacity-80"
                 >
                   <FontAwesomeIcon
                     icon={faAngleRight}
@@ -78,24 +78,30 @@ const Advertising = () => {
                   />
                 </button>
                 <div className="h-full overflow-hidden">
-                  <Image
-                    src={`/images/slides/${image}`}
-                    width={420}
-                    height={260}
-                    className="object-cover object-left-top"
-                  />
+                  <div className="object-cover object-left-top w-full">
+                    <Image
+                      src={`/images/slides/${image}`}
+                      width={420}
+                      height={260}
+                      className="object-cover object-left-top"
+                    />
+                  </div>
                 </div>
                 <div className="p-4">
-                  <div className="flex space-x-2">
-                    <Image
-                      src="/images/logo bulat.jpg"
-                      width={20}
-                      height={10}
-                      className=" object-center object-cover rounded-full "
-                    />
+                  <div className="flex space-x-2 items-center ">
+                    <div className="w-15 h-15 ">
+                      <Image
+                        src="/images/logo bulat.jpg"
+                        width={20}
+                        height={20}
+                        className=" object-center object-cover rounded-full "
+                      />
+                    </div>
                     <p className="font-semibold">{title}</p>
                   </div>
-                  <p className="leading-4 text-sm">{info}</p>
+                  <p className="leading-3 lg:leading-4 text-xs lg:text-sm w-5/6">
+                    {info}
+                  </p>
                 </div>
               </div>
             );

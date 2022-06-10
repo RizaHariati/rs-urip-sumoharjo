@@ -42,7 +42,7 @@
     @apply text-lg md:text-xl font-semibold;
   }
   h5 {
-    @apply text-lg font-semibold;
+    @apply text-base md:text-lg  leading-5 md:leading-6 font-semibold;
   }
   label {
     @apply block mb-1;
@@ -60,6 +60,9 @@
     background-position: center;
     background-size: cover;
   }
+  .main-grid-background {
+    background-image: none;
+  }
   .btn {
     @apply text-clrBaseLight px-3 py-1 rounded-full hover:bg-opacity-90 active:bg-opacity-80 text-center text-xs uppercase;
   }
@@ -71,23 +74,68 @@
     background-image: url("/images/slider2.jpg");
     background-position: center;
     background-size: cover;
+    width: 1024px;
   }
-  @media (max-width: 1000px) {
+
+  /* -------------------------- main pages -------------------------- */
+  .main-page {
+    @apply w-full bg-clrBaseLight overflow-y-scroll;
+    height: calc(100vh - 128px);
+  }
+  .main-page-index {
+    @apply w-full relative;
+    height: calc(100vh - 128px);
+  }
+  .care-items-container {
+    @apply grid grid-cols-1 lg:grid-cols-3 lg:gap-5 text-left mt-3 border-clrBorder lg:border-0;
+    border-width: 0px;
+  }
+  /* -------------------------- main pages -------------------------- */
+  @media (max-width: 1024px) {
     .main-pages-container {
+      position: relative;
       display: grid;
       grid-template-columns: 1fr;
       height: calc(100vh - 128px);
       @apply bg-clrBaseLightActive;
     }
+    .home-background {
+      background-image: none;
+    }
+    .main-page-index {
+      @apply w-full relative;
+      height: calc(100vh - 288px);
+    }
+    .main-grid-background {
+      background-image: url("/images/mainimage.jpg");
+      background-position: center;
+      background-size: cover;
+    }
+    .care-items-container {
+      @apply p-5 rounded-sm;
+      border-width: 1px;
+    }
+    .gridwithbackground {
+      width: 100%;
+    }
   }
 
+  @media (max-width: 640px) {
+    .gridwithbackground {
+      @apply grid-cols-3;
+    }
+    /* .main-page {
+      @apply w-full bg-clrBaseLight overflow-y-visible;
+      height: 100%;
+    } */
+  }
   /* -------------------------- advertising ------------------------- */
 
   .ad-container {
     @apply w-full flex items-center justify-center transition-all overflow-hidden;
   }
   .ad-slides-container {
-    @apply rounded-md shadow-md border-clrBorder   bg-clrBaseLightHover overflow-hidden absolute opacity-100;
+    @apply rounded-md shadow-md border-clrBorder bg-clrBaseLightHover overflow-hidden absolute opacity-100;
     width: 700px;
     height: 260px;
     display: grid;
@@ -96,6 +144,15 @@
     top: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease-in;
+  }
+  @media (max-width: 700px) {
+    .ad-slides-container {
+      @apply rounded-md shadow-md border-clrBorder bg-clrBaseLightHover overflow-hidden absolute opacity-100;
+      width: 300px;
+      height: 260px;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
   }
 
   /* -------------------------- advertising ------------------------- */
@@ -110,16 +167,23 @@
     @apply text-clrBaseLight hover:text-clrBaseLightHover active:text-clrBaseLightActive transition-all;
   }
   .link-icon {
-    @apply relative;
+    @apply relative cursor-pointer;
   }
   .navbar-comment {
     @apply absolute top-12 left-0 z-20 bg-clrBaseLight bg-opacity-80 py-2 px-4 rounded-sm transition-all opacity-0;
+  }
+  .navbar-logo {
+    background-image: url("/images/logo hijau.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 60px;
   }
   .link-icon:hover .navbar-comment {
     @apply opacity-100;
   }
   .menu {
-    @apply absolute w-80 rounded-sm shadow-md shadow-clrTextMedium bg-clrBaseLight top-16 right-0 px-7 py-5 z-30 font-medium transition-all overflow-hidden text-center;
+    @apply absolute w-screen md:w-80 -right-5 rounded-sm shadow-md shadow-clrTextMedium bg-clrBaseLight top-14 md:top-16 md:right-0 pl-14 md:px-7 pr-7 py-5 z-30 font-medium transition-all overflow-hidden text-center;
   }
   .menu-item {
     @apply grid space-x-3 w-full border-b-clrPrimaryDark hover:border-clrBorder py-2 transition-all cursor-pointer;
@@ -139,7 +203,17 @@
     @apply text-clrBorder;
   }
 
+  @media (max-width: 640px) {
+    .navbar-logo {
+      @apply rounded-full;
+      background-image: url("/images/logo bulat.jpg");
+
+      width: 50px;
+      height: 50px;
+    }
+  }
   /* ---------------------------- navbar ---------------------------- */
+
   /* --------------------------- side menu -------------------------- */
   .side-menu-container {
     display: grid;
@@ -153,16 +227,16 @@
     @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer p-2  bg-clrBaseLight bg-opacity-80 hover:bg-opacity-90 active:bg-clrBaseLightActive transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400 text-center leading-5;
   }
   .side-menu-title {
-    @apply w-full flex flex-col gap-2 items-center justify-center;
+    @apply w-full flex flex-col gap-1 md:gap-2  items-center justify-center;
   }
   .side-menu-icon {
-    @apply text-2xl;
+    @apply text-lg md:text-xl lg:text-2xl;
   }
   .side-menu-text {
-    @apply font-semibold text-lg text-center;
+    @apply font-semibold text-base md:text-lg text-center leading-3;
   }
   .side-menu-info {
-    @apply text-sm  text-clrTextMedium text-center leading-3 transition-all opacity-0 h-0;
+    @apply text-sm  text-clrTextMedium text-center leading-3 transition-all opacity-0 h-0 hidden sm:block;
   }
 
   .side-menu-item:hover .side-menu-info {
@@ -172,7 +246,7 @@
     @apply opacity-100 h-8;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     .side-menu-container {
       grid-row: 1;
       grid-template-columns: 1fr 1fr 1fr;
@@ -187,7 +261,22 @@
       @apply text-lg;
     }
     .side-menu-text {
-      @apply text-base;
+      @apply text-base leading-4;
+    }
+    .side-menu-info {
+      @apply text-sm leading-3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .side-menu-title {
+      @apply w-full flex flex-col gap-0 items-center justify-center;
+    }
+    .side-menu-icon {
+      @apply text-lg mb-1;
+    }
+    .side-menu-text {
+      @apply text-base leading-4;
     }
     .side-menu-info {
       @apply text-sm leading-3;
@@ -196,30 +285,22 @@
 
   /* --------------------------- side menu -------------------------- */
 
-  /* -------------------------- main pages -------------------------- */
-  .main-page {
-    @apply w-full bg-clrBaseLight overflow-y-scroll;
-    height: calc(100vh - 128px);
-  }
-  /* -------------------------- main pages -------------------------- */
-
   /* -------------------------- find doctor ------------------------- */
   .logo-btn {
-    @apply text-clrBaseLight h-10 pl-3 pr-7 rounded-full hover:bg-opacity-90 active:bg-opacity-80;
+    @apply text-clrBaseLight h-10 pl-2 pr-3 leading-3 rounded-full hover:bg-opacity-90 active:bg-opacity-80 text-xs sm:text-base md:text-base uppercase;
+    min-width: 100px;
   }
   .list-menu {
-    @apply absolute top-12 flex flex-col bg-clrBaseLightHover px-5 py-2 rounded-md shadow-md max-h-52 overflow-y-scroll transition-all;
+    @apply absolute top-12 flex flex-col bg-clrBaseLightHover px-5 py-2 rounded-md shadow-md max-h-52 overflow-y-scroll transition-all z-30;
     width: 90%;
     left: 50%;
     transform: translatex(-50%);
   }
   .doctor-card-container {
-    @apply place-items-center;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    @apply place-items-center grid grid-cols-1 md:grid-cols-2;
   }
   .doctor-card {
-    @apply w-80 h-60 p-5 bg-clrBaseLightHover rounded-md shadow-sm hover:shadow-lg mt-5 transition-all;
+    @apply w-80 h-52 md:h-60 p-5 bg-clrBaseLightHover rounded-md shadow-sm hover:shadow-lg mt-5 transition-all;
   }
   .find-doctor-image {
     @apply mt-5 flex justify-center rounded-sm overflow-hidden shadow-sm;
@@ -243,6 +324,10 @@
   /* --------------------------- inpatient -------------------------- */
 
   /* ------------------------- facility list ------------------------- */
+  .facility-input-container {
+    @apply grid space-x-5 md:space-x-10 place-items-center mb-5;
+    grid-template-columns: 3fr 5fr;
+  }
   .facility-list {
     @apply grid gap-4;
     grid-template-columns: 1fr 1fr 1fr;
@@ -258,7 +343,7 @@
   }
 
   .sub-form {
-    @apply relative w-full bg-clrBaseLight border-clrBorder mb-10 p-5 transition-all;
+    @apply relative w-full bg-clrBaseLight border-clrBorder mb-10 px-0 md:px-10 py-5 transition-all;
     border-width: 1px;
   }
   .form-title {
@@ -287,9 +372,23 @@
     background-image: url("../public/images/laboratory.jpg");
     background-size: cover;
   }
+
+  /* ------------------------ special package ----------------------- */
+
+  /* ------------------------ about ----------------------- */
+  .about-container {
+    @apply relative  bg-gradient-to-b md:bg-gradient-to-r from-clrBaseLightHover to-stone-500 z-20 h-fit;
+    width: fit-content;
+  }
+  .about-grid {
+    @apply grid p-20  py-10 gap-5 md:gap-10  bg-transparent;
+    grid-template-columns: 3fr 2fr;
+    min-height: calc(100vh - 128px);
+  }
+
   /* ----------------------------- modal ---------------------------- */
   .modal-base {
-    @apply absolute top-0 left-0 w-full h-full bg-clrTextMedium z-30 bg-opacity-50 py-5;
+    @apply fixed top-0 left-0 w-screen h-screen bg-clrTextMedium z-50 bg-opacity-50 py-5;
   }
   .modal-container {
     @apply absolute bg-clrBaseLight rounded-md shadow-md;
@@ -300,4 +399,41 @@
     transform: translate(-50%, -50%);
   }
   /* ----------------------------- modal ---------------------------- */
+
+  @media (max-width: 1024px) {
+    .about-grid {
+      @apply grid p-10 gap-5 md:gap-10  bg-transparent;
+      grid-template-columns: 3fr 2fr;
+      min-height: calc(100vh - 128px);
+    }
+  }
+  @media (max-width: 640px) {
+    .main-form {
+      @apply px-5;
+      width: 100%;
+    }
+    .facility-input-container {
+      grid-template-columns: 1fr;
+    }
+    .facility-list {
+      @apply grid gap-2;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .modal-base {
+      @apply fixed top-0 left-0 w-screen h-screen bg-clrTextMedium z-50 bg-opacity-50 py-5;
+    }
+    .modal-container {
+      @apply absolute top-0 left-0 bg-clrBaseLight rounded-none shadow-none;
+      width: 100%;
+      height: 100%;
+
+      transform: translate(0%, 0%);
+    }
+    .about-grid {
+      @apply p-5 gap-5;
+      grid-template-columns: 1fr;
+      min-height: calc(100vh - 128px);
+    }
+  }
 }

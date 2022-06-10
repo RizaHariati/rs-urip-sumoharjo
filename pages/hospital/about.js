@@ -2,7 +2,9 @@ import {
   faArrowRight,
   faCaretRight,
   faChevronCircleRight,
+  faEnvelope,
   faMinusCircle,
+  faPhone,
   faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,33 +20,19 @@ const About = () => {
     }
   };
   return (
-    <div
-      className="relative overflow-x-hidden bg-gradient-to-r from-white viaclr to-clrTextMedium z-20 h-fit bg-cover bg-center"
-      style={{
-        width: "101vw",
-      }}
-    >
-      <div className="absolute top-0 right-0 bg-hospital w-full h-full opacity-90 mix-blend-overlay -z-20"></div>
+    <div className="about-container">
+      <div className="absolute top-0 right-0 bg-hospital w-full h-full opacity-90 mix-blend-overlay -z-20 bg-cover bg-top transition-all"></div>
 
-      <div
-        className="grid p-10 gap-10 bg-transparent"
-        style={{
-          gridTemplateColumns: "3fr 2fr",
-          minHeight: "calc(100vh - 128px)",
-        }}
-      >
-        <div className="bg-transparent">
+      <div className="about-grid">
+        <div className="bg-transparent text-clrTextDark">
           <h2>Tentang Urip Sumoharjo</h2>
-          <div
-            className="w-full bg-clrBorder my-2"
-            style={{ height: "1px" }}
-          ></div>
-          <p className="mb-5 font-medium text-lg leading-6">
+          <div className="my-2" style={{ height: "1px" }}></div>
+          <p className="mb-5 font-normal md:text-lg leading-5 md:leading-6">
             RS Urip Sumoharjo Merupakan RS Swasta dengan semangat Islami, yang
             menyediakan pelayanan kesehatan untuk semua kalangan sebagai bagian
             dari rahmat untuk alam semesta.
           </p>
-          <p className="mb-5 font-medium text-lg leading-6">
+          <p className="mb-5 font-normal md:text-lg leading-5 md:leading-6 ">
             Telah beroperasi sejak tanggal 10 September 2001 dan sesuai dengan
             Keputusan Menteri Kesehatan RI No. 492/menkes/SK/V/2008, RS Urip
             Sumoharjo saat ini merupakan rumah sakit swasta utama setara tipe B
@@ -57,7 +45,7 @@ const About = () => {
             return (
               <div
                 key={id}
-                className=" bg-clrBaseLightHover rounded-sm mb-5 bg-opacity-80 shadow-sm "
+                className=" bg-clrBaseLightHover rounded-sm mb-3 md:mb-5 bg-opacity-80 shadow-sm "
               >
                 <div
                   className="flex items-center justify-between px-5 py-2 border-b-clrBorder"

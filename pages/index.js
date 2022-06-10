@@ -10,6 +10,7 @@ import SideMenu from "./components/SideMenu";
 import CareItem from "./components/componenthomepage/CareItem";
 import Slogan from "./components/componenthomepage/Slogan";
 import Rules from "./components/componenthomepage/Rules";
+import Footer from "./components/Footer";
 
 const Home = () => {
   const [showTitle, setShowTitle] = useState(false);
@@ -22,17 +23,19 @@ const Home = () => {
   return (
     <div className=" bg-clrBaseLight">
       <div className="main-pages-container home-background">
-        <div className="relative h-full">
+        <div className="main-page-index main-grid-background">
           <div
             className={
               showTitle
-                ? "absolute w-full bottom-12 left-10 text-clrBaseLight pr-20 transition-all opacity-100"
-                : "absolute w-full bottom-12 left-32 text-clrBaseLight pr-20 transition-all opacity-0"
+                ? "absolute bottom-12 left-10 text-clrBaseLight pr-20 transition-all opacity-100"
+                : "absolute bottom-12 left-32 text-clrBaseLight pr-20 transition-all opacity-0"
             }
           >
-            <h1>Rs Urip Sumoharjo</h1>
+            <h1 className="text-3xl lg:text-4xl leading-7 mb-2">
+              Rs Urip Sumoharjo
+            </h1>
 
-            <h2>
+            <h2 className="text-lg lg:text-2xl leading-5">
               Memberikan Pelayanan yang Profesional dan Prima kepada Seluruh
               Masyarakat
             </h2>
@@ -41,10 +44,10 @@ const Home = () => {
         <SideMenu />
       </div>
       <div className="h-fit block bg-clrBaseLight w-full text-center mt-10 px-5 xs:px-10 sm:px-20 md:px-40 lg:px-32 ">
-        <h2 className="mb-5">
+        <h2 className="mb-0 capitalize">
           Perawatan Tepat waktu kapanpun Anda membutuhkannya
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-5 text-left md">
+        <div className="care-items-container">
           <CareItem
             icon={faFileContract}
             title="Informasi COVID"
@@ -74,6 +77,7 @@ const Home = () => {
       </div>
       <Rules />
       <Slogan />
+      <Footer color="bg-clrPrimaryDark" />
     </div>
   );
 };

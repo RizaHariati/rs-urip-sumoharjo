@@ -4,8 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { handleRequestApplication } from "../../slice/patientSlice";
-import { text } from "@fortawesome/fontawesome-svg-core";
+
 const Modal = ({ facility, setOpenModal }) => {
   const { title, img, info } = facility;
   const router = useRouter();
@@ -13,12 +12,14 @@ const Modal = ({ facility, setOpenModal }) => {
   return (
     <div className="modal-base">
       <div className="modal-container">
-        <Image
-          src={`/images/pelayanan-fasilitas/${img}.jpg`}
-          width={400}
-          height={250}
-          className="object-cover"
-        />
+        <div style={{ width: "100%", height: "300px", overflow: "hidden" }}>
+          <Image
+            src={`/images/pelayanan-fasilitas/${img}.jpg`}
+            width={600}
+            height={500}
+            className="object-cover object-center "
+          />
+        </div>
         <div className="p-5">
           <h4>{title}</h4>
           {info.map((item, index) => {

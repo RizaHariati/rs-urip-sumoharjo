@@ -174,7 +174,7 @@ const AppointmentForm = () => {
               </div>
               {/*  -------------------- setting selfAppointment ------------------- */}
               <div>
-                <p>
+                <p className="px-5 md:px-0 ">
                   Apakah Anda mendaftar sebagai pasien atau mendaftarkan orang
                   lain?
                 </p>
@@ -186,7 +186,7 @@ const AppointmentForm = () => {
                     }}
                     className={
                       selfAppointment
-                        ? " bg-clrPrimaryDark  logo-btn h-7"
+                        ? " bg-clrPrimaryDark  logo-btn h-7 "
                         : " bg-clrPrimaryMedium logo-btn h-7"
                     }
                   >

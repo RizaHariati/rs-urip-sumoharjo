@@ -58,7 +58,7 @@ const FindDoctor = (props) => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-10 text-clrTextDark">
+        <div className="w-fit py-2 px-5 text-clrTextDark">
           <h2 className="py-2 border-b-2 border-b-clrBorder ">Cari Dokter</h2>
           <h5>
             Temukan Jadwal Dokter sesuai kebutuhan medis Anda berdasarkan
@@ -67,11 +67,11 @@ const FindDoctor = (props) => {
         </div>
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="px-10 py-5">
-          <div className="flex space-x-5 mb-5">
+        <div className="px-0 md:px-10 py-5">
+          <div className="flex justify-center space-x-3 md:space-x-5 mb-5 ">
             <button
               onClick={() => {
-                setSearchName(!searchName);
+                setSearchName(false);
                 setName("");
                 setnameList([]);
               }}
@@ -83,14 +83,14 @@ const FindDoctor = (props) => {
             >
               <FontAwesomeIcon
                 icon={searchName ? faCircle : faCircleDot}
-                className="mr-3"
+                className="mr-1 lg:mr-3"
               />
               Berdasarkan Spesialisasi
             </button>
 
             <button
               onClick={() => {
-                setSearchName(!searchName);
+                setSearchName(true);
                 setSpecialization("");
                 setSpecializationList([]);
                 setdoctorList([]);
@@ -103,21 +103,24 @@ const FindDoctor = (props) => {
             >
               <FontAwesomeIcon
                 icon={!searchName ? faCircle : faCircleDot}
-                className="mr-3"
+                className="mr-1 lg:mr-3"
               />
               Berdasarkan Nama
             </button>
           </div>
           <div className="relative">
             {!searchName && (
-              <form className=" flex rounded-full overflow-hidden shadow-sm ">
+              <form
+                className="p-4 z-20 flex overflow-hidden mx-auto"
+                style={{ minWidth: "300px" }}
+              >
                 <input
                   autoComplete="false"
                   name="specialization"
                   value={specialization || ""}
                   id="specialization"
-                  placeholder="Cari berdasarkan spesialisasi dokter..."
-                  className="w-full p-2 px-5 h-10 outline-none"
+                  placeholder="Spesialisasi dokter..."
+                  className="w-full p-2 px-5 h-10 outline-none shadow-sm  rounded-l-full"
                   onChange={(e) => {
                     e.preventDefault();
                     setdoctorList([]);
@@ -126,7 +129,7 @@ const FindDoctor = (props) => {
                 />
                 <button
                   type="submit"
-                  className="w-14 h-10 bg-clrPrimaryDark text-clrBaseLight"
+                  className="w-14 h-10 rounded-r-full bg-clrPrimaryDark shadow-sm text-clrBaseLight"
                 >
                   <FontAwesomeIcon icon={faSearch} />
                 </button>
@@ -140,7 +143,7 @@ const FindDoctor = (props) => {
                   name="name"
                   value={name || ""}
                   id="name"
-                  placeholder="Cari berdasarkan nama dokter..."
+                  placeholder="Nama dokter..."
                   className="w-full p-2 px-5 h-10 outline-none"
                   onChange={(e) => {
                     e.preventDefault();
@@ -234,7 +237,7 @@ const DoctorList = ({ doctorlist, male, female }) => {
         return (
           <div key={index} className="doctor-card">
             <div className="text-left">
-              <div className="flex space-x-3 items-end w-full justify-start border-b-2 border-b-clrBorder mb-2 pb-2">
+              <div className="flex space-x-3 items-end w-full justify-start border-b-2 border-b-clrBorder mb-2 pb-2 z-10">
                 <Image
                   src={picture}
                   width={50}

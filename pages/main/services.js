@@ -25,10 +25,13 @@ const Services = () => {
 
   return (
     <div className="main-pages-container">
+      {openModal.opened && (
+        <Modal facility={openModal.facility} setOpenModal={setOpenModal} />
+      )}
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-10 text-clrTextDark">
+        <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
           <h2 className="py-2 border-b-2 border-b-clrBorder ">Fasilitas</h2>
           <h5>
             Fasilitas Medis dan Non Medis Terbaik Kami sesuai Perkembangan
@@ -36,21 +39,18 @@ const Services = () => {
           </h5>
         </div>
         {/* ---------------------------- header ---------------------------- */}
-        <div className="px-10 py-5">
+        <div className=" px-5 md:px-10 py-5">
           {/* --------------------------- subheader -------------------------- */}
 
-          <div
-            className="grid space-x-10 place-items-center mb-5 "
-            style={{ gridTemplateColumns: "3fr 5fr" }}
-          >
+          <div className="facility-input-container ">
             <Image
               src="/images/pelayanan-fasilitas/hemodialisa.jpg"
               height={200}
               width={400}
               className="object-cover"
             />
-            <div className="relative l">
-              <h5 className="text-right mb-3 text-clrTextMedium">
+            <div className="relative w-full ">
+              <h5 className="text-center md:text-right mt-3 md:mt-0 mb-3 text-clrTextMedium">
                 Silahkan cari fasilitas yang Anda butuhkan
               </h5>
               <form className="w-full flex rounded-full overflow-hidden shadow-sm  ">
@@ -128,9 +128,7 @@ const Services = () => {
         </div>
       </div>
       {/*  ----------------------------- modal ---------------------------- */}
-      {openModal.opened && (
-        <Modal facility={openModal.facility} setOpenModal={setOpenModal} />
-      )}
+
       {/*  ----------------------------- modal ---------------------------- */}
       <SideMenu />
     </div>
