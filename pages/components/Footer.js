@@ -36,7 +36,7 @@ const Footer = ({ color }) => {
             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
             <p>info@rsuripsumoharjo.com</p>
           </div>
-          <div className=" mt-5 space-x-5">
+          <div className=" mt-5 space-x-5 mb-5">
             <Link href="https://www.instagram.com/rs.uripsumoharjo.lampung/">
               <a>
                 <FontAwesomeIcon

@@ -36,11 +36,11 @@ const PatientData = () => {
         {/* ---------------------------- header ---------------------------- */}
 
         {login && (
-          <div className="w-fit py-2 px-10 text-clrTextDark">
+          <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
             <h2 className="py-2 border-b-2 border-b-clrBorder ">
               Informasi Pasien
             </h2>
-            <h5 className="leading-5">
+            <h5 className=" font-normal tracking-tighter md:font-medium">
               Selamat datang kembali Riza Hariati
               <br />
               Rs Urip Sumoharjo siap memberikan pelayanan yang profesional dan
@@ -49,11 +49,11 @@ const PatientData = () => {
           </div>
         )}
         {!login && (
-          <div className="w-fit py-2 px-10 text-clrTextDark">
+          <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
             <h2 className="py-2 border-b-2 border-b-clrBorder ">
               Login Pasien
             </h2>
-            <h5 className="leading-5">
+            <h5 className=" font-normal tracking-tighter md:font-medium">
               Untuk menjaga kerahasiaan data medis Anda, registrasi dari akun
               Anda hanya dapat dilakukan secara fisik di RS Urip Sumoharjo
               dengan bantuan departemen Administrasi.
@@ -62,9 +62,9 @@ const PatientData = () => {
           </div>
         )}
         {/* ---------------------------- header ---------------------------- */}
-        <div className="px-10 py-5">
+        <div className="px-0 md:px-10 py-5">
           {/*  -------------------------- Option Access -------------------------- */}
-          <div className="grid grid-cols-3 h-40 my-5 space-x-5 bg-clrPrimaryDark rounded-sm overflow-hidden text-clrBaseLight">
+          <div className="grid grid-cols-1 md:grid-cols-3 h-80 md:h-40  my-5 space-x-5 bg-clrPrimaryDark rounded-sm shadow-sm overflow-hidden text-clrBaseLight">
             <Image
               src="/images/welcome.jpg"
               width={200}
@@ -72,7 +72,7 @@ const PatientData = () => {
               className=" object-cover "
               priority
             />
-            <div className=" col-span-2 p-4 self-center ">
+            <div className="md:col-span-2 p-4 self-center ">
               <h5 className="mb-2 font-medium">
                 Fasilitas yang dapat Anda akses secara online:
               </h5>
@@ -99,10 +99,7 @@ const PatientData = () => {
           {/* ----------------------------- form ----------------------------- */}
           {!login && (
             <div className="w-full ">
-              <div
-                className=" bg-clrBaseLightHover mx-auto p-5 pb-1  rounded-sm shadow-sm "
-                style={{ width: "400px" }}
-              >
+              <div className=" bg-clrBaseLightHover mx-auto p-5 pb-1 rounded-sm shadow-sm  sm:w-9/12 md:w-7/12 ">
                 <div className="block w-full text-center mb-5 ">
                   <Image src="/images/logo bulat.jpg" width={50} height={50} />
                 </div>

@@ -31,11 +31,11 @@ const SpecialPackage = () => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-10 text-clrTextDark">
+        <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
           <h2 className="py-2 border-b-2 border-b-clrBorder ">
             Paket Pemeriksaan
           </h2>
-          <h5>
+          <h5 className=" font-normal tracking-tighter md:font-medium">
             Berikut adalah bundel paket kami, yang ditawarkan dengan harga yang
             menarik. Pendaftaran dibuka setiap hari bisa melalui online maupun
             menghubungi <FontAwesomeIcon icon={faPhone} /> 0811 7270 537
@@ -43,7 +43,7 @@ const SpecialPackage = () => {
         </div>
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="px-10 py-5">
+        <div className="px-0 md:px-10  py-5">
           {/* --------------------------- subheader -------------------------- */}
 
           <div className="">
@@ -51,7 +51,7 @@ const SpecialPackage = () => {
           </div>
           {/* --------------------------- subheader -------------------------- */}
           <div className=" w-full mb-5">
-            <h2 className="py-2 border-b-2 border-b-clrBorder text-right my-10 ">
+            <h2 className="py-2 border-b-2 border-b-clrBorder text-right my-10 mx-5 md:mx-0">
               Pilihan Paket
             </h2>
             <div className="">
@@ -61,10 +61,10 @@ const SpecialPackage = () => {
                 return (
                   <div
                     key={id}
-                    className="w-full mb-5 bg-clrBaseLightHover px-5 rounded-sm shadow-sm "
+                    className="w-full mb-1 md:mb-5 bg-clrBaseLightHover px-5 rounded-sm shadow-sm "
                   >
                     <div
-                      className="grid grid-cols-3 items-center w-full border-b-clrBorder py-5"
+                      className="grid grid-cols-3 items-start md:items-center w-full border-b-clrBorder py-3 md:py-5"
                       style={
                         openInfo === id
                           ? {
@@ -78,7 +78,7 @@ const SpecialPackage = () => {
                       }
                     >
                       <h4 className="text-base">{title}</h4>
-                      <p className="text-sm">
+                      <p className="text-xs md:text-sm leading-4">
                         <FontAwesomeIcon
                           icon={faMoneyBillWave}
                           className="text-clrPrimaryMedium mr-2 text-sm"
@@ -120,7 +120,7 @@ const SpecialPackage = () => {
                                   icon={faCheck}
                                   className="text-clrPrimaryMedium "
                                 />
-                                <p>{item}</p>
+                                <p className="text-sm md:text-base">{item}</p>
                               </div>
                             );
                           })}
@@ -138,7 +138,9 @@ const SpecialPackage = () => {
                                   icon={faCheck}
                                   className="text-clrPrimaryMedium "
                                 />
-                                <p className="leading-5 mb-1">{info}</p>
+                                <p className=" text-sm md:text-base leading-4 md:leading-5 mb-1">
+                                  {info}
+                                </p>
                               </div>
                             );
                           })}

@@ -21,13 +21,9 @@ const TermAndConditions = () => {
       {hak.map((pasal) => {
         const { menu, title, rules } = pasal;
         return (
-          <div
-            key={menu}
-            className="mx-auto text-clrTextDark  "
-            style={{ width: "700px" }}
-          >
-            <div className="w-full ">
-              <div>
+          <div key={menu} className="mx-auto text-clrTextDark  ">
+            <div className="w-full md:w-9/12 mx-auto ">
+              <div className="w-full  px-5">
                 <h5 className="leading-5 text-center my-5">{title}</h5>
               </div>
               <div className=" text-clrTextDark  ">

@@ -9,14 +9,13 @@ import polyclinics from "../../data/polyclinics.json";
 import Footer from "../components/Footer";
 const ContactUs = () => {
   return (
-    <div className=" bg-clrBaseLightActive w-full py-5 ">
+    <div className=" bg-clrBaseLightActive w-full pt-5 ">
       <div className="mx-auto w-full md:w-4/5 py-5 px-10  md:px-5">
-        <div className="mx-auto h-52 md:h-96 bg-cover bg-center w-full md:w-4/5 p-5 bg-hospital mb-5 rounded-sm shadow-sm "></div>
-        <h4 className="uppercase text-center leading-4 md:leading-5 mb-3">
+        <h4 className="uppercase text-center leading-5 md:leading-6 mb-3">
           Anda dapat mendaftar secara online, maupun menghubungi kami di:
         </h4>
         <div className=" bg-clrBorder mb-5" style={{ height: "1px" }}></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 w-full lg:w-10/12 mx-auto md:grid-cols-2 gap-3">
           {polyclinics.map((polyclinic) => {
             const { id, title, img, hari, jam, telp } = polyclinic;
 
@@ -61,6 +60,7 @@ const ContactUs = () => {
             );
           })}
         </div>
+        <div className="mx-auto h-52 md:h-96 bg-cover bg-center w-full md:w-4/5 p-5 bg-hospital my-5 rounded-sm shadow-sm "></div>
       </div>
       <Footer color="bg-clrBorder" />
     </div>

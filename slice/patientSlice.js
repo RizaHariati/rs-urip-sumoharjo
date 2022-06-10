@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const patientSlice = createSlice({
   name: "patients",
   initialState: {
-    login: true,
+    login: false,
     registerTemp: {
       name: "",
       email: "",

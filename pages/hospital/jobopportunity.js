@@ -14,35 +14,22 @@ const JobOpportunity = () => {
   };
 
   return (
-    <div className=" bg-clrBaseLightActive w-full py-5 ">
-      <h4 className="uppercase text-center">
+    <div className="w-full h-fit p-5 bg-clrBaseLightActive">
+      <h4 className="uppercase text-center ">
         Saat ini kami membutuhkan tenaga kerja untuk :
       </h4>
-      <div className=" bg-clrBorder" style={{ height: "1px" }}></div>
-      <div
-        className=" mx-auto grid border-clrBorder my-5"
-        style={{
-          borderWidth: "1px",
-          width: "800px",
-          height: "400px",
-          gridTemplateColumns: "1fr 2fr",
-        }}
-      >
-        <div
-          className=" overflow-y-scroll p-3"
-          style={{
-            height: "390px",
-          }}
-        >
+      <div className=" bg-clrBorder mb-5 " style={{ height: "1px" }}></div>
+      <div className="job-container bg-clrBaseLight">
+        <div className="flex flex-row md:flex-col overflow-x-scroll md:overflow-y-scroll h-44 md:h-full gap-2 bg-clrBaseLight p-3 ">
           {loker.map((item) => {
             const { id, pengalaman, tanggal, title } = item;
             return (
               <div
                 key={id}
-                className=" bg-clrBaseLight hover:bg-clrBaseLightHover rounded-sm mb-3 p-2 shadow-sm cursor-pointer overflow-hidden "
+                className="cursor-pointer bg-clrBaseLightHover hover:bg-white rounded-sm shadow-sm shrink-0 p-3 w-52 md:w-full "
                 onClick={() => handleClick(id)}
               >
-                <h5 className="leading-4 text-left">{title}</h5>
+                <h5 className="leading-4 text-left ">{title}</h5>
                 <div className="line"></div>
                 <p className=" capitalize text-sm">
                   pengalaman minimal : {pengalaman} tahun
@@ -53,15 +40,17 @@ const JobOpportunity = () => {
             );
           })}
         </div>
-        <div className="w-full h-full overflow-hidden ">
+        <div className=" h-fit md:h-fit col-span-1 md:col-span-2 overflow-y-scroll bg-clrBaseLight">
           {!showLoker && (
-            <Image
-              src="/images/doctors.jpg"
-              width={600}
-              height={500}
-              alt="doctors"
-              className=" object-cover"
-            />
+            <div className=" object-cover object-centerh h-fit w-fit">
+              <Image
+                src="/images/doctors.jpg"
+                width={700}
+                height={600}
+                alt="doctors"
+                className="object-center object-cover"
+              />
+            </div>
           )}
           {showLoker && <Loker data={dataLoker} />}
         </div>
