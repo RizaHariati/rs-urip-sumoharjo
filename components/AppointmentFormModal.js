@@ -2,7 +2,7 @@ import { faBan, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { handleConfirmApplication } from "../../slice/patientSlice";
+import { handleConfirmApplication } from "../slice/patientSlice";
 
 const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
   const dispatch = useDispatch();

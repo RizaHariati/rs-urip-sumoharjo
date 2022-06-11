@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu";
 import data_paket from "../../data/data_paketkesehatan.json";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";

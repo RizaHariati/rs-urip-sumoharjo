@@ -2,8 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { closeDropMenu } from "../../slice/layoutSlice";
-import { data_menu } from "../../data/data_menu.js";
+import { closeDropMenu } from "../slice/layoutSlice.js";
+import { data_menu } from "../data/data_menu";
 const SideMenu = () => {
   const dispatch = useDispatch();
 

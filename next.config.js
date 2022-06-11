@@ -8,6 +8,6 @@ module.exports = nextConfig;
 module.exports = {
   nextConfig,
   images: {
-    domains: ["randomuser.me", "openweathermap.org"],
+    domains: ["randomuser.me", "openweathermap.org", "osm.org"],
   },
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu";
 import polyclinics from "../../data/polyclinics.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import {
   faClock,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
-import AppointmentForm from "../components/AppointmentForm";
+import AppointmentForm from "../../components/AppointmentForm";
 const ScheduleAppointment = () => {
   return (
     <div className="main-pages-container">
@@ -54,6 +54,7 @@ const ScheduleAppointment = () => {
               width={200}
               height={200}
               className=" object-cover "
+              alt="admission"
             />
           </div>
           {/*  -------------------------- intermezzo -------------------------- */}

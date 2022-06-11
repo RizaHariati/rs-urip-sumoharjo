@@ -7,8 +7,10 @@ import {
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import LocationOnMap from "./LocationOnMap";
+
 import Link from "next/link";
+import LocationOnMap from "./LocationOnMap";
+
 const Footer = ({ color }) => {
   return (
     <div
@@ -63,9 +65,8 @@ const Footer = ({ color }) => {
             </Link>
           </div>
         </div>
-        <div>
-          <LocationOnMap />
-        </div>
+
+        <LocationOnMap />
       </div>
     </div>
   );

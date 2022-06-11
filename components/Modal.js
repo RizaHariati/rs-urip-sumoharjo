@@ -18,6 +18,7 @@ const Modal = ({ facility, setOpenModal }) => {
             width={600}
             height={500}
             className="object-cover object-center "
+            alt={`${img}`}
           />
         </div>
         <div className="p-5">

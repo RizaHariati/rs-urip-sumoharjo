@@ -1,11 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faBriefcase,
-  faFileLines,
-  faHomeAlt,
-  faMosque,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faHomeAlt } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faInstagram,
@@ -14,8 +8,8 @@ import {
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeDropMenu, toggleDropMenu } from "../../slice/layoutSlice";
-import { menu_item } from "../../data/data_menu";
+import { closeDropMenu, toggleDropMenu } from "../slice/layoutSlice";
+import { menu_item } from "../data/data_menu";
 
 const Navbar = () => {
   const dispatch = useDispatch();

@@ -6,12 +6,11 @@ import {
   faHouseMedical,
   faSearch,
   faSun,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu";
 import doctordb from "../../data/doctordb.json";
 const allSpecialization = [...new Set(doctordb.map((doctor) => doctor.poli))];
 import { useRouter } from "next/router";
@@ -243,6 +242,7 @@ const DoctorList = ({ doctorlist, male, female }) => {
                   width={50}
                   height={50}
                   className="rounded-full"
+                  alt={`thumbnail ${picture}`}
                 />
                 <h5 className=" text-base">{nama}</h5>
               </div>

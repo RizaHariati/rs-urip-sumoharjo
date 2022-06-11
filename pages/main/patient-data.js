@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,8 +8,9 @@ import {
   faCircleDot,
   faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
-import Register from "../components/Register";
-import Login from "../components/Login";
+import Register from "../../components/Register";
+import Login from "../../components/Login";
+
 import { useRouter } from "next/router";
 import { setlogout } from "../../slice/patientSlice";
 const benefitOnline = [
@@ -28,7 +29,7 @@ const PatientData = () => {
   const login = useSelector((state) => state.patients.login);
   const handleLogout = () => {
     dispatch(setlogout());
-    route.reload(window.location.pathname);
+    route.reload();
   };
   return (
     <div className="main-pages-container">
@@ -70,6 +71,7 @@ const PatientData = () => {
               width={200}
               height={200}
               className=" object-cover "
+              alt="welcome"
               priority
             />
             <div className="md:col-span-2 p-4 self-center ">
@@ -101,7 +103,12 @@ const PatientData = () => {
             <div className="w-full ">
               <div className=" bg-clrBaseLightHover mx-auto p-5 pb-1 rounded-sm shadow-sm  sm:w-9/12 md:w-7/12 ">
                 <div className="block w-full text-center mb-5 ">
-                  <Image src="/images/logo bulat.jpg" width={50} height={50} />
+                  <Image
+                    src="/images/logo bulat.jpg"
+                    width={50}
+                    height={50}
+                    alt="logo bulat"
+                  />
                 </div>
                 {!openRegister && <Login setOpenRegister={setOpenRegister} />}
                 {openRegister && <Register setOpenRegister={setOpenRegister} />}

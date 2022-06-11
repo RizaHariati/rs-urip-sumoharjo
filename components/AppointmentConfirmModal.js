@@ -21,7 +21,12 @@ const AppointmentConfirmModal = ({
               <h5>Data dikonfirmasi</h5>
             </div>
             <div className="flex flex-col justify-center items-center">
-              <Image src="/images/logo bulat.jpg" width={50} height={50} />
+              <Image
+                src="/images/logo bulat.jpg"
+                width={50}
+                height={50}
+                alt="logo bulat"
+              />
               <p className="leading-5">
                 Terimakasih {confirmedName}, data Anda sudah kami terima
                 <br />
@@ -40,7 +45,7 @@ const AppointmentConfirmModal = ({
                   });
 
                   formik.resetForm();
-                  router.reload(window.location.pathname);
+                  router.reload();
                 }}
                 className=" bg-clrPrimaryDark logo-btn h-7"
               >

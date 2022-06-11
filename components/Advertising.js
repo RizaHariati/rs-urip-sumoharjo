@@ -7,9 +7,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import adData from "../../data/advertising.json";
+import adData from "../data/advertising.json";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleAdBlock } from "../../slice/layoutSlice";
+import { toggleAdBlock } from "../slice/layoutSlice";
 const Advertising = () => {
   const [index, setIndex] = useState(1);
   const dispatch = useDispatch();
@@ -84,6 +84,7 @@ const Advertising = () => {
                       width={420}
                       height={260}
                       className="object-cover object-left-top"
+                      alt={`${image}`}
                     />
                   </div>
                 </div>
@@ -95,6 +96,7 @@ const Advertising = () => {
                         width={20}
                         height={20}
                         className=" object-center object-cover rounded-full "
+                        alt="logo bulat"
                       />
                     </div>
                     <p className="font-semibold">{title}</p>

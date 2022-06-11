@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import facilities from "../../data/facility.json";
-import Modal from "../components/Modal";
+import Modal from "../../components/Modal";
 
 const Services = () => {
   const [facility, setFacility] = useState("");
@@ -48,6 +48,7 @@ const Services = () => {
               height={200}
               width={400}
               className="object-cover"
+              alt="hemodialisa"
             />
             <div className="relative w-full ">
               <h5 className="text-center md:text-right mt-3 md:mt-0 mb-3 text-clrTextMedium">

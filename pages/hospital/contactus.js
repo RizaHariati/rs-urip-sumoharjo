@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import polyclinics from "../../data/polyclinics.json";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 const ContactUs = () => {
   return (
     <div className=" bg-clrBaseLightActive w-full pt-5 ">

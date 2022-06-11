@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import React, { useState } from "react";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../../components/SideMenu";
 import data_inap from "../../data/data_inap.json";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
@@ -62,6 +62,7 @@ const Inpatient = () => {
                 src="/images/doctorvisit.jpg"
                 height={300}
                 width={500}
+                alt="doctor visit"
                 className="object-cover object-center "
               />
             </div>

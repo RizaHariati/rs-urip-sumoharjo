@@ -30,3 +30,9 @@ export const Radio = ({ label, ...props }) => {
     </>
   );
 };
+
+const AppointmentFormInputs = () => {
+  return <div>AppointmentFormInputs</div>;
+};
+
+export default AppointmentFormInputs;

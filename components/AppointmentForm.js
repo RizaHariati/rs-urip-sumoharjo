@@ -20,14 +20,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import { MyTextInput, Radio } from "./AppointmentFormInputs";
-import FindPurpose from "../../utlis/FindPurpose";
+import FindPurpose from "../utils/FindPurpose";
 import * as Yup from "yup";
 import AppointmentFormModal from "./AppointmentFormModal";
 import { useDispatch, useSelector } from "react-redux";
 import {
   handleRequestApplication,
   handleResetApplication,
-} from "../../slice/patientSlice";
+} from "../slice/patientSlice";
 import { useRouter } from "next/router";
 import AppointmentConfirmModal from "./AppointmentConfirmModal";
 
@@ -490,7 +490,7 @@ const AppointmentForm = () => {
                   onClick={() => {
                     formik.resetForm();
                     dispatch(handleResetApplication());
-                    router.reload(window.location.pathname);
+                    router.reload();
                   }}
                   className=" bg-clrPrimaryMedium logo-btn h-7"
                 >

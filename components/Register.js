@@ -14,7 +14,7 @@ import React from "react";
 import { MyTextInput, Radio } from "./AppointmentFormInputs";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { setlogin } from "../../slice/patientSlice";
+import { setlogin } from "../slice/patientSlice";
 import { useRouter } from "next/router";
 
 const initialValues = {
@@ -74,7 +74,7 @@ const Register = ({ setOpenRegister }) => {
           onSubmit={(values, { setSubmitting }) => {
             dispatch(setlogin());
             setTimeout(() => {
-              router.reload(window.location.pathname);
+              router.reload();
               setOpenRegister(false);
               setSubmitting(false);
             }, 400);

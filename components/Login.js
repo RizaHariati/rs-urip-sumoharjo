@@ -9,7 +9,7 @@ import { Form, Formik } from "formik";
 import React from "react";
 import { MyTextInput } from "./AppointmentFormInputs";
 import * as Yup from "yup";
-import { setlogin } from "../../slice/patientSlice";
+import { setlogin } from "../slice/patientSlice";
 import { useDispatch } from "react-redux";
 
 const initialValues = {

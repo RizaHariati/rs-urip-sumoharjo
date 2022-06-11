@@ -5,12 +5,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import React, { useEffect, useState } from "react";
-import SideMenu from "./components/SideMenu";
-
-import CareItem from "./components/componenthomepage/CareItem";
-import Slogan from "./components/componenthomepage/Slogan";
-import Rules from "./components/componenthomepage/Rules";
-import Footer from "./components/Footer";
+import CareItem from "../components/componenthomepage/CareItem";
+import Slogan from "../components/componenthomepage/Slogan";
+import Rules from "../components/componenthomepage/Rules";
+import Footer from "../components/Footer";
+import SideMenu from "../components/SideMenu";
 
 const Home = () => {
   const [showTitle, setShowTitle] = useState(false);
