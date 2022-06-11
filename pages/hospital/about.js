@@ -5,6 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import Head from "next/head";
 
 const About = () => {
   const [selected, setSelected] = useState(null);
@@ -17,6 +18,10 @@ const About = () => {
   };
   return (
     <div className="about-container">
+      <Head>
+        <title>rs-uripsumoharjo || About</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="absolute top-0 right-0 bg-hospital w-full h-full opacity-90 mix-blend-overlay -z-20 bg-cover bg-top transition-all"></div>
 
       <div className="about-grid">

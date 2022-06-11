@@ -12,7 +12,7 @@ import data_paket from "../../data/data_paketkesehatan.json";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { handleRequestApplication } from "../../slice/patientSlice";
-
+import Head from "next/head";
 const SpecialPackage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -28,6 +28,10 @@ const SpecialPackage = () => {
   };
   return (
     <div className="main-pages-container">
+      <Head>
+        <title>rs-uripsumoharjo || Paket</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 

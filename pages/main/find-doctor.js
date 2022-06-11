@@ -8,6 +8,7 @@ import {
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from "react";
 import SideMenu from "../../components/SideMenu";
@@ -54,6 +55,10 @@ const FindDoctor = (props) => {
   };
   return (
     <div className="main-pages-container">
+      <Head>
+        <title>rs-uripsumoharjo || Cari Dokter</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 

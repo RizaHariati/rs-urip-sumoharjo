@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SideMenu from "../../components/SideMenu";
 import Image from "next/image";
+import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleDollarToSlot,
@@ -33,6 +34,10 @@ const PatientData = () => {
   };
   return (
     <div className="main-pages-container">
+      <Head>
+        <title>rs-uripsumoharjo || Informasi Pasien</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 

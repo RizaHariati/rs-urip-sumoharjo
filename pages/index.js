@@ -3,7 +3,7 @@ import {
   faPeopleGroup,
   faStethoscope,
 } from "@fortawesome/free-solid-svg-icons";
-
+import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import CareItem from "../components/componenthomepage/CareItem";
 import Slogan from "../components/componenthomepage/Slogan";
@@ -21,6 +21,11 @@ const Home = () => {
 
   return (
     <div className=" bg-clrBaseLight">
+      <Head>
+        <title>rs-uripsumoharjo || Home</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div className="main-pages-container home-background">
         <div className="main-page-index main-grid-background">
           <div

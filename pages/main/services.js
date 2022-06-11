@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SideMenu from "../../components/SideMenu";
 import Image from "next/image";
+import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import facilities from "../../data/facility.json";
@@ -25,6 +26,10 @@ const Services = () => {
 
   return (
     <div className="main-pages-container">
+      <Head>
+        <title>rs-uripsumoharjo || Fasilitas</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {openModal.opened && (
         <Modal facility={openModal.facility} setOpenModal={setOpenModal} />
       )}

@@ -1,11 +1,16 @@
 import React from "react";
 import SideMenu from "../../components/SideMenu";
 import Image from "next/image";
+import Head from "next/head";
 import AppointmentForm from "../../components/AppointmentForm";
 
 const ScheduleAppointment = () => {
   return (
     <div className="main-pages-container">
+      <Head>
+        <title>rs-uripsumoharjo || Daftar Online</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 

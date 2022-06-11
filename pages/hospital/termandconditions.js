@@ -3,6 +3,7 @@ import {
   faMinusCircle,
   faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import hak from "../../data/data_hak_kewajiban.json";
@@ -18,6 +19,10 @@ const TermAndConditions = () => {
   };
   return (
     <div className=" bg-clrBaseLightActive w-full py-5 ">
+      <Head>
+        <title>rs-uripsumoharjo || Hak Kewajiban</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {hak.map((pasal) => {
         const { menu, title, rules } = pasal;
         return (

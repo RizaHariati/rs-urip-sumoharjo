@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Head from "next/head";
 import React, { useState } from "react";
 import SideMenu from "../../components/SideMenu";
 import data_inap from "../../data/data_inap.json";
@@ -30,6 +31,10 @@ const Inpatient = () => {
   };
   return (
     <div className="main-pages-container">
+      <Head>
+        <title>rs-uripsumoharjo || Rawat Inap</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 

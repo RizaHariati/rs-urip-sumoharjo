@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import loker from "../../data/data_loker.json";
 import Image from "next/image";
+import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,6 +16,10 @@ const JobOpportunity = () => {
 
   return (
     <div className="w-full h-fit p-5 bg-clrBaseLightActive">
+      <Head>
+        <title>rs-uripsumoharjo || Jobs</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h4 className="uppercase text-center ">
         Saat ini kami membutuhkan tenaga kerja untuk :
       </h4>

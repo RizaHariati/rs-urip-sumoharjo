@@ -5,11 +5,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import Head from "next/head";
 import polyclinics from "../../data/polyclinics.json";
 import Footer from "../../components/Footer";
 const ContactUs = () => {
   return (
     <div className=" bg-clrBaseLightActive w-full pt-5 ">
+      <Head>
+        <title>rs-uripsumoharjo || Contact Us</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="mx-auto w-full md:w-4/5 py-5 px-10  md:px-5">
         <h4 className="uppercase text-center leading-5 md:leading-6 mb-3">
           Anda dapat mendaftar secara online, maupun menghubungi kami di:
