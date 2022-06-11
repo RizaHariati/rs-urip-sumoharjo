@@ -15,7 +15,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="w-full h-20 bg-clrPrimaryDark flex justify-between items-center px-5 md:px-10 lg:px-20 text-clrBaseLight sticky top-0 z-30">
+    <div className="w-full h-16 md:h-20 bg-clrPrimaryDark flex justify-between items-center px-5 md:px-10 lg:px-20 text-clrBaseLight sticky top-0 z-30">
       <div className="link-icon" onClick={() => dispatch(closeDropMenu())}>
         <div className="navbar-comment">
           <p className=" text-clrTextDark ">Home</p>
@@ -26,7 +26,7 @@ const Navbar = () => {
       </div>
       <div className="flex space-x-2 md:space-x-5 items-center">
         <div
-          className="flex flex-col border-r-2 border-clrBaseLight px-5 "
+          className="flex flex-col border-r-2 border-clrBaseLight px-3 md:px-5 "
           onClick={() => dispatch(closeDropMenu())}
         >
           <Link href="/main/patient-data">
@@ -45,7 +45,7 @@ const Navbar = () => {
             className="link-light"
             onClick={() => dispatch(toggleDropMenu())}
           >
-            <FontAwesomeIcon icon={faBars} className="text-3xl" />
+            <FontAwesomeIcon icon={faBars} className=" text-3xl " />
           </button>
           <MenuItems />
         </div>

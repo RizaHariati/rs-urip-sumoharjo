@@ -32,7 +32,9 @@ const Services = () => {
         {/* ---------------------------- header ---------------------------- */}
 
         <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
-          <h2 className="py-2 border-b-2 border-b-clrBorder ">Fasilitas</h2>
+          <h2 className="border-b-2 mb-3 md:mb-5 border-b-clrBorder ">
+            Fasilitas
+          </h2>
           <h5>
             Fasilitas Medis dan Non Medis Terbaik Kami sesuai Perkembangan
             Teknologi Terkini
@@ -44,7 +46,7 @@ const Services = () => {
 
           <div className="facility-input-container ">
             <Image
-              src="/images/pelayanan-fasilitas/hemodialisa.jpg"
+              src="/images/pelayanan-fasilitas/small/hemodialisa.jpg"
               height={200}
               width={400}
               className="object-cover"
@@ -146,6 +148,8 @@ const FacilityButton = ({ item, setOpenModal }) => {
       className="facility-list-btn"
       style={{
         backgroundImage: `url('/images/pelayanan-fasilitas/small/${img}.jpg')`,
+        backgroundPosition: "center",
+        backgroundSize: "fit",
       }}
       onClick={() => setOpenModal({ opened: true, facility: item })}
     >

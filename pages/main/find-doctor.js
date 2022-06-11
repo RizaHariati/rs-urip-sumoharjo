@@ -57,17 +57,19 @@ const FindDoctor = (props) => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-5 text-clrTextDark">
-          <h2 className="py-2 border-b-2 border-b-clrBorder ">Cari Dokter</h2>
-          <h5>
+        <div className="w-fit px-5 text-clrTextDark">
+          <h2 className="mt-3 md:mt-5 border-b-2 border-b-clrBorder ">
+            Cari Dokter
+          </h2>
+          <h5 className="my-3 md:my-5">
             Temukan Jadwal Dokter sesuai kebutuhan medis Anda berdasarkan
             nama/spesialisasi
           </h5>
         </div>
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="px-0 md:px-10 py-5">
-          <div className="flex justify-center space-x-3 md:space-x-5 mb-5 ">
+        <div className="px-0 md:px-10">
+          <div className="flex justify-center space-x-2 md:space-x-5 mb-3 md:mb-5 ">
             <button
               onClick={() => {
                 setSearchName(false);
@@ -107,10 +109,10 @@ const FindDoctor = (props) => {
               Berdasarkan Nama
             </button>
           </div>
-          <div className="relative">
+          <div className="relative bg-clrBaseLight">
             {!searchName && (
               <form
-                className="p-4 z-20 flex overflow-hidden mx-auto"
+                className="px-2 mb-3 md:mb-5 z-20 flex overflow-hidden mx-auto"
                 style={{ minWidth: "300px" }}
               >
                 <input

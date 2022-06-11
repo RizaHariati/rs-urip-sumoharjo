@@ -173,7 +173,6 @@ const Inpatient = () => {
           </div>
         </div>
       </div>
-
       <SideMenu />
     </div>
   );

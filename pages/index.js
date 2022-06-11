@@ -26,8 +26,8 @@ const Home = () => {
           <div
             className={
               showTitle
-                ? "absolute bottom-12 left-10 text-clrBaseLight pr-20 transition-all opacity-100"
-                : "absolute bottom-12 left-32 text-clrBaseLight pr-20 transition-all opacity-0"
+                ? "absolute bottom-24 md:bottom-12 left-5 text-clrBaseLight pr-20 transition-all opacity-100"
+                : "absolute bottom-24 md:bottom-12 left-32 text-clrBaseLight pr-20 transition-all opacity-0"
             }
           >
             <h1 className="text-3xl lg:text-4xl leading-7 mb-2">

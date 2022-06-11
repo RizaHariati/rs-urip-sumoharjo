@@ -12,7 +12,7 @@ const Modal = ({ facility, setOpenModal }) => {
   return (
     <div className="modal-base">
       <div className="modal-container">
-        <div style={{ width: "100%", height: "300px", overflow: "hidden" }}>
+        <div className="modal-image ">
           <Image
             src={`/images/pelayanan-fasilitas/${img}.jpg`}
             width={600}
@@ -26,12 +26,12 @@ const Modal = ({ facility, setOpenModal }) => {
           {info.map((item, index) => {
             const { text } = item;
             return (
-              <p className="leading-5 text-sm" key={index}>
+              <p className="leading-5 text-base md:text-sm" key={index}>
                 {text}
               </p>
             );
           })}
-          <div className="absolute bottom-5 right-5 space-x-2">
+          <div className="mt-5 md:absolute bottom-5 right-5 space-x-2">
             <button
               onClick={() => setOpenModal({ opened: false, facility: {} })}
               className="btn bg-red-600"
@@ -74,7 +74,7 @@ const Modal = ({ facility, setOpenModal }) => {
         >
           <FontAwesomeIcon
             icon={faClose}
-            className=" absolute top-5 right-5 text-xl text-red-600"
+            className=" absolute top-5 right-5 text-2xl text-red-600"
           />
         </button>
       </div>
