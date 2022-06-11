@@ -42,7 +42,7 @@
     @apply text-lg md:text-xl font-semibold;
   }
   h5 {
-    @apply text-base md:text-lg  leading-5 md:leading-6 font-semibold;
+    @apply text-base md:text-lg  leading-5 md:leading-6  font-semibold;
   }
   label {
     @apply block mb-1;
@@ -173,7 +173,7 @@
     @apply absolute top-12 left-0 z-20 bg-clrBaseLight bg-opacity-80 py-2 px-4 rounded-sm transition-all opacity-0;
   }
   .navbar-logo {
-    background-image: url("/images/logo hijau.jpg");
+    background-image: url("/images/logohijau.jpg");
     background-position: center;
     background-size: cover;
     width: 200px;
@@ -183,13 +183,13 @@
     @apply opacity-100;
   }
   .menu {
-    @apply absolute w-screen md:w-80 -right-5 rounded-sm shadow-md shadow-clrTextMedium bg-clrBaseLight top-14 md:top-16 md:right-0 px-7 py-5 z-30 font-medium transition-all overflow-hidden text-center;
+    @apply absolute w-screen md:w-80 -right-5 rounded-sm shadow-md shadow-clrBorder bg-clrBaseLight top-12 md:top-16 md:right-0 px-7 py-5 z-30 font-medium transition-all overflow-hidden text-center;
   }
   .menu-item {
     @apply grid space-x-3 w-full border-b-clrPrimaryDark hover:border-clrBorder py-2 transition-all cursor-pointer;
   }
   .menu-item-text {
-    @apply text-clrTextDark text-left transition-all font-semibold hover:font-medium;
+    @apply text-clrTextDark text-left transition-all font-semibold hover:font-medium border-b-0;
   }
   .menu-item-icon {
     @apply text-xl text-clrPrimaryMedium mr-2 transition-all;
@@ -206,7 +206,7 @@
   @media (max-width: 640px) {
     .navbar-logo {
       @apply rounded-full;
-      background-image: url("/images/logo bulat.jpg");
+      background-image: url("/images/logobulat.jpg");
 
       width: 40px;
       height: 40px;
@@ -312,14 +312,14 @@
   /* -------------------------- find doctor ------------------------- */
   /* --------------------------- inpatient -------------------------- */
   .inpatient-room {
-    @apply bg-clrBaseLightHover rounded-md overflow-hidden shadow-sm text-left text-clrTextDark transition-all hover:bg-white hover:text-clrTextMedium hover:shadow-md hover:opacity-80 active:opacity-100 cursor-pointer mb-0;
+    @apply bg-clrBaseLightHover rounded-md overflow-hidden shadow-sm text-left text-clrTextDark transition-all hover:bg-white hover:text-clrTextMedium hover:shadow-md hover:opacity-80 active:opacity-100 cursor-pointer;
     width: 700px;
     display: grid;
     grid-template-columns: 5fr 3fr;
   }
 
   .inpatient-room-info {
-    @apply p-5 md:p-10 pb-5 h-40 sm:h-52 sm:row-start-1 bg-clrBaseLightHover hover:bg-white leading-4 sm:leading-5;
+    @apply px-5 py-0 md:px-10 md:py-5 pb-5 h-40 sm:h-52 sm:row-start-1 bg-clrBaseLightHover hover:bg-white;
   }
 
   @media (max-width: 640px) {
@@ -372,7 +372,10 @@
   .form-input {
     @apply w-full px-3 h-8 bg-white;
   }
-
+  .login-logo {
+    @apply rounded-full bg-cover bg-center mx-auto w-10 h-10 md:w-12 md:h-12;
+    background-image: url("/images/logobulat.jpg");
+  }
   /* ------------------------ special package ----------------------- */
   .special-package-image {
     @apply mt-5 flex justify-center rounded-sm overflow-hidden shadow-sm;
@@ -385,7 +388,7 @@
   /* ------------------------ special package ----------------------- */
   @media (max-width: 640px) {
     .inpatient-room {
-      @apply rounded-none shadow-none mb-5;
+      @apply rounded-none shadow-md shadow-stone-300;
       width: 100%;
       display: grid;
       grid-template-columns: 1fr;
@@ -416,7 +419,7 @@
     @apply fixed top-0 left-0 w-screen h-screen bg-clrTextMedium z-50 bg-opacity-50 py-5;
   }
   .modal-container {
-    @apply absolute bg-clrBaseLight rounded-md shadow-md;
+    @apply absolute bg-clrBaseLight rounded-md shadow-md overflow-hidden;
     width: 400px;
     height: 500px;
     left: 50%;

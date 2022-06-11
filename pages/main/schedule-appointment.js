@@ -10,7 +10,9 @@ const ScheduleAppointment = () => {
         {/* ---------------------------- header ---------------------------- */}
 
         <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
-          <h2 className="border-b-2 border-b-clrBorder ">Pendaftaran Pasien</h2>
+          <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder">
+            Pendaftaran Pasien
+          </h2>
           <h5>
             Barisan Garda Depan Kami Siap Melayani Dengan Dukungan Fasilitas
             yang Mumpuni
@@ -19,7 +21,7 @@ const ScheduleAppointment = () => {
         {/* ---------------------------- header ---------------------------- */}
         <div>
           <div className="flex flex-col mb-5 leading-5 px-5 md:px-10">
-            <p className="text-base leading-4">
+            <p>
               Selain menghubungi langsung lewat telepon, Anda juga bisa
               mendaftar secara online dengan mengisi formulir dibawah. Jika data
               anda valid, admin kami akan menghubungi anda pada jam kerja baik

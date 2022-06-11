@@ -33,12 +33,14 @@ const Inpatient = () => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-5 sm:px-10 text-clrTextDark">
+        <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
           <h5 className="text-red-600">
             Jam besuk : Pagi Pukul 11.00 - 12.00 Wib || Sore Pukul 17.00 - 18.00
             Wib
           </h5>
-          <h2 className="py-2 border-b-2 border-b-clrBorder ">Rawat Inap</h2>
+          <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder">
+            Rawat Inap
+          </h2>
           <h5>
             Untuk pendaftaran rawat inap dan pemesanan kamar silahkan
             menghubungi <FontAwesomeIcon icon={faPhone} /> 0811 7270 537
@@ -46,11 +48,11 @@ const Inpatient = () => {
         </div>
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className=" mt-5 ">
+        <div className="mt-2 md:mt-5 ">
           {/* --------------------------- subheader -------------------------- */}
 
-          <div className=" px-5 sm:px-10 grid grid-cols-1 sm:grid-cols-2 gap-5 place-items-center">
-            <p className="text-left text-sm sm:text-base sm:text-right leading-4 sm:leading-5">
+          <div className=" px-5 sm:px-10 grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-5 place-items-center">
+            <p className="text-left sm:text-right  mb-2 md:mb-5  ">
               Ruang Rawat Inap RS Urip Sumoharjo terbagi atas ruang perawatan
               dewasa, ruang perawatan anak, ruang perawatan kebidanan, ruang
               isolasi dan ruang rawat intensif. Rumah Sakit Jakarta memiliki
@@ -68,11 +70,11 @@ const Inpatient = () => {
             </div>
           </div>
           {/* --------------------------- subheader -------------------------- */}
-          <div>
-            <h2 className="py-2  px-5 sm:px-10 border-b-2 border-b-clrBorder text-right my-5 ">
+          <div className="px-0 md:px-10">
+            <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder text-right px-5 md:px-0">
               Pilihan Kamar
             </h2>
-            <div className="flex flex-col space-y-0 sm:space-y-5 items-center justify-center">
+            <div className="flex flex-col gap-3 md:gap-5 items-center bg-clrBaseLight justify-center">
               {data_inap.map((room) => {
                 const { id, kelas, pasien, harga, img, fasilitas } = room;
                 return (
@@ -109,9 +111,9 @@ const Inpatient = () => {
                           />
                         </button>
                       </div>
-                      <div className="object-cover object-center overflow-hidden row-start-1 w-full h-52 ">
+                      <div className="object-cover object-center overflow-hidden row-start-1 w-full h-44 md:h-52 ">
                         <div
-                          className="h-full w-full bg-cover bg-center"
+                          className="h-full w-full bg-cover bg-center "
                           style={{
                             backgroundImage: `url('/images/inpatient-rooms/${img}')`,
                           }}
@@ -119,7 +121,7 @@ const Inpatient = () => {
                       </div>
                       {openInfo === id && (
                         <div
-                          className="sm:col-span-2 grid grid-cols-2 gap-0 sm:gap-3 px-0 sm:px-10 pr-0 pl-1 py-2 sm:py-5 w-full  "
+                          className="sm:col-span-2 grid grid-cols-2 gap-0 sm:gap-3 px-2 sm:px-10 py-2 sm:py-5 w-full  "
                           style={{ borderTop: "1px solid lightGray" }}
                         >
                           {fasilitas.map((item, index) => {

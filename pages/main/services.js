@@ -31,8 +31,8 @@ const Services = () => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
-          <h2 className="border-b-2 mb-3 md:mb-5 border-b-clrBorder ">
+        <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
+          <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder ">
             Fasilitas
           </h2>
           <h5>

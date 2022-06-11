@@ -31,11 +31,11 @@ const SpecialPackage = () => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit py-2 px-5 md:px-10 text-clrTextDark">
-          <h2 className="py-2 border-b-2 border-b-clrBorder ">
+        <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
+          <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder">
             Paket Pemeriksaan
           </h2>
-          <h5 className=" font-normal tracking-tighter md:font-medium">
+          <h5 className="font-normal md:font-semibold">
             Berikut adalah bundel paket kami, yang ditawarkan dengan harga yang
             menarik. Pendaftaran dibuka setiap hari bisa melalui online maupun
             menghubungi <FontAwesomeIcon icon={faPhone} /> 0811 7270 537
@@ -43,15 +43,15 @@ const SpecialPackage = () => {
         </div>
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="px-0 md:px-10  py-5">
+        <div className="px-0 md:px-10">
           {/* --------------------------- subheader -------------------------- */}
 
           <div className="">
-            <div className="special-package-image"></div>
+            <div className="special-package-image mb-5 "></div>
           </div>
           {/* --------------------------- subheader -------------------------- */}
           <div className=" w-full mb-5">
-            <h2 className="py-2 border-b-2 border-b-clrBorder text-right my-10 mx-5 md:mx-0">
+            <h2 className="mb-5 border-b-2 border-b-clrBorder text-right mx-5 md:mx-0">
               Pilihan Paket
             </h2>
             <div className="">

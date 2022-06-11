@@ -57,8 +57,8 @@ const FindDoctor = (props) => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        <div className="w-fit px-5 text-clrTextDark">
-          <h2 className="mt-3 md:mt-5 border-b-2 border-b-clrBorder ">
+        <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
+          <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder ">
             Cari Dokter
           </h2>
           <h5 className="my-3 md:my-5">
