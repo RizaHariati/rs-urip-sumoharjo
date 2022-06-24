@@ -14,8 +14,10 @@ import React from "react";
 import { MyTextInput, Radio } from "./AppointmentFormInputs";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { setlogin } from "../slice/patientSlice";
 import { useRouter } from "next/router";
+
+const URL_PATIENT =
+  "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/patient/";
 
 const initialValues = {
   name: "",
@@ -31,7 +33,7 @@ const validationSchema = Yup.object({
   name: Yup.string().required("Nama harus diisi"),
   email: Yup.string().required("email harus diisi").email("format email salah"),
   password: Yup.string().required("Password harus diisi"),
-  gender: Yup.string().required("Silahkan pilih salah satu gender"),
+  gender: Yup.boolean().required("Silahkan pilih salah satu gender"),
   age: Yup.number()
     .required("Usia tidak boleh kosong")
     .typeError("Usia harus dalam bentuk angka")
@@ -42,16 +44,39 @@ const validationSchema = Yup.object({
     .typeError("Nomor telepon harus dalam bentuk angka")
     .required("Telepon tidak boleh kosong"),
 });
+
 const gender = [
-  { id: 0, label: "Female", value: "female" },
-  { id: 1, label: "Male", value: "male" },
+  { id: 0, label: "Female", value: "false" },
+  { id: 1, label: "Male", value: "true" },
 ];
-const Register = ({ setOpenRegister }) => {
+
+const Register = ({ setOpenRegister, setOpenAlert }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const registerpatient = async (values) => {
+    console.log(values);
+    if (values) {
+      try {
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        };
+        const response = await fetch(URL_PATIENT + "/register", requestOptions);
+        const data = await response.json();
+
+        const { msg } = data;
+        if (msg) {
+          setOpenAlert({ status: true, msg });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
     <>
-      {" "}
       <div className="w-full flex justify-center ">
         <p className="mr-1">Sudah ada akun? Silahkan</p>
         <button
@@ -72,10 +97,11 @@ const Register = ({ setOpenRegister }) => {
           validateOnBlur={true}
           validateOnChange={false}
           onSubmit={(values, { setSubmitting }) => {
-            dispatch(setlogin());
+            registerpatient(values);
+            // dispatch(setlogin());
             setTimeout(() => {
-              router.reload();
-              setOpenRegister(false);
+              // router.reload();
+              // setOpenRegister(false);
               setSubmitting(false);
             }, 400);
           }}

@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 
 const Modal = ({ facility, setOpenModal }) => {
   const { title, img, info } = facility;
+  const { cloud_id, cloud_image } = img;
   const router = useRouter();
   const dispatch = useDispatch();
   return (
@@ -14,17 +15,16 @@ const Modal = ({ facility, setOpenModal }) => {
       <div className="modal-container">
         <div className="modal-image ">
           <Image
-            src={`/images/pelayanan-fasilitas/${img}.jpg`}
+            src={cloud_image}
             width={600}
             height={500}
             className="object-cover object-center "
-            alt={`${img}`}
+            alt={`${cloud_id}`}
           />
         </div>
         <div className="p-5">
           <h4>{title}</h4>
-          {info.map((item, index) => {
-            const { text } = item;
+          {info.map((text, index) => {
             return (
               <p className="leading-5 text-base md:text-sm" key={index}>
                 {text}

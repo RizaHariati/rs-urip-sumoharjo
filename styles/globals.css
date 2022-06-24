@@ -30,19 +30,19 @@
     -moz-appearance: textfield;
   }
   h1 {
-    @apply text-4xl font-bold;
+    @apply text-4xl font-bold 2xl:text-5xl;
   }
   h2 {
-    @apply text-xl sm:text-2xl md:text-3xl font-semibold;
+    @apply text-xl sm:text-2xl md:text-3xl font-semibold 2xl:text-4xl;
   }
   h3 {
-    @apply text-xl md:text-2xl font-semibold capitalize;
+    @apply text-xl md:text-2xl font-semibold capitalize 2xl:text-3xl;
   }
   h4 {
-    @apply text-lg md:text-xl font-semibold;
+    @apply text-lg md:text-xl font-semibold 2xl:text-2xl;
   }
   h5 {
-    @apply text-base md:text-lg  leading-5 md:leading-6  font-semibold;
+    @apply text-base md:text-lg  leading-5 md:leading-6  font-semibold 2xl:text-xl;
   }
   label {
     @apply block mb-1;
@@ -79,7 +79,7 @@
 
   /* -------------------------- main pages -------------------------- */
   .main-page {
-    @apply w-full bg-clrBaseLight md:overflow-y-scroll;
+    @apply relative w-full bg-clrBaseLight md:overflow-y-scroll;
     height: calc(100vh - 128px);
   }
   .main-page-index {
@@ -230,13 +230,13 @@
     @apply w-full flex flex-col gap-1 md:gap-2  items-center justify-center;
   }
   .side-menu-icon {
-    @apply text-lg md:text-xl lg:text-2xl;
+    @apply text-lg md:text-xl lg:text-2xl 2xl:text-3xl;
   }
   .side-menu-text {
-    @apply font-semibold text-base md:text-lg text-center leading-3;
+    @apply font-semibold text-base  md:text-lg 2xl:text-xl text-center leading-3;
   }
   .side-menu-info {
-    @apply text-sm  text-clrTextMedium text-center leading-3 transition-all opacity-0 h-0 hidden sm:block;
+    @apply text-sm  text-clrTextMedium text-center leading-3 lg:leading-3 xl:leading-4 transition-all opacity-0 h-0 hidden sm:block;
   }
 
   .side-menu-item:hover .side-menu-info {
@@ -291,7 +291,7 @@
     min-width: 100px;
   }
   .list-menu {
-    @apply absolute top-12 flex flex-col bg-clrBaseLightHover px-5 py-2 rounded-md shadow-md max-h-52 overflow-y-scroll transition-all z-30;
+    @apply absolute top-12 flex flex-col bg-clrBaseLightHover px-5 py-2 rounded-md shadow-md max-h-60 sm:max-h-44 overflow-y-scroll transition-all z-30;
     width: 90%;
     left: 50%;
     transform: translatex(-50%);
@@ -342,7 +342,7 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
   .facility-list-btn {
-    @apply w-full h-32 rounded-sm cursor-pointer relative text-white flex items-end p-3 font-bold  text-left;
+    @apply w-full h-32 rounded-sm cursor-pointer relative text-white flex items-end p-3 font-bold  text-left overflow-hidden;
     background-size: cover;
     background-position: center;
   }
@@ -474,7 +474,7 @@
     .job-container {
       @apply w-full md:w-9/12 lg:w-8/12 mx-auto grid grid-cols-1 md:grid-cols-3 bg-clrBaseLightActive rounded-sm overflow-hidden border-clrTextMedium;
       border-width: 1px;
-      height: 500px;
+      min-height: 500px;
     }
   }
 }

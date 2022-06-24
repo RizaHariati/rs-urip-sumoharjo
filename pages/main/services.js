@@ -4,23 +4,47 @@ import Image from "next/image";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
-import facilities from "../../data/facility.json";
+// import facilities from "../../data/facility.json";
 import Modal from "../../components/Modal";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
-const Services = () => {
+const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1";
+
+const Services = ({ data }) => {
+  const { total, facilities: sourceFacilities } = data;
+  const [facilities, setFacilities] = useState(sourceFacilities);
+  const [facilityCategories, setFacilityCategories] = useState([]);
   const [facility, setFacility] = useState("");
-  const [facilityList, setFacilityList] = useState([]);
   const [openModal, setOpenModal] = useState({ opened: false, facility: {} });
-  const facilityCategories = [
-    ...new Set(facilities.map((item) => item.category)),
-  ];
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    if (facilities.length > 0) {
+      const newCategories = [
+        ...new Set(facilities.map((item) => item.category)),
+      ];
+      setFacilityCategories(newCategories);
+    }
+  }, [facilities]);
 
+  const fetchData = async (key) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${URL}/facilities/?title=${key}`);
+      const data = await res.json();
+      if (data) {
+        const { total, facilities: sourceFacilities } = data;
+
+        if (sourceFacilities) setFacilities(sourceFacilities);
+        sourceFacilities ? setFacilities(sourceFacilities) : setFacilities([]);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  };
   useEffect(() => {
     if (facility) {
-      const list = facilities.filter((item) =>
-        item.title.toLowerCase().includes(facility.toLowerCase())
-      );
-      return setFacilityList(list);
+      fetchData(facility);
     }
   }, [facility]);
 
@@ -56,6 +80,7 @@ const Services = () => {
               width={400}
               className="object-cover"
               alt="hemodialisa"
+              loading="lazy"
             />
             <div className="relative w-full ">
               <h5 className="text-center md:text-right mt-3 md:mt-0 mb-3 text-clrTextMedium">
@@ -87,8 +112,9 @@ const Services = () => {
           {/* --------------------------- subheader -------------------------- */}
 
           {/*  ------------------------- facility list ------------------------ */}
-          {!facility && (
-            <div>
+          {loading && <LoadingSpinner />}
+          {!loading && facilities.length > 0 && (
+            <div className=" bg-clrBaseLight pb-10">
               {facilityCategories.map((item, index) => {
                 return (
                   <div key={index}>
@@ -114,20 +140,8 @@ const Services = () => {
               })}
             </div>
           )}
-          {facility && facilityList && (
-            <div className="facility-list">
-              {facilityList.map((item, index) => {
-                return (
-                  <FacilityButton
-                    key={index}
-                    item={item}
-                    setOpenModal={setOpenModal}
-                  />
-                );
-              })}
-            </div>
-          )}
-          {facility && facilityList.length < 1 && (
+
+          {facilities.length < 1 && (
             <div>
               <h5>Tidak ditemukan fasilitas dengan kata kunci tersebut</h5>
             </div>
@@ -146,20 +160,32 @@ const Services = () => {
 export default Services;
 
 const FacilityButton = ({ item, setOpenModal }) => {
-  const { id, title, img } = item;
+  const { _id, title, img } = item;
+  const { cloud_image } = img;
   return (
     <button
-      key={id}
+      key={_id}
       className="facility-list-btn"
-      style={{
-        backgroundImage: `url('/images/pelayanan-fasilitas/small/${img}.jpg')`,
-        backgroundPosition: "center",
-        backgroundSize: "fit",
-      }}
       onClick={() => setOpenModal({ opened: true, facility: item })}
     >
+      <div className="absolute w-full h-full top-0 left-0">
+        <Image
+          loading="eager"
+          src={cloud_image}
+          width={300}
+          height={200}
+          className=" object-cover object-center"
+        />
+      </div>
       <h5 className="z-20 leading-4">{title}</h5>
       <div className=" transition-all bg-clrTextMedium hover:bg-clrBorder active:bg-clrBaseLightActive bg-opacity-40 mix-blend-multiply absolute w-full h-full top-0 left-0"></div>
     </button>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch(`${URL}/facilities`);
+  const data = await res.json();
+
+  return { props: { data } };
 };

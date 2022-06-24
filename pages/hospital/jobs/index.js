@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import loker from "../../data/data_loker.json";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,12 +25,14 @@ const JobOpportunity = ({ jobs }) => {
     setDataLoker(newData);
   };
 
+
   return (
     <div className="w-full h-fit p-5 bg-clrBaseLightActive">
       <Head>
         <title>rs-uripsumoharjo || Jobs</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+    
       <h4 className="uppercase text-center max-w-xl mx-auto mb-5 ">
         Mari bergabung sebagai bagian dari team RS Urip Sumoharjo. Jika Anda
         memenuhi persyaratan yang tertera dibawah, silahkan kirim lamaran ke:
@@ -85,7 +86,7 @@ const JobOpportunity = ({ jobs }) => {
 export default JobOpportunity;
 
 export const Loker = ({ data }) => {
-  const { pengalaman, tanggal, title, kualifikasi } = data;
+  const { _id: id, pengalaman, tanggal, title, kualifikasi } = data;
 
   return (
     <div
@@ -109,7 +110,7 @@ export const Loker = ({ data }) => {
       </div>
       <h5>Persyaratan: </h5>
       <ul className="loker-content-list mb-5">
-        {kualifikasi.map((item, index) => {
+        {kualifikasi.slice(0, 2).map((item, index) => {
           return (
             <li
               key={index}
@@ -125,17 +126,28 @@ export const Loker = ({ data }) => {
           );
         })}
       </ul>
-      <Link href="/">
+      <Link href={`/hospital/jobs/${id}`} passHref>
         <button className="btn bg-clrPrimaryDark">Read More</button>
       </Link>
     </div>
   );
 };
 
-export const getStaticProps = async () => {
-  console.log("get static props");
-  const res = await fetch(url);
-  const data = await res.json();
+export const getServerSideProps = async () => {
+  const response = await fetch(url);
+  const data = await response.json();
   const { vacancies: jobs } = data;
-  return { props: { jobs: jobs.slice(0, 2) } };
+  return {
+    props: { jobs },
+  };
 };
+
+// export const getStaticProps = async () => {
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   const { vacancies: jobs } = data;
+//   return {
+//     props: { jobs },
+//     revalidate: 10,
+//     /* ------------ revalidate to check new data every x second ----------- */
+//   };

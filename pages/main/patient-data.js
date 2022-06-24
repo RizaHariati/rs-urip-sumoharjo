@@ -14,6 +14,7 @@ import Login from "../../components/Login";
 
 import { useRouter } from "next/router";
 import { setlogout } from "../../slice/patientSlice";
+import Alert from "../../components/Alert";
 const benefitOnline = [
   { id: "1", task: "Melakukan jadwal pemeriksaan secara online" },
   { id: "2", task: "Mengecek dan membayar tagihan anda" },
@@ -25,6 +26,7 @@ const benefitOnline = [
 ];
 const PatientData = () => {
   const [openRegister, setOpenRegister] = useState(false);
+  const [openAlert, setOpenAlert] = useState({ status: false, msg: "alert" });
   const dispatch = useDispatch();
   const route = useRouter();
   const login = useSelector((state) => state.patients.login);
@@ -34,6 +36,9 @@ const PatientData = () => {
   };
   return (
     <div className="main-pages-container">
+      {openAlert.status && (
+        <Alert msg={openAlert.msg} setOpenAlert={setOpenAlert} />
+      )}
       <Head>
         <title>rs-uripsumoharjo || Informasi Pasien</title>
         <link rel="icon" href="/favicon.ico" />
@@ -116,8 +121,18 @@ const PatientData = () => {
                   /> */}
                   <div className="login-logo"></div>
                 </div>
-                {!openRegister && <Login setOpenRegister={setOpenRegister} />}
-                {openRegister && <Register setOpenRegister={setOpenRegister} />}
+                {!openRegister && (
+                  <Login
+                    setOpenRegister={setOpenRegister}
+                    setOpenAlert={setOpenAlert}
+                  />
+                )}
+                {openRegister && (
+                  <Register
+                    setOpenRegister={setOpenRegister}
+                    setOpenAlert={setOpenAlert}
+                  />
+                )}
               </div>
             </div>
           )}

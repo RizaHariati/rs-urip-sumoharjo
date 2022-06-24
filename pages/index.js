@@ -31,15 +31,15 @@ const Home = () => {
           <div
             className={
               showTitle
-                ? "absolute bottom-24 md:bottom-12 left-5 text-clrBaseLight pr-20 transition-all opacity-100"
-                : "absolute bottom-24 md:bottom-12 left-32 text-clrBaseLight pr-20 transition-all opacity-0"
+                ? "absolute bottom-24 md:bottom-12 left-5 xl:left-14 text-clrBaseLight pr-20 transition-all opacity-100"
+                : "absolute bottom-24 md:bottom-12 left-32 xl:left-52 text-clrBaseLight pr-20 transition-all opacity-0"
             }
           >
-            <h1 className="text-3xl lg:text-4xl leading-7 mb-2">
+            <h1 className="text-3xl lg:text-4xl 2xl:text-5xl leading-7 mb-2">
               Rs Urip Sumoharjo
             </h1>
 
-            <h2 className="text-lg lg:text-2xl leading-5">
+            <h2 className="text-lg lg:text-2xl  2xl:text-3xl leading-5">
               Memberikan Pelayanan yang Profesional dan Prima kepada Seluruh
               Masyarakat
             </h2>

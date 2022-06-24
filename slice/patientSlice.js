@@ -100,6 +100,9 @@ const patientSlice = createSlice({
       };
       state.selfAppointment = true;
     },
+    handleRequestRegister: (state, action) => {
+      console.log(action);
+    },
     setlogin: (state) => {
       state.login = true;
     },

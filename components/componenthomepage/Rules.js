@@ -11,7 +11,6 @@ const Rules = () => {
             alt="masked man"
             width={200}
             height={200}
-            style={{ objectFit: "cover" }}
           />
         </div>
         <h2 className="font-normal mb-2">Kami peduli pada Anda</h2>

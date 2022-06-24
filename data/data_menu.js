@@ -73,7 +73,7 @@ export const menu_item = [
   {
     id: "3",
     title: "Lowongan Kerja",
-    href: "/hospital/jobopportunity",
+    href: "/hospital/jobs",
     icon: faBriefcase,
   },
   {
