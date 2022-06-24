@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  handleConfirm,
+  handleReference,
+  handleRequest,
+  handleReset,
+} from "./utils/Application";
 
 const patientSlice = createSlice({
   name: "patients",
   initialState: {
-    login: false,
+    login: { status: true, datapatient: {}, token: "" },
     registerTemp: {
       name: "",
       email: "",
@@ -42,72 +48,50 @@ const patientSlice = createSlice({
     },
   },
   reducers: {
-    handleRequestApplication: (state, action) => {
-      const { appointmentData, selfAppointment } = action.payload;
-      if (selfAppointment) {
-        state.appointmentTemp = {
-          ...appointmentData,
-          requesterName: "",
-          requesterRelationship: "",
-          requesterPhone: "",
-        };
-        state.selfAppointment = selfAppointment;
-      } else {
-        state.appointmentTemp = appointmentData;
-        state.selfAppointment = selfAppointment;
-      }
-    },
-    handleConfirmApplication: (state, action) => {
-      const { appointmentData, selfAppointment } = action.payload;
-      if (selfAppointment) {
-        state.appointmentData = {
-          ...appointmentData,
-          requesterName: "",
-          requesterRelationship: "",
-          requesterPhone: "",
-        };
-      } else {
-        state.appointmentData = appointmentData;
-      }
-      state.appointmentTemp = {
-        requesterName: "",
-        requesterRelationship: "",
-        requesterPhone: "",
-        name: "",
-        email: "",
-        gender: "",
-        age: "",
-        address: "",
-        phone: "",
-        appointmentPurpose: "Umum",
-        appointmentLocation: "specialization",
-      };
-      state.selfAppointment = true;
-    },
-    handleResetApplication: (state) => {
-      state.appointmentTemp = {
-        requesterName: "",
-        requesterRelationship: "",
-        requesterPhone: "",
-        name: "",
-        email: "",
-        gender: "",
-        age: "",
-        address: "",
-        phone: "",
-        appointmentPurpose: "Umum",
-        appointmentLocation: "specialization",
-      };
-      state.selfAppointment = true;
-    },
+    /* --------- functions for ScheduleAppointment application --------- */
+
+    handleRequestApplication: handleRequest,
+    handleConfirmApplication: handleConfirm,
+    handleResetApplication: handleReset,
+    handleReferenceApplication: handleReference,
+    /* --------- functions for ScheduleAppointment application --------- */
+
     handleRequestRegister: (state, action) => {
-      console.log(action);
+      state.registerTemp = { ...action.payload, password: "" };
     },
-    setlogin: (state) => {
-      state.login = true;
+    setlogin: (state, action) => {
+      const { findPatient, token } = action.payload;
+      const { name, email, gender, age, address, phone } = findPatient;
+      state.login.status = true;
+      state.login.datapatient = findPatient;
+      state.login.token = token;
+      state.appointmentTemp = {
+        ...state.appointmentTemp,
+        name,
+        email,
+        gender,
+        age,
+        address,
+        phone,
+      };
     },
     setlogout: (state) => {
-      state.login = false;
+      state.login.status = false;
+      state.login.datapatient = {};
+      state.login.token = "";
+      state.appointmentTemp = {
+        requesterName: "",
+        requesterRelationship: "",
+        requesterPhone: "",
+        name: "",
+        email: "",
+        gender: "",
+        age: "",
+        address: "",
+        phone: "",
+        appointmentPurpose: "Umum",
+        appointmentLocation: "specialization",
+      };
     },
   },
 });
@@ -115,6 +99,8 @@ export const {
   handleRequestApplication,
   handleResetApplication,
   handleConfirmApplication,
+  handleReferenceApplication,
+  handleRequestRegister,
   setlogin,
   setlogout,
 } = patientSlice.actions;

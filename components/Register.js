@@ -13,8 +13,9 @@ import { Formik } from "formik";
 import React from "react";
 import { MyTextInput, Radio } from "./AppointmentFormInputs";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { handleRequestRegister } from "../slice/patientSlice";
 
 const URL_PATIENT =
   "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/patient/";
@@ -51,12 +52,12 @@ const gender = [
 ];
 
 const Register = ({ setOpenRegister, setOpenAlert }) => {
+  const registerTemp = useSelector((state) => state.patients.registerTemp);
   const dispatch = useDispatch();
   const router = useRouter();
-
   const registerpatient = async (values) => {
-    console.log(values);
     if (values) {
+      dispatch(handleRequestRegister(values));
       try {
         const requestOptions = {
           method: "POST",
@@ -65,10 +66,21 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
         };
         const response = await fetch(URL_PATIENT + "/register", requestOptions);
         const data = await response.json();
-
         const { msg } = data;
-        if (msg) {
-          setOpenAlert({ status: true, msg });
+
+        if (response.status === 200 || response.status === 202) {
+          setOpenAlert({ status: true, msg, color: "bg-green-300" });
+          dispatch(handleRequestRegister(initialValues));
+          setTimeout(() => {
+            router.reload();
+          }, 2000);
+          return;
+        } else {
+          setOpenAlert({ status: true, msg, color: "bg-pink-300" });
+          dispatch(handleRequestRegister(values));
+          setTimeout(() => {
+            setOpenAlert({ status: false, msg: "", color: "bg-pink-300" });
+          }, 2000);
         }
       } catch (error) {
         console.log(error);
@@ -92,18 +104,14 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
           <h5>Register</h5>
         </div>
         <Formik
-          initialValues={initialValues}
+          initialValues={registerTemp}
           validationSchema={validationSchema}
           validateOnBlur={true}
           validateOnChange={false}
-          onSubmit={(values, { setSubmitting }) => {
-            registerpatient(values);
-            // dispatch(setlogin());
-            setTimeout(() => {
-              // router.reload();
-              // setOpenRegister(false);
-              setSubmitting(false);
-            }, 400);
+          onSubmit={async (values, { setSubmitting }) => {
+            await registerpatient(values);
+
+            setSubmitting(false);
           }}
         >
           {(formik) => (

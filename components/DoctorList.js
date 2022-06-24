@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { handleRequestApplication } from "../slice/patientSlice";
+import { handleReferenceApplication } from "../slice/patientSlice";
 
 const DoctorList = ({ doctorlist, male, female }) => {
   const router = useRouter();
@@ -71,21 +71,9 @@ const DoctorList = ({ doctorlist, male, female }) => {
               <button
                 onClick={() => {
                   dispatch(
-                    handleRequestApplication({
-                      appointmentData: {
-                        requesterName: "",
-                        requesterRelationship: "",
-                        requesterPhone: "",
-                        name: "",
-                        email: "",
-                        gender: "",
-                        age: "",
-                        address: "",
-                        phone: "",
-                        appointmentPurpose: nama,
-                        appointmentLocation: "doctor",
-                      },
-                      selfAppointment: true,
+                    handleReferenceApplication({
+                      purpose: nama,
+                      location: "doctor",
                     })
                   );
                   router.push("/main/schedule-appointment");

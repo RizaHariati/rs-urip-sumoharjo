@@ -14,7 +14,7 @@ import SideMenu from "../../components/SideMenu";
 import data_inap from "../../data/data_inap.json";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { handleRequestApplication } from "../../slice/patientSlice";
+import { handleReferenceApplication } from "../../slice/patientSlice";
 
 const Inpatient = () => {
   const router = useRouter();
@@ -148,23 +148,12 @@ const Inpatient = () => {
                         <button
                           onClick={() => {
                             dispatch(
-                              handleRequestApplication({
-                                appointmentData: {
-                                  requesterName: "",
-                                  requesterRelationship: "",
-                                  requesterPhone: "",
-                                  name: "",
-                                  email: "",
-                                  gender: "",
-                                  age: "",
-                                  address: "",
-                                  phone: "",
-                                  appointmentPurpose: kelas,
-                                  appointmentLocation: "bed",
-                                },
-                                selfAppointment: true,
+                              handleReferenceApplication({
+                                purpose: kelas,
+                                location: "bed",
                               })
                             );
+
                             router.push("/main/schedule-appointment");
                           }}
                           className="btn w-fit bg-clrPrimaryDark mx-5 sm:mx-10 mb-5"

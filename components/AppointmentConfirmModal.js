@@ -11,18 +11,15 @@ const AppointmentConfirmModal = ({
   const router = useRouter();
   return (
     <div className="modal-base">
-      <div
-        className="modal-container  bg-clrBaseLightHover h-fit"
-        style={{ width: "500px" }}
-      >
-        <div className="w-full  pt-10 px-5 pb-0 ">
-          <div className="sub-form pb-0  bg-clrBaseLightHover ">
+      <div className="modal-container  bg-clrBaseLightHover  h-full sm:h-fit">
+        <div className="w-full pt-10 px-5 pb-0 ">
+          <div className="sub-form pb-0 bg-clrBaseLightHover">
             <div className="form-title">
               <h5>Data dikonfirmasi</h5>
             </div>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center ">
               <Image
-                src="/images/logo bulat.jpg"
+                src="/images/logobulat.jpg"
                 width={50}
                 height={50}
                 alt="logo bulat"

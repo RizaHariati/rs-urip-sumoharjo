@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import { handleReferenceApplication } from "../slice/patientSlice";
 
 const Modal = ({ facility, setOpenModal }) => {
   const { title, img, info } = facility;
@@ -42,23 +43,12 @@ const Modal = ({ facility, setOpenModal }) => {
               onClick={() => {
                 setOpenModal({ opened: false, facility: {} });
                 dispatch(
-                  handleRequestApplication({
-                    appointmentData: {
-                      requesterName: "",
-                      requesterRelationship: "",
-                      requesterPhone: "",
-                      name: "",
-                      email: "",
-                      gender: "",
-                      age: "",
-                      address: "",
-                      phone: "",
-                      appointmentPurpose: title,
-                      appointmentLocation: "facility",
-                    },
-                    selfAppointment: true,
+                  handleReferenceApplication({
+                    purpose: title,
+                    location: "facility",
                   })
                 );
+
                 router.push("/main/schedule-appointment");
               }}
               className="btn bg-clrPrimaryDark"

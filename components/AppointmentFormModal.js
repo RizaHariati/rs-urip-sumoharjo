@@ -2,7 +2,10 @@ import { faBan, faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { handleConfirmApplication } from "../slice/patientSlice";
+import {
+  handleConfirmApplication,
+  handleResetApplication,
+} from "../slice/patientSlice";
 
 const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
   const dispatch = useDispatch();
@@ -40,12 +43,9 @@ const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
   };
   return (
     <div className="modal-base">
-      <div
-        className="modal-container  bg-clrBaseLightHover h-fit"
-        style={{ width: "500px" }}
-      >
-        <div className="w-full  pt-10 px-5 pb-0 ">
-          <div className="sub-form pb-0  bg-clrBaseLightHover ">
+      <div className="modal-container  bg-clrBaseLightHover h-full sm:h-fit">
+        <div className="w-full  pt-10 px-5 pb-0  ">
+          <div className="sub-form pb-0  bg-clrBaseLightHover  ">
             <div className="form-title">
               <h5>Informasi Pasien</h5>
             </div>
@@ -80,6 +80,7 @@ const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
                       selfAppointment: data.selfAppointment,
                     })
                   );
+                  dispatch(handleResetApplication());
                 }}
                 className=" bg-clrPrimaryDark logo-btn h-7"
               >

@@ -1,5 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faHomeAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faHomeAlt,
+  faSignIn,
+  faSignOut,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faInstagram,
@@ -10,10 +15,17 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDropMenu, toggleDropMenu } from "../slice/layoutSlice";
 import { menu_item } from "../data/data_menu";
+import { setlogout } from "../slice/patientSlice";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-
+  const route = useRouter();
+  const { status } = useSelector((state) => state.patients.login);
+  const handleLogout = () => {
+    dispatch(setlogout());
+    route.push("/");
+  };
   return (
     <div className="w-full h-16 md:h-20 bg-clrPrimaryDark flex justify-between items-center px-5 md:px-10 lg:px-20 text-clrBaseLight sticky top-0 z-30">
       <div className="link-icon" onClick={() => dispatch(closeDropMenu())}>
@@ -29,9 +41,23 @@ const Navbar = () => {
           className="flex flex-col border-r-2 border-clrBaseLight px-3 md:px-5 "
           onClick={() => dispatch(closeDropMenu())}
         >
-          <Link href="/main/patient-data">
-            <a className="link-light text-base leading-4">Login pasien</a>
-          </Link>
+          {!status ? (
+            <Link href="/main/patient-data">
+              <a className="link-light text-base leading-4">
+                <FontAwesomeIcon icon={faSignIn} className="mr-3" />
+                Login pasien
+              </a>
+            </Link>
+          ) : (
+            <button
+              onClick={() => handleLogout()}
+              type="button"
+              className="link-light text-base leading-4"
+            >
+              <FontAwesomeIcon icon={faSignOut} className="mr-3" />
+              logout
+            </button>
+          )}
         </div>
 
         <Link href="/">

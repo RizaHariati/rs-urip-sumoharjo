@@ -50,6 +50,8 @@ const gender = [
 const AppointmentForm = () => {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { status, datapatient } = useSelector((state) => state.patients.login);
+
   const appointmentTemp = useSelector(
     (state) => state.patients.appointmentTemp
   );
@@ -382,7 +384,7 @@ const AppointmentForm = () => {
                   <input
                     id="appointmentPurpose"
                     name="appointmentPurpose"
-                    placeholder="Tujuan Pendaftaran..."
+                    placeholder="Tulis Tujuan Pendaftaran..."
                     onFocus={() => setPurposeValue("")}
                     className="form-input "
                     type="text"

@@ -137,5 +137,5 @@ export const getStaticProps = async () => {
   const res = await fetch(url);
   const data = await res.json();
   const { vacancies: jobs } = data;
-  return { props: { jobs: jobs.slice(0, 2) } };
+  return { props: { jobs } };
 };

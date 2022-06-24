@@ -3,8 +3,11 @@ import SideMenu from "../../components/SideMenu";
 import Image from "next/image";
 import Head from "next/head";
 import AppointmentForm from "../../components/AppointmentForm";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const ScheduleAppointment = () => {
+  const { status, datapatient } = useSelector((state) => state.patients.login);
   return (
     <div className="main-pages-container">
       <Head>
@@ -37,14 +40,27 @@ const ScheduleAppointment = () => {
           {/*  -------------------------- intermezzo -------------------------- */}
           <div className="grid grid-cols-2 md:grid-cols-3 h-36 md:h-44 my-5 bg-clrBorder rounded-sm overflow-hidden">
             <div className=" col-span-1 md:col-span-2 p-3 md:p-4 lg:p-10 self-center ">
-              <h5 className="text-clrBaseLight text-base md:text-2xl mb-2 leading-4 md:leading-7">
-                Jika anda sudah pernah terdaftar sebagai pasien, silahkan login
-                terlebih dahulu
-              </h5>
+              {status ? (
+                <>
+                  <h5 className="text-clrBaseLight text-base md:text-2xl mb-2 leading-4 md:leading-7">
+                    Selamat datang {datapatient.name} terimakasih sudah
+                    melakukan login
+                  </h5>
+                </>
+              ) : (
+                <>
+                  <h5 className="text-clrBaseLight text-base md:text-2xl mb-2 leading-4 md:leading-7">
+                    Jika anda sudah pernah terdaftar sebagai pasien, silahkan
+                    login terlebih dahulu
+                  </h5>
 
-              <button className="btn bg-clrPrimaryDark md:text-lg">
-                Login Pasien
-              </button>
+                  <Link href="/">
+                    <button className="btn bg-clrPrimaryDark md:text-lg">
+                      Login Pasien
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
             <div className="object-cover object-center w-full h-full overflow-hidden">
               <Image

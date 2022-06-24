@@ -11,7 +11,10 @@ import SideMenu from "../../components/SideMenu";
 import data_paket from "../../data/data_paketkesehatan.json";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { handleRequestApplication } from "../../slice/patientSlice";
+import {
+  handleReferenceApplication,
+  handleRequestApplication,
+} from "../../slice/patientSlice";
 import Head from "next/head";
 const SpecialPackage = () => {
   const router = useRouter();
@@ -153,23 +156,12 @@ const SpecialPackage = () => {
                           <button
                             onClick={() => {
                               dispatch(
-                                handleRequestApplication({
-                                  appointmentData: {
-                                    requesterName: "",
-                                    requesterRelationship: "",
-                                    requesterPhone: "",
-                                    name: "",
-                                    email: "",
-                                    gender: "",
-                                    age: "",
-                                    address: "",
-                                    phone: "",
-                                    appointmentPurpose: "laboratorium",
-                                    appointmentLocation: "facility",
-                                  },
-                                  selfAppointment: true,
+                                handleReferenceApplication({
+                                  purpose: "laboratorium",
+                                  location: "facility",
                                 })
                               );
+
                               router.push("/main/schedule-appointment");
                             }}
                             className="btn w-fit bg-clrPrimaryDark mx-10 mb-5"
