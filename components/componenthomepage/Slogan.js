@@ -23,7 +23,7 @@ const Slogan = () => {
           if (index === 0 || index == 9) {
             return (
               <button
-                className="border-clrBaseLight border-2 col-span-2 text-white py-10 mix-blend-hard-light hover:mix-blend-lighten bg-clrTextDark cursor-default transition-all"
+                className="border-clrBaseLight border-2 col-span-2 text-white py-10 mix-blend-screen hover:bg-green-600  bg-green-800 cursor-default transition-all"
                 key={index}
               >
                 <h4 className="font-medium uppercase"> {item}</h4>
@@ -32,7 +32,7 @@ const Slogan = () => {
           } else {
             return (
               <button
-                className="border-clrBaseLight border-2 text-white py-10 mix-blend-hard-light  bg-stone-600 hover:bg-stone-500 cursor-default transition-all"
+                className="border-clrBaseLight border-2 text-white py-10 mix-blend-hard-light  bg-stone-500 hover:bg-stone-600 cursor-default transition-all"
                 key={index}
               >
                 <h4 className="font-medium uppercase">{item}</h4>
