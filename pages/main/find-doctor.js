@@ -192,7 +192,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
 
             {/* ------------------------ search results ------------------------ */}
             {loading && <LoadingSpinner />}
-            {!keywords.key && <div className="find-doctor-image mb-10"></div>}
+
             {OpenList && (
               <div className="list-menu">
                 {specializationList.length > 0 &&
@@ -210,6 +210,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
                   })}
               </div>
             )}
+
             {!OpenList && doctorList.length > 0 && (
               <DoctorList
                 doctorlist={doctorList}
@@ -218,6 +219,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
                 handleSubmit={handleSubmit}
               />
             )}
+
             {!loading && keywords.key && doctorList.length < 1 && (
               <div className="w-full text-center mt-5">
                 <h4>
@@ -227,6 +229,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
               </div>
             )}
 
+            {!keywords.key && <div className="find-doctor-image mb-10"></div>}
             {/* ------------------------ search results ------------------------ */}
           </div>
         </div>
