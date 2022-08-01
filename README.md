@@ -11,12 +11,10 @@ This webiste's design is very simple, inspired by Mayo Clinic's website. easy-to
 
 ### `Main Program`
 
-* [React.js](https://reactjs.org/)
+* [Next JS](https://nextjs.org/)
 
 ### `Dependencies`
 
-
-* [Next JS](https://nextjs.org/)
 * [Redux Toolkit](https://nextjs.org/)
 * [Formik](https://formik.org/)
 * [Yup](https://github.com/jquense/yup)
