@@ -15,7 +15,7 @@ This webiste's design is very simple, inspired by Mayo Clinic's website. easy-to
 
 ### `Dependencies`
 
-* [Redux Toolkit](https://nextjs.org/)
+* [Redux Toolkit](https://redux-toolkit.js.org/)
 * [Formik](https://formik.org/)
 * [Yup](https://github.com/jquense/yup)
 * [Tailwind CSS](https://tailwindcss.com/)
