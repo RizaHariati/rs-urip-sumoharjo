@@ -64,7 +64,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
     try {
       const response = await fetch(`${URL}poli=${item}`);
       const data = await response.json();
-      const { total, allDoctors } = data;
+      const { allDoctors } = data;
       setDoctorList(allDoctors);
     } catch (error) {
       console.log(error);
@@ -80,6 +80,8 @@ const FindDoctor = ({ female, male, doctordb }) => {
     if (keywords.key) {
       fetchName(keywords.key, keywords.status);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keywords]);
 
   const handleSubmit = () => {

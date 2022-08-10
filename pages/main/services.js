@@ -32,7 +32,7 @@ const Services = ({ data }) => {
       const res = await fetch(`${URL}/facilities/?title=${key}`);
       const data = await res.json();
       if (data) {
-        const { total, facilities: sourceFacilities } = data;
+        const { facilities: sourceFacilities } = data;
 
         if (sourceFacilities) setFacilities(sourceFacilities);
         sourceFacilities ? setFacilities(sourceFacilities) : setFacilities([]);
@@ -46,8 +46,8 @@ const Services = ({ data }) => {
     if (facility) {
       fetchData(facility);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [facility]);
-
   return (
     <div className="main-pages-container">
       <Head>
@@ -75,7 +75,7 @@ const Services = ({ data }) => {
 
           <div className="facility-input-container ">
             <Image
-              src="/images/pelayanan-fasilitas/small/hemodialisa.jpg"
+              src="/images/pelayanan-fasilitas/hemodialisa.jpg"
               height={200}
               width={400}
               className="object-cover"
@@ -175,6 +175,7 @@ const FacilityButton = ({ item, setOpenModal }) => {
           width={300}
           height={200}
           className=" object-cover object-center"
+          alt="cloud image"
         />
       </div>
       <h5 className="z-20 leading-4">{title}</h5>
