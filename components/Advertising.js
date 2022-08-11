@@ -44,7 +44,7 @@ const Advertising = () => {
           <FontAwesomeIcon icon={faHandHoldingHeart} className="text-2xl" />
           <h3 className="text-xl font-semibold">Kepedulian Kami</h3>
         </div>
-        <button onClick={() => dispatch(toggleAdBlock())}>
+        <button onClick={() => dispatch(toggleAdBlock())} id="ad-toggle-btn">
           <FontAwesomeIcon
             icon={adBlock ? faCaretUp : faCaretDown}
             className={
@@ -55,12 +55,16 @@ const Advertising = () => {
           />
         </button>
       </div>
-      <div className={adBlock ? "h-80 ad-container " : "h-0 ad-container"}>
-        <div className="relative h-80 w-full">
+      <div
+        id="ad-container"
+        className={adBlock ? "h-80 ad-container " : "h-0 ad-container"}
+      >
+        <div id="ad-slides-container" className="relative h-80 w-full">
           {adData.map((item) => {
             const { id, title, image, info } = item;
             return (
               <div
+                id="ad-slide"
                 className={
                   index === parseInt(id)
                     ? "ad-slides-container "
@@ -92,7 +96,7 @@ const Advertising = () => {
                   <div className="flex space-x-2 items-center ">
                     <div className="w-15 h-15 ">
                       <Image
-                        src="/images/logo bulat.jpg"
+                        src="/images/logobulat.jpg"
                         width={20}
                         height={20}
                         className=" object-center object-cover rounded-full "

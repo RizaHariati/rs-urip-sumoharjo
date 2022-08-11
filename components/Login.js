@@ -97,9 +97,9 @@ const Login = ({ setOpenRegister, setOpenAlert }) => {
             }, 400);
           }}
         >
-          <Form>
+          <Form id="login-form">
             <div className="form-input-container">
-              <div className="form-input-item">
+              <div className="form-input-item" id="login-form">
                 <MyTextInput
                   label="Email Pasien"
                   id="email"
@@ -110,7 +110,7 @@ const Login = ({ setOpenRegister, setOpenAlert }) => {
                 />
               </div>
 
-              <div className="form-input-item">
+              <div className="form-input-item" id="login-form">
                 <MyTextInput
                   label="Password"
                   id="password"

@@ -9,7 +9,7 @@ import {
 const patientSlice = createSlice({
   name: "patients",
   initialState: {
-    login: { status: true, datapatient: {}, token: "" },
+    login: { status: false, datapatient: {}, token: "" },
     registerTemp: {
       name: "",
       email: "",

@@ -1,0 +1,7 @@
+{
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "path-intellisense.autoTriggerNextSuggestion": true,
+  "debug.console.acceptSuggestionOnEnter": "on"
+}

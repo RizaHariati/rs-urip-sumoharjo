@@ -22,9 +22,14 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const route = useRouter();
   const { status } = useSelector((state) => state.patients.login);
-  const handleLogout = () => {
-    dispatch(setlogout());
-    route.push("/");
+
+  const handleClick = () => {
+    if (!status) {
+      route.push("/main/patient-data");
+    } else {
+      dispatch(setlogout());
+      route.push("/");
+    }
   };
   return (
     <div className="w-full h-16 md:h-20 bg-clrPrimaryDark flex justify-between items-center px-5 md:px-10 lg:px-20 text-clrBaseLight sticky top-0 z-30">
@@ -32,8 +37,9 @@ const Navbar = () => {
         <div className="navbar-comment">
           <p className=" text-clrTextDark ">Home</p>
         </div>
+
         <Link href="/">
-          <div className="navbar-logo"></div>
+          <div id="navbar-logo" className="navbar-logo"></div>
         </Link>
       </div>
       <div className="flex space-x-2 md:space-x-5 items-center">
@@ -41,33 +47,33 @@ const Navbar = () => {
           className="flex flex-col border-r-2 border-clrBaseLight px-3 md:px-5 "
           onClick={() => dispatch(closeDropMenu())}
         >
-          {!status ? (
-            <Link href="/main/patient-data">
-              <a className="link-light text-base leading-4">
-                <FontAwesomeIcon icon={faSignIn} className="mr-3" />
-                Login pasien
-              </a>
-            </Link>
-          ) : (
-            <button
-              onClick={() => handleLogout()}
-              type="button"
-              className="link-light text-base leading-4"
-            >
-              <FontAwesomeIcon icon={faSignOut} className="mr-3" />
-              logout
-            </button>
-          )}
+          <button
+            type="button"
+            className="link-light text-base md:text-lg leading-4 flex items-center"
+            onClick={handleClick}
+            id="navbar-login"
+          >
+            <FontAwesomeIcon
+              icon={status ? faSignOut : faSignIn}
+              className="mr-3"
+            />
+            <p>{status ? "Logout" : "Login"}</p>
+          </button>
         </div>
 
         <Link href="/">
-          <a className="link-light" onClick={() => dispatch(closeDropMenu())}>
+          <a
+            className="link-light"
+            onClick={() => dispatch(closeDropMenu())}
+            id="navbar-home"
+          >
             <FontAwesomeIcon icon={faHomeAlt} className="text-2xl" />
           </a>
         </Link>
 
         <div className="relative">
           <button
+            id="navbar-dropdown"
             className="link-light"
             onClick={() => dispatch(toggleDropMenu())}
           >

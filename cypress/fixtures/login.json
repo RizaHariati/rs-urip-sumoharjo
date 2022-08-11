@@ -1,0 +1,15 @@
+{
+  "msg": "login successful",
+  "findPatient": {
+    "address": "Jl Way Sekampung no.66",
+    "age": 44,
+    "email": "riza@yahoo.com",
+    "gender": false,
+    "name": "Riza Hariati",
+    "password": "$2a$10$PWG3VPj3QIutYQYY5wrE9OID9nVsi5vHm.XAc/9eACgB6b5UQO4EC",
+    "phone": 288392983,
+    "__v": 0,
+    "_id": "62b564a5e27ef8c95a7e7e40"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRpZW50SUQiOiI2MmI1NjRhNWUyN2VmOGM5NWE3ZTdlNDAiLCJuYW1lIjoiUml6YSBIYXJpYXRpIiwiaWF0IjoxNjYwMjA2NDAwLCJleHAiOjE2NjI3OTg0MDB9.BF7Mce1EJDzDgWm0P5zND0__baCk9oVOKXPR6a_PVZY"
+}
