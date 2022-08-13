@@ -38,6 +38,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
     try {
       const response = await fetch(`${URL}${status}=${key}`);
       const data = await response.json();
+
       const { total, allDoctors } = data;
       if (total > 0) {
         setDoctorList(allDoctors);
@@ -71,6 +72,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
     }
     setLoading(false);
   };
+
   useEffect(() => {
     if (!keywords.key) {
       setOpenList(false);
@@ -87,6 +89,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
   const handleSubmit = () => {
     console.log("handlesubmit");
   };
+
   return (
     <div className="main-pages-container">
       <Head>
@@ -111,6 +114,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
           <div className="flex justify-center space-x-2 md:space-x-5 mb-3 md:mb-5 ">
             {/* ---------------- set to berdasarkan spesialisasi --------------- */}
             <button
+              id="specialization-search-btn"
               onClick={() => {
                 setKeywords({
                   isQueryName: false,
@@ -136,6 +140,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
             </button>
             {/* ---------------- set to berdasarkan nama --------------- */}
             <button
+              id="name-search-btn"
               onClick={() => {
                 setKeywords({
                   isQueryName: true,
@@ -160,6 +165,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
           </div>
           <div className="relative bg-clrBaseLight">
             <form
+              id="search-doctor-form"
               className="px-2 mb-3 md:mb-5 z-20 flex overflow-hidden mx-auto"
               style={{ minWidth: "300px" }}
             >
@@ -167,7 +173,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
                 autoComplete="false"
                 name="search"
                 value={keywords.key}
-                id="search"
+                id="search-doctor"
                 placeholder={
                   keywords.isQueryName
                     ? "Nama dokter..."
@@ -196,11 +202,12 @@ const FindDoctor = ({ female, male, doctordb }) => {
             {loading && <LoadingSpinner />}
 
             {OpenList && (
-              <div className="list-menu">
+              <div className="list-menu" id="specialization-list">
                 {specializationList.length > 0 &&
                   specializationList.map((item, index) => {
                     return (
                       <button
+                        id="specialization-item"
                         onClick={() => handleSearch(item)}
                         key={index}
                         className="text-left h-10 py-3
@@ -223,7 +230,10 @@ const FindDoctor = ({ female, male, doctordb }) => {
             )}
 
             {!loading && keywords.key && doctorList.length < 1 && (
-              <div className="w-full text-center mt-5">
+              <div
+                className="w-full text-center mt-5"
+                id="doctor-list-not-exist"
+              >
                 <h4>
                   {`Tidak ada ${keywords.status} dengan kata kunci ${keywords.key}`}
                   <span className=" capitalize">{name}</span>
@@ -249,6 +259,7 @@ export const getStaticProps = async () => {
     "https://randomuser.me/api/?gender=female&inc=picture&results=100"
   );
   const female = await res.json();
+
   const res2 = await fetch(
     "https://randomuser.me/api/?gender=male&inc=picture&results=100"
   );
@@ -256,7 +267,6 @@ export const getStaticProps = async () => {
 
   const res3 = await fetch(`${URL}`);
   const doctordb = await res3.json();
-
   return {
     props: {
       female,

@@ -92,7 +92,10 @@ const MenuItems = () => {
   const dropMenu = useSelector((state) => state.layout.dropMenu);
   const dispatch = useDispatch();
   return (
-    <div className={dropMenu ? "menu h-fit" : "menu h-0 py-0"}>
+    <div
+      id="navbar-dropdown-menu"
+      className={dropMenu ? "menu h-fit" : "menu h-0 py-0"}
+    >
       <div>
         {menu_item.map((item) => {
           const { id, title, href, icon } = item;

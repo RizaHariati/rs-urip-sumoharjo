@@ -126,7 +126,7 @@ const AppointmentForm = () => {
   });
   /* -------------------- validation alternatives ------------------- */
   return (
-    <div className="main-form">
+    <div className="main-form" id="main-form">
       <h3 className="mb-5">Formulir Pendaftaran online</h3>
 
       <Formik

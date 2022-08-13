@@ -15,7 +15,7 @@ const DoctorList = ({ doctorlist, male, female }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   return (
-    <div className="doctor-card-container ">
+    <div className="doctor-card-container " id="doctor-card-container">
       {doctorlist.map((item, index) => {
         const { nama, waktu, poli, hari, jam, gender } = item;
 
@@ -26,7 +26,7 @@ const DoctorList = ({ doctorlist, male, female }) => {
 
         const picture = image.picture.thumbnail;
         return (
-          <div key={index} className="doctor-card">
+          <div key={index} className="doctor-card" id={`doctor-card-${index}`}>
             <div className="text-left">
               <div className="flex space-x-3 items-end w-full justify-start border-b-2 border-b-clrBorder mb-2 pb-2 z-10">
                 <Image
@@ -69,6 +69,7 @@ const DoctorList = ({ doctorlist, male, female }) => {
                 </p>
               </div>
               <button
+                id="doctor-appointment-button"
                 onClick={() => {
                   dispatch(
                     handleReferenceApplication({

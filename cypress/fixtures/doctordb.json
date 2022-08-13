@@ -1,0 +1,112 @@
+[
+  {
+    "_id": "62aa74913c4e95724bd72ee1",
+    "nama": "Murdoyo, Sp.A.",
+    "waktu": "pagi",
+    "poli": "Anak",
+    "hari": "Minggu ke-1 dan ke-3",
+    "jam": "Pkl 09.00 s/d 10.00 WIB",
+    "gender": true,
+    "on_call": true,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee2",
+    "nama": "Surachman, Sp.A",
+    "waktu": "sore",
+    "poli": "Anak",
+    "hari": "Senin , Kamis, Jum'at dan Sabtu",
+    "jam": "Pkl 18.00 WIB s/d Selesai",
+    "gender": true,
+    "on_call": false,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee4",
+    "nama": "Syahrifil Syahar, Sp.B.",
+    "waktu": "pagi",
+    "poli": "Bedah",
+    "hari": "Minggu",
+    "jam": "Pkl 11.00 s/d 12.00 WIB",
+    "gender": true,
+    "on_call": true,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee0",
+    "nama": "M. Iqbal, Sp.A.",
+    "waktu": "pagi",
+    "poli": "Anak",
+    "hari": "Minggu",
+    "jam": "Pkl 09.00 s/d 10.00 WIB",
+    "gender": true,
+    "on_call": true,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee5",
+    "nama": "Bintang Siregar, Sp.B Onk",
+    "waktu": "pagi",
+    "poli": "Bedah",
+    "hari": "Rabu",
+    "jam": "Pkl 08:00 WIB s/d Selesai",
+    "gender": true,
+    "on_call": false,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee3",
+    "nama": "Nina Herlina, Sp.A.",
+    "waktu": "sore",
+    "poli": "Anak",
+    "hari": "Senin s/d Jum'at",
+    "jam": "Pkl 16.00 s/d 18.00 WIB",
+    "gender": false,
+    "on_call": false,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee8",
+    "nama": "M. Agusni, Sp.B.",
+    "waktu": "pagi",
+    "poli": "Bedah",
+    "hari": "Senin s/d Sabtu",
+    "jam": "Pkl 09.00 WIB s/d selesai",
+    "gender": true,
+    "on_call": false,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72ee7",
+    "nama": "Tofik Rahmanto,Sp.B",
+    "waktu": "siang",
+    "poli": "Bedah",
+    "hari": "Sabtu",
+    "jam": "Pkl 13.00 s/d 15.00 WIB",
+    "gender": true,
+    "on_call": true,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72eec",
+    "nama": "M. Yunus, Sp.BS.",
+    "waktu": "siang",
+    "poli": "Bedah Syaraf",
+    "hari": "Senin dan Selasa",
+    "jam": "Pkl 13.00 WIB s/d selesai",
+    "gender": true,
+    "on_call": false,
+    "__v": 0
+  },
+  {
+    "_id": "62aa74913c4e95724bd72eea",
+    "nama": "Agus Salim, Sp.BM",
+    "waktu": "pagi",
+    "poli": "Bedah Mulut",
+    "hari": "Minggu",
+    "jam": "Pkl 09.00 WIB",
+    "gender": true,
+    "on_call": true,
+    "__v": 0
+  }
+]

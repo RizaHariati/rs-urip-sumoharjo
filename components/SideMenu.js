@@ -8,12 +8,13 @@ const SideMenu = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="side-menu-container">
+    <div id="side-menu-container" className="side-menu-container">
       {data_menu.map((item) => {
         const { id, title, href, icon, info } = item;
         return (
-          <Link href={href} key={id}>
+          <Link href={href} key={id} id={`side-menu-link-${id}`}>
             <a
+              id={`side-menu-item-${id}`}
               className="side-menu-item "
               onClick={() => dispatch(closeDropMenu())}
             >
@@ -22,7 +23,9 @@ const SideMenu = () => {
                 <p className="side-menu-text">{title}</p>
               </div>
 
-              <p className="side-menu-info">{info}</p>
+              <p id="side-menu-info" className="side-menu-info">
+                {info}
+              </p>
             </a>
           </Link>
         );

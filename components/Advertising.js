@@ -66,7 +66,7 @@ const Advertising = () => {
               <div
                 id="ad-slide"
                 className={
-                  index === parseInt(id)
+                  parseInt(id) === index
                     ? "ad-slides-container "
                     : "ad-slides-container opacity-0 left-0"
                 }
