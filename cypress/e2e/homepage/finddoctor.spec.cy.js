@@ -1,10 +1,6 @@
-import { waitUntilSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
+/// <reference types="Cypress" />
 
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
-const URL_FEMALE =
-  "https://randomuser.me/api/?gender=female&inc=picture&results=100";
-const URL_MALE =
-  "https://randomuser.me/api/?gender=male&inc=picture&results=100";
 
 describe("empty spec", () => {
   beforeEach(() => {
@@ -245,19 +241,19 @@ describe("empty spec", () => {
         }).as(`response${index}`);
       }
     });
+
     cy.get("#name-search-btn").click();
     cy.get("#search-doctor").type(searchKey);
-    cy.get("#doctor-card-container").should("be.visible");
+    cy.get("#doctor-card-container").children().should("be.visible");
 
     const doctorFiltered = data.filter((item) => {
       return item.nama.toLowerCase().includes(searchKey.toLowerCase());
     });
-
     cy.get("#doctor-card-container")
       .children()
       .each((_, index) => {
         cy.get(`#doctor-card-${index}`).should(
-          "contain",
+          "include.text",
           doctorFiltered[index].nama
         );
       });

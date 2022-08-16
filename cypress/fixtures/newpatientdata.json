@@ -1,0 +1,16 @@
+{
+  "selfAppointment": true,
+  "values": {
+    "requesterName": "Azzahra Riyanti",
+    "requesterRelationship": "anak",
+    "requesterPhone": "081282937212",
+    "name": "Hariati Riza",
+    "email": "riza@gmail.com",
+    "gender": "female",
+    "age": 44,
+    "address": "Jl Way Sekampung no.66",
+    "phone": "288392983",
+    "appointmentPurpose": "Umum",
+    "appointmentLocation": "Jakarta"
+  }
+}

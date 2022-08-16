@@ -154,7 +154,7 @@ const AppointmentForm = () => {
         enableReinitialize
       >
         {(formik) => (
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} id="form-container">
             {openModal.status && (
               <AppointmentFormModal
                 data={openModal.appointment}
@@ -221,7 +221,7 @@ const AppointmentForm = () => {
               {/*  -------------------- setting selfAppointment ------------------- */}
               {!selfAppointment && (
                 /* ------------------------ Requester info ------------------------ */
-                <div className="form-input-container">
+                <div className="form-input-container" id="schedule-others">
                   <div className="form-input-item">
                     <MyTextInput
                       label="Nama Pendaftar"
@@ -282,7 +282,10 @@ const AppointmentForm = () => {
                 <h5>Informasi Pasien</h5>
               </div>
 
-              <div className="form-input-container">
+              <div
+                className="form-input-container"
+                id="patient-fields-container"
+              >
                 <div className="form-input-item">
                   <MyTextInput
                     label="Nama Pasien"
@@ -319,6 +322,7 @@ const AppointmentForm = () => {
                     const { id, label, value } = item;
                     return (
                       <Radio
+                        id="gender"
                         key={id}
                         label={label}
                         name="gender"

@@ -38,7 +38,10 @@ const ScheduleAppointment = () => {
           </div>
 
           {/*  -------------------------- intermezzo -------------------------- */}
-          <div className="grid grid-cols-2 md:grid-cols-3 h-36 md:h-44 my-5 bg-clrBorder rounded-sm overflow-hidden">
+          <div
+            id="login-banner"
+            className="grid grid-cols-2 md:grid-cols-3 h-36 md:h-44 my-5 bg-clrBorder rounded-sm overflow-hidden"
+          >
             <div className=" col-span-1 md:col-span-2 p-3 md:p-4 lg:p-10 self-center ">
               {status ? (
                 <>
@@ -54,8 +57,11 @@ const ScheduleAppointment = () => {
                     login terlebih dahulu
                   </h5>
 
-                  <Link href="/">
-                    <button className="btn bg-clrPrimaryDark md:text-lg">
+                  <Link href="/main/patient-data">
+                    <button
+                      id="schedule-login-btn"
+                      className="btn bg-clrPrimaryDark md:text-lg"
+                    >
                       Login Pasien
                     </button>
                   </Link>
@@ -73,6 +79,7 @@ const ScheduleAppointment = () => {
             </div>
           </div>
           {/*  -------------------------- intermezzo -------------------------- */}
+
           {/* ----------------------------- form ----------------------------- */}
           <AppointmentForm />
           {/* ----------------------------- form ----------------------------- */}

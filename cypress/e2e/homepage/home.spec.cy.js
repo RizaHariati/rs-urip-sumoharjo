@@ -14,6 +14,7 @@ context("Advertising", () => {
     cy.get("#ad-toggle-btn").click();
     cy.get("#ad-container").should("have.class", "h-0");
   });
+  s;
 
   it("should have slides constantly sliding", function () {
     cy.clock();

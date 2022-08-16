@@ -43,7 +43,10 @@ const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
   };
   return (
     <div className="modal-base">
-      <div className="modal-container  bg-clrBaseLightHover h-full sm:h-fit">
+      <div
+        className="modal-container  bg-clrBaseLightHover h-full sm:h-fit"
+        id="modal-container"
+      >
         <div className="w-full  pt-10 px-5 pb-0  ">
           <div className="sub-form pb-0  bg-clrBaseLightHover  ">
             <div className="form-title">
