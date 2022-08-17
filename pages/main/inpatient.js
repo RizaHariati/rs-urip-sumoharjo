@@ -20,10 +20,9 @@ const Inpatient = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [openInfo, setOpenInfo] = useState("");
-  const [indexCard, setIndexCard] = useState(null);
 
   const handleClick = (id) => {
-    if (id === indexCard) {
+    if (id === null) {
       setOpenInfo(true);
     } else {
       setOpenInfo(id);

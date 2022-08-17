@@ -34,14 +34,13 @@ const AppointmentConfirmModal = ({
 
             <div className="flex space-x-5 my-3 w-full justify-center">
               <button
-                type="submit"
+                type="button"
                 onClick={() => {
                   setOpenConfirmModal({
                     status: false,
                     confirmedName: "",
                   });
 
-                  formik.resetForm();
                   router.reload();
                 }}
                 className=" bg-clrPrimaryDark logo-btn h-7"

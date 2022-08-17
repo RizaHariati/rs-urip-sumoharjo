@@ -14,7 +14,6 @@ context("Advertising", () => {
     cy.get("#ad-toggle-btn").click();
     cy.get("#ad-container").should("have.class", "h-0");
   });
-  s;
 
   it("should have slides constantly sliding", function () {
     cy.clock();
@@ -100,6 +99,14 @@ context("SideMenu", () => {
       this.data = data;
     });
     cy.fixture("sidemenu").as("sidemenuData");
+  });
+
+  it("should toggle the ambulance sign when clicked", () => {
+    cy.get("#ambulance").should("be.visible");
+    cy.get("#ambulance").click();
+    cy.get("#ambulance").should("have.class", "ambulance w-100");
+    cy.get("#ambulance").click();
+    cy.get("#ambulance").should("have.class", "ambulance w-14");
   });
 
   it("should create buttons from array", function () {

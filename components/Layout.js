@@ -24,6 +24,7 @@ const Layout = ({ children }) => {
       <Navbar />
       {children}
       <div
+        id="ambulance"
         onClick={() => setOpen(!open)}
         className={open ? "ambulance w-100" : "ambulance w-14"}
       >

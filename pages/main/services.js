@@ -11,12 +11,13 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1";
 
 const Services = ({ data }) => {
-  const { total, facilities: sourceFacilities } = data;
+  const { facilities: sourceFacilities } = data;
   const [facilities, setFacilities] = useState(sourceFacilities);
   const [facilityCategories, setFacilityCategories] = useState([]);
   const [facility, setFacility] = useState("");
   const [openModal, setOpenModal] = useState({ opened: false, facility: {} });
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (facilities.length > 0) {
       const newCategories = [
@@ -31,6 +32,7 @@ const Services = ({ data }) => {
     try {
       const res = await fetch(`${URL}/facilities/?title=${key}`);
       const data = await res.json();
+
       if (data) {
         const { facilities: sourceFacilities } = data;
 
@@ -45,6 +47,8 @@ const Services = ({ data }) => {
   useEffect(() => {
     if (facility) {
       fetchData(facility);
+    } else {
+      setFacilities(sourceFacilities);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [facility]);
@@ -73,7 +77,7 @@ const Services = ({ data }) => {
         <div className=" px-5 md:px-10 py-5">
           {/* --------------------------- subheader -------------------------- */}
 
-          <div className="facility-input-container ">
+          <div className="facility-input-container">
             <Image
               src="/images/pelayanan-fasilitas/hemodialisa.jpg"
               height={200}
@@ -114,13 +118,13 @@ const Services = ({ data }) => {
           {/*  ------------------------- facility list ------------------------ */}
           {loading && <LoadingSpinner />}
           {!loading && facilities.length > 0 && (
-            <div className=" bg-clrBaseLight pb-10">
+            <div className=" bg-clrBaseLight pb-10" id="facility-container">
               {facilityCategories.map((item, index) => {
                 return (
-                  <div key={index}>
+                  <div key={index} id="facility-item">
                     <h3>{item}</h3>
                     <div className="w-20 h-1 bg-clrPrimaryDark mt-1 mb-3"></div>
-                    <div className="facility-list">
+                    <div className="facility-list" id="facility-list">
                       {facilities
                         .filter((facilityItem) => {
                           return facilityItem.category === item;
@@ -142,7 +146,7 @@ const Services = ({ data }) => {
           )}
 
           {facilities.length < 1 && (
-            <div>
+            <div id="facility-warning">
               <h5>Tidak ditemukan fasilitas dengan kata kunci tersebut</h5>
             </div>
           )}

@@ -1,0 +1,51 @@
+[
+  {
+    "img": {
+      "cloud_id": "RSUripSumoharjo/usfvbsqtdsuauzcm2zuj",
+      "cloud_image": "https://res.cloudinary.com/azricoding/image/upload/v1655805745/RSUripSumoharjo/usfvbsqtdsuauzcm2zuj.jpg"
+    },
+    "_id": "62b18dba912b4e6a98acd625",
+    "title": "Farmasi",
+    "info": [
+      "Dibawah pimpinan apoteker yang kompeten siap menye…tan untuk unit perawatan dan bidang – bidang lain"
+    ],
+    "category": "penunjang-klinik"
+  },
+  {
+    "img": {
+      "cloud_id": "RSUripSumoharjo/mybdxv1wk321t7vlamun",
+      "cloud_image": "https://res.cloudinary.com/azricoding/image/upload/v1655805488/RSUripSumoharjo/mybdxv1wk321t7vlamun.jpg"
+    },
+    "_id": "62b18dba912b4e6a98acd623",
+    "title": "Digital Radiography",
+    "info": [
+      "Radiografi digital adalah bentuk radiografi yang menggunakan pelat yang peka terhadap sinar x untuk secara langsung menangkap data selama pemeriksaan pasien, segera mentransfernya ke sistem komputer tanpa menggunakan kaset perantara."
+    ],
+    "category": "poliklinik"
+  },
+  {
+    "img": {
+      "cloud_id": "RSUripSumoharjo/kra6vspkg40ueyuz3rvb",
+      "cloud_image": "https://res.cloudinary.com/azricoding/image/upload/v1655804602/RSUripSumoharjo/kra6vspkg40ueyuz3rvb.jpg"
+    },
+    "_id": "62b18dba912b4e6a98acd61b",
+    "title": "Instalasi Gawat Darurat (24 Jam)",
+    "info": [
+      "Menyediakan penanganan awal bagi pasien yang menderita sakit dan cedera, yang dapat mengancam kelangsungan hidupnya.",
+      "Selalu siaga dokter dari berbagai spesialisasi bersama sejumlah perawat dan dokter jaga, memberikan pelayanan awal 24 jam sehari, 7 hari seminggu."
+    ],
+    "category": "rawat-jalan"
+  },
+  {
+    "img": {
+      "cloud_id": "RSUripSumoharjo/cyt94be5xo0fendipz3p",
+      "cloud_image": "https://res.cloudinary.com/azricoding/image/upload/v1655805963/RSUripSumoharjo/cyt94be5xo0fendipz3p.jpg"
+    },
+    "_id": "62b18dba912b4e6a98acd626",
+    "title": "Instalasi Gizi",
+    "info": [
+      "Memberikan pelayanan gizi yang penting untuk mempercepat proses penyembuhan terhadap pasien"
+    ],
+    "category": "penunjang-klinik"
+  }
+]

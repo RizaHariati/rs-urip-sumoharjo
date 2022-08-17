@@ -247,18 +247,20 @@ const AppointmentForm = () => {
                         {formik.errors.requesterRelationship}
                       </div>
                     ) : null}
-                    {relationshipOptions.map((item) => {
-                      const { id, label, value } = item;
-                      return (
-                        <Radio
-                          key={id}
-                          label={label}
-                          id="requesterRelationship"
-                          name="requesterRelationship"
-                          value={value}
-                        />
-                      );
-                    })}
+                    <div id="relationship-container">
+                      {relationshipOptions.map((item) => {
+                        const { id, label, value } = item;
+                        return (
+                          <Radio
+                            id="requesterRelationship"
+                            key={id}
+                            label={label}
+                            name="requesterRelationship"
+                            value={value}
+                          />
+                        );
+                      })}
+                    </div>
                   </div>
 
                   <div className="form-input-item">
@@ -318,18 +320,20 @@ const AppointmentForm = () => {
                       {formik.touched.gender && formik.errors.gender}
                     </div>
                   ) : null}
-                  {gender.map((item) => {
-                    const { id, label, value } = item;
-                    return (
-                      <Radio
-                        id="gender"
-                        key={id}
-                        label={label}
-                        name="gender"
-                        value={value}
-                      />
-                    );
-                  })}
+                  <div id="gender-container">
+                    {gender.map((item) => {
+                      const { id, label, value } = item;
+                      return (
+                        <Radio
+                          id="gender"
+                          key={id}
+                          label={label}
+                          name="gender"
+                          value={value}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
 
                 <div className="form-input-item">

@@ -2,7 +2,7 @@
 
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 
-describe("empty spec", () => {
+describe("Find Doctor", () => {
   beforeEach(() => {
     cy.visit("/main/find-doctor");
     cy.fixture("doctordb").then(function (data) {

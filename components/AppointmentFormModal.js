@@ -7,7 +7,12 @@ import {
   handleResetApplication,
 } from "../slice/patientSlice";
 
-const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
+const AppointmentFormModal = ({
+  data,
+  setOpenModal,
+  setOpenConfirmModal,
+  formik,
+}) => {
   const dispatch = useDispatch();
 
   const {
@@ -64,7 +69,7 @@ const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
             <PatientData patientData={patientData} />
             <div className="flex space-x-5 my-3 w-full justify-center">
               <button
-                type="submit"
+                type="button"
                 onClick={() => {
                   const confirmedName = selfAppointment
                     ? patientData.name
@@ -73,10 +78,12 @@ const AppointmentFormModal = ({ data, setOpenModal, setOpenConfirmModal }) => {
                     status: false,
                     appointment: { selfAppointment: true, values: "" },
                   });
+
                   setOpenConfirmModal({
                     status: true,
                     confirmedName,
                   });
+                  formik.resetForm();
                   dispatch(
                     handleConfirmApplication({
                       appointmentData: data.values,

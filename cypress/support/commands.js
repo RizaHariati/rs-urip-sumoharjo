@@ -1,29 +1,5 @@
 /// <reference types="Cypress" />
 
-Cypress.Commands.add("typeSearch", (data, searchKey, status) => {
-  let response = {
-    msg: "Data successfully fetched",
-    total: 5,
-    allDoctors: data,
-  };
-  let keyword = "";
-  searchKey.split("").forEach((item, index) => {
-    keyword = keyword + item;
-    const doctorFiltered = data.filter((item) => {
-      if (status === "poli") {
-        return item.poli.toLowerCase().includes(keyword);
-      } else {
-        return item.nama.toLowerCase().includes(keyword);
-      }
-    });
-
-    cy.intercept("GET", `${URL}${status}=${keyword}`, {
-      ...response,
-      allDoctors: doctorFiltered,
-    }).as(`response${index}`);
-  });
-});
-
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
