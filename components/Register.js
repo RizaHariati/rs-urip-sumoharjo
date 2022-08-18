@@ -70,6 +70,7 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
 
         const response = await fetch(URL_PATIENT + "/register", requestOptions);
         const data = await response.json();
+        console.log(response);
         const { msg } = data;
         if (response.status === 200 || response.status === 202) {
           setOpenAlert({ status: true, msg, color: "bg-green-300" });
@@ -80,7 +81,6 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
           setLoading(false);
           return;
         } else {
-          console.log(msg);
           setOpenAlert({
             status: true,
             msg,
