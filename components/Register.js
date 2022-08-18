@@ -77,9 +77,9 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
           dispatch(handleRequestRegister(initialValues));
           setTimeout(() => {
             router.reload();
+            setLoading(false);
+            return;
           }, 2000);
-          setLoading(false);
-          return;
         } else {
           setOpenAlert({
             status: true,
@@ -93,15 +93,15 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
               msg: "",
               color: "bg-pink-300",
             });
+            setLoading(false);
+            return;
           }, 2000);
-          setLoading(false);
-          return;
         }
       } catch (error) {
         console.log({ error });
+        return setLoading(false);
       }
     }
-    setLoading(false);
   };
 
   if (loading) {

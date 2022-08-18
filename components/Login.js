@@ -30,6 +30,7 @@ const Login = ({ setOpenRegister, setOpenAlert }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+
   const handleLogin = async (values) => {
     setLoading(true);
     dispatch(
@@ -43,6 +44,7 @@ const Login = ({ setOpenRegister, setOpenAlert }) => {
         phone: "",
       })
     );
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,21 +61,21 @@ const Login = ({ setOpenRegister, setOpenAlert }) => {
         dispatch(setlogin({ findPatient, token }));
         setTimeout(() => {
           router.reload();
+          setLoading(false);
+          return;
         }, 2000);
-        setLoading(false);
-        return;
       } else {
         setOpenAlert({ status: true, msg, color: "bg-pink-300" });
-        dispatch(handleRequestRegister(values));
 
         setTimeout(() => {
           setOpenAlert({ status: false, msg: "", color: "bg-pink-300" });
+          setLoading(false);
+          return;
         }, 2000);
-        setLoading(false);
-        return;
       }
     } catch (error) {
       console.log(error);
+      return setLoading(false);
     }
   };
 

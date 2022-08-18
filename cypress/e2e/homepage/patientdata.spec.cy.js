@@ -42,15 +42,17 @@ describe("Patient Data", () => {
 
   it("it should show warning login alert if account is not found", function () {
     const { values } = this.newpatientdata;
+
     cy.intercept("POST", `${URL_PATIENT}/login`, {
       statusCode: 401,
-      body: { msg: "Invalid data" },
+      body: { msg: "Invalid data", email: values.email, password: "password" },
     }).as("fail response");
     cy.get("#login-form").get("#email").type(values.email);
     cy.get("#login-form").get("#password").type("password");
     cy.get("#login-form").submit();
+
     cy.get("#loading-spinner").should("be.visible");
-    cy.contains("#alert-modal", "Invalid data").should("be.visible").wait(500);
+    cy.contains("#alert-modal", "Invalid data").should("be.visible");
     cy.contains("#alert-modal", "Invalid data").should("not.exist");
   });
 
@@ -60,7 +62,7 @@ describe("Patient Data", () => {
     cy.intercept("POST", `${URL_PATIENT}/login`, {
       statusCode: 200,
       body: logindata,
-    }).as("fail response");
+    }).as("success response");
 
     // header should show general welcome banner
     cy.get("#login-welcome")
@@ -72,9 +74,10 @@ describe("Patient Data", () => {
     cy.get("#login-form").get("#password").type("password");
     cy.get("#login-form").submit();
     cy.get("#loading-spinner").should("be.visible");
-    cy.contains("#alert-modal", "Success", { matchCase: false })
-      .should("be.visible")
-      .wait(500);
+    cy.contains("#alert-modal", "Success", { matchCase: false }).should(
+      "be.visible"
+    );
+
     cy.contains("#alert-modal", "Success", { matchCase: false }).should(
       "not.exist"
     );
