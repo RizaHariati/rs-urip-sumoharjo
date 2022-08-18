@@ -10,12 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { MyTextInput, Radio } from "./AppointmentFormInputs";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { handleRequestRegister } from "../slice/patientSlice";
+import LoadingSpinner from "./LoadingSpinner";
 
 const URL_PATIENT =
   "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/patient/";
@@ -52,10 +53,12 @@ const gender = [
 ];
 
 const Register = ({ setOpenRegister, setOpenAlert }) => {
+  const [loading, setLoading] = useState(false);
   const registerTemp = useSelector((state) => state.patients.registerTemp);
   const dispatch = useDispatch();
   const router = useRouter();
   const registerpatient = async (values) => {
+    setLoading(true);
     if (values) {
       dispatch(handleRequestRegister(values));
       try {
@@ -64,162 +67,190 @@ const Register = ({ setOpenRegister, setOpenAlert }) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
         };
+
         const response = await fetch(URL_PATIENT + "/register", requestOptions);
         const data = await response.json();
         const { msg } = data;
-
         if (response.status === 200 || response.status === 202) {
           setOpenAlert({ status: true, msg, color: "bg-green-300" });
           dispatch(handleRequestRegister(initialValues));
           setTimeout(() => {
             router.reload();
           }, 2000);
+          setLoading(false);
           return;
         } else {
-          setOpenAlert({ status: true, msg, color: "bg-pink-300" });
+          console.log(msg);
+          setOpenAlert({
+            status: true,
+            msg,
+            color: "bg-pink-300",
+          });
           dispatch(handleRequestRegister(values));
           setTimeout(() => {
-            setOpenAlert({ status: false, msg: "", color: "bg-pink-300" });
+            setOpenAlert({
+              status: false,
+              msg: "",
+              color: "bg-pink-300",
+            });
           }, 2000);
+          setLoading(false);
+          return;
         }
       } catch (error) {
-        console.log(error);
+        console.log({ error });
       }
     }
+    setLoading(false);
   };
-  return (
-    <>
-      <div className="w-full flex justify-center ">
-        <p className="mr-1">Sudah ada akun? Silahkan</p>
-        <button
-          type="button"
-          className="underline underline-offset-4 text-clrPrimaryMedium transition-all hover:text-clrPrimaryDark "
-          onClick={() => setOpenRegister(false)}
-        >
-          login
-        </button>
+
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
       </div>
-      <div className="sub-form px-0 pt-7 mt-5">
-        <div className="form-title">
-          <h5>Register</h5>
+    );
+  } else {
+    return (
+      <div id="register-container">
+        <div className="w-full flex justify-center ">
+          <p className="mr-1">Sudah ada akun? Silahkan</p>
+          <button
+            type="button"
+            className="underline underline-offset-4 text-clrPrimaryMedium transition-all hover:text-clrPrimaryDark "
+            onClick={() => setOpenRegister(false)}
+          >
+            login
+          </button>
         </div>
-        <Formik
-          initialValues={registerTemp}
-          validationSchema={validationSchema}
-          validateOnBlur={true}
-          validateOnChange={false}
-          onSubmit={async (values, { setSubmitting }) => {
-            await registerpatient(values);
+        <div className="sub-form px-0 pt-7 mt-5">
+          <div className="form-title">
+            <h5>Register</h5>
+          </div>
+          <Formik
+            initialValues={registerTemp}
+            validationSchema={validationSchema}
+            validateOnBlur={true}
+            validateOnChange={false}
+            onSubmit={async (values, { setSubmitting }) => {
+              await registerpatient(values);
 
-            setSubmitting(false);
-          }}
-        >
-          {(formik) => (
-            <form onSubmit={formik.handleSubmit}>
-              <div className="form-input-container ">
-                <div className="form-input-item">
-                  <MyTextInput
-                    label="Nama Pasien"
-                    id="name"
-                    name="name"
-                    placeholder="Masukkan nama pasien"
-                    type="text"
-                    icon={faUser}
-                  />
-                </div>
+              setSubmitting(false);
+            }}
+          >
+            {(formik) => (
+              <form onSubmit={formik.handleSubmit} id="register-form">
+                <div className="form-input-container ">
+                  <div className="form-input-item">
+                    <MyTextInput
+                      label="Nama Pasien"
+                      id="name"
+                      name="name"
+                      placeholder="Masukkan nama pasien"
+                      type="text"
+                      icon={faUser}
+                    />
+                  </div>
 
-                <div className="form-input-item">
-                  <MyTextInput
-                    label="Email Pasien"
-                    id="email"
-                    name="email"
-                    placeholder="Masukkan email"
-                    type="email"
-                    icon={faEnvelope}
-                  />
-                </div>
+                  <div className="form-input-item">
+                    <MyTextInput
+                      label="Email Pasien"
+                      id="email"
+                      name="email"
+                      placeholder="Masukkan email"
+                      type="email"
+                      icon={faEnvelope}
+                    />
+                  </div>
 
-                <div className="form-input-item">
-                  <MyTextInput
-                    label="Password"
-                    id="password"
-                    name="password"
-                    placeholder="Masukkan password"
-                    type="password"
-                    icon={faLock}
-                  />
-                </div>
-                <div role="group" className="form-input-item">
-                  <label>
-                    <FontAwesomeIcon icon={faVenusMars} className="form-icon" />
-                    gender
-                  </label>
-                  {formik.errors.gender ? (
-                    <div className="error">
-                      {formik.touched.gender && formik.errors.gender}
-                    </div>
-                  ) : null}
-                  {gender.map((item) => {
-                    const { id, label, value } = item;
-                    return (
-                      <Radio
-                        key={id}
-                        label={label}
-                        name="gender"
-                        value={value}
+                  <div className="form-input-item">
+                    <MyTextInput
+                      label="Password"
+                      id="password"
+                      name="password"
+                      placeholder="Masukkan password"
+                      type="password"
+                      icon={faLock}
+                    />
+                  </div>
+                  <div role="group" className="form-input-item">
+                    <label>
+                      <FontAwesomeIcon
+                        icon={faVenusMars}
+                        className="form-icon"
                       />
-                    );
-                  })}
-                </div>
+                      gender
+                    </label>
+                    {formik.errors.gender ? (
+                      <div className="error">
+                        {formik.touched.gender && formik.errors.gender}
+                      </div>
+                    ) : null}
+                    <div id="register-gender-container">
+                      {gender.map((item, index) => {
+                        const { id, label, value } = item;
+                        return (
+                          <Radio
+                            id={`gender${index}`}
+                            key={id}
+                            label={label}
+                            name="gender"
+                            value={value}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
 
-                <div className="form-input-item">
-                  <MyTextInput
-                    label="Usia"
-                    id="age"
-                    name="age"
-                    placeholder="Usia..."
-                    type="number"
-                    icon={faUserClock}
-                  />
-                </div>
+                  <div className="form-input-item">
+                    <MyTextInput
+                      label="Usia"
+                      id="age"
+                      name="age"
+                      placeholder="Usia..."
+                      type="number"
+                      icon={faUserClock}
+                    />
+                  </div>
 
-                <div className="form-input-item">
-                  <MyTextInput
-                    label="Alamat"
-                    id="address"
-                    name="address"
-                    placeholder="Alamat..."
-                    type="text"
-                    icon={faHouseChimneyUser}
-                  />
-                </div>
+                  <div className="form-input-item">
+                    <MyTextInput
+                      label="Alamat"
+                      id="address"
+                      name="address"
+                      placeholder="Alamat..."
+                      type="text"
+                      icon={faHouseChimneyUser}
+                    />
+                  </div>
 
-                <div className="form-input-item">
-                  <MyTextInput
-                    label="Nomor Telepon"
-                    id="phone"
-                    name="phone"
-                    placeholder="Nomor Telepon..."
-                    type="number"
-                    icon={faPhone}
-                  />
+                  <div className="form-input-item">
+                    <MyTextInput
+                      label="Nomor Telepon"
+                      id="phone"
+                      name="phone"
+                      placeholder="Nomor Telepon..."
+                      type="number"
+                      icon={faPhone}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex space-x-5 my-3 w-full justify-center">
-                <button
-                  type="submit"
-                  className=" bg-clrPrimaryDark  logo-btn h-7"
-                >
-                  <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
-                  Register
-                </button>
-              </div>
-            </form>
-          )}
-        </Formik>
+                <div className="flex space-x-5 my-3 w-full justify-center">
+                  <button
+                    type="submit"
+                    className=" bg-clrPrimaryDark  logo-btn h-7"
+                  >
+                    <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
+                    Register
+                  </button>
+                </div>
+              </form>
+            )}
+          </Formik>
+        </div>
       </div>
-    </>
-  );
+    );
+  }
 };
 
 export default Register;

@@ -97,6 +97,7 @@ describe("Facility", () => {
     cy.get("#purpose").should("not.exist");
     cy.get("#appointmentPurpose").should("have.value", searchKey);
     cy.go("back");
+    cy.location("pathname").should("eq", "/main/services");
     cy.get("#facility").should(
       "have.attr",
       "placeholder",

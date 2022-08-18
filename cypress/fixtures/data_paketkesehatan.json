@@ -1,0 +1,378 @@
+[
+  {
+    "id": "pak-1",
+    "title": "Paket Karyawan",
+    "price": "Rp. 550.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan  (anamnesis)",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax"
+    ],
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah Rutin(Hemoglobin, Hematokrit, Lekosit, Trombosit,Eritrosit, LED)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine Rutin(Protein, Glukosa, Bilirubin, Urobilin, Sedimen)"
+      }
+    ]
+  },
+  {
+    "id": "pak-2",
+    "title": "Paket Dasar",
+    "price": "Rp. 850.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax",
+      "EKG"
+    ],
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah Rutin(Hemoglobin, Hematokrit, Lekosit, Trombosit,Eritrosit, LED)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine lengkap(Protein, Glukosa, Bilirubin, Urobilin, Sedimen,Reduksi, Urobilinogen, Warna, Kejernihan, Berat Jenis, Darah Samar, PH, Nitrit)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Fungsi hati(SGOT, SGPT)"
+      }
+    ]
+  },
+  {
+    "id": "pak-3",
+    "title": "Paket Luar Negeri",
+    "price": "Rp.1.500.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax",
+      "EKG"
+    ],
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah Rutin(Hemoglobin, Hematokrit, Lekosit, Trombosit,Eritrosit, LED)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine lengkap(Protein, Glukosa, Bilirubin, Urobilin, Sedimen,Reduksi, Urobilinogen, Warna, Kejernihan, Berat Jenis, Darah Samar, PH, Nitrit)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Gula darah sewaktu"
+      },
+      {
+        "id": "lab-4",
+        "info": "Hbs Ag, HIV, TPHA, VDRL"
+      }
+    ]
+  },
+  {
+    "id": "pak-4",
+    "title": "Paket Silver",
+    "price": "Rp.2.600.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax",
+      "EKG"
+    ],
+
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah Rutin(Hemoglobin, Hematokrit, Lekosit, Trombosit,Eritrosit, LED)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine lengkap(Protein, Glukosa, Bilirubin, Urobilin, Sedimen,Reduksi, Urobilinogen, Warna, Kejernihan, Berat Jenis, Darah Samar, PH, Nitrit)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Gula darah (Puasa dan 2 Jam setelah makan)"
+      },
+      {
+        "id": "lab-4",
+        "info": "Fungsi Hati (SGOT, SGPT, Gamma GT, Alkali Fosfatase, Protein total, Albumin, Globulin, Bilirubin Total – direk – indirek)"
+      },
+      {
+        "id": "lab-5",
+        "info": "Fungsi Ginjal (Ureum, Kreatinin, Asam Urat)"
+      },
+      {
+        "id": "lab-6",
+        "info": "Profil Lemak ( Kolesterol Total, HDL, LDL, Trigliseride)"
+      },
+      {
+        "id": "lab-7",
+        "info": "Serologi Darah ( VDRL )"
+      },
+      {
+        "id": "lab-8",
+        "info": "Faeces Rutin : Makroskopik (Warna, Konsistensi, Lendir, Pus, Darah ) dan Mikroskopik (Eritrosit, Lekosit, Amuba, Telur Cacing)"
+      },
+      {
+        "id": "lab-9",
+        "info": "HBsAg, Anti HBs"
+      }
+    ]
+  },
+  {
+    "id": "pak-5",
+    "title": "Paket Gold",
+    "price": "Pria : Rp. 3.800.000, Wanita : Rp. 4.000.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax",
+      "EKG",
+      "Treadmill",
+      "Pemeriksaan gigi",
+      "Audiogram",
+      "Pap Smear (wanita) dilakukan di tempat Kebidanan & Kandungan"
+    ],
+
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah lengkap (Hemoglobin , Hematokrit, Lekosit, Trombosit, Eritrosit, LED, Retikulosit, Diff, MCV, MCH, MCHC)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine lengkap(Protein, Glukosa, Bilirubin, Urobilin, Sedimen,Reduksi, Urobilinogen, Warna, Kejernihan, Berat Jenis, Darah Samar, PH, Nitrit)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Gula darah (Puasa dan 2 Jam setelah makan)"
+      },
+      {
+        "id": "lab-4",
+        "info": "Fungsi Hati (SGOT, SGPT, Gamma GT, Alkali Fosfatase, Protein total, Albumin, Globulin, Bilirubin Total – direk – indirek)"
+      },
+      {
+        "id": "lab-5",
+        "info": "Fungsi Ginjal (Ureum, Kreatinin, Asam Urat)"
+      },
+      {
+        "id": "lab-6",
+        "info": "Profil Lemak ( Kolesterol Total, HDL, LDL, Trigliseride)"
+      },
+      {
+        "id": "lab-7",
+        "info": "Serologi Darah ( VDRL )"
+      },
+      {
+        "id": "lab-8",
+        "info": "Faeces Lengkap Makroskopik (Warna, Konsistensi, Lendir, Pus, Darah); Mikroskopik (Eritrosit, Lekosit, Amuba, Telur Cacing), Tumbuhan Amilum, Lemak + Darah Samar (Benzidin/Feaces)"
+      },
+      {
+        "id": "lab-9",
+        "info": "HBsAg, Anti HBs"
+      }
+    ]
+  },
+  {
+    "id": "pak-6",
+    "title": "Paket Platinum",
+    "price": "Pria : Rp. 7.100.000, Wanita : Rp. 7.800.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax",
+      "EKG",
+      "Treadmill",
+      "Pemeriksaan gigi",
+      "Audiogram",
+      "Pap Smear (wanita) dilakukan di tempat Kebidanan & Kandungan",
+      "USG Abdomen",
+      "USG Kandungan (Wanita)",
+      "Mammography (Wanita)",
+      "Uroflowmetri (Pria)",
+      "Spirometri"
+    ],
+
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah lengkap (Hemoglobin , Hematokrit, Lekosit, Trombosit, Eritrosit, LED, Retikulosit, Diff, MCV, MCH, MCHC)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine lengkap(Protein, Glukosa, Bilirubin, Urobilin, Sedimen,Reduksi, Urobilinogen, Warna, Kejernihan, Berat Jenis, Darah Samar, PH, Nitrit)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Gula darah (Puasa dan 2 Jam setelah makan)"
+      },
+      {
+        "id": "lab-4",
+        "info": "Fungsi Hati (SGOT, SGPT, Gamma GT, Alkali Fosfatase, Protein total, Albumin, Globulin, Bilirubin Total – direk – indirek)"
+      },
+      {
+        "id": "lab-5",
+        "info": "Fungsi Ginjal (Ureum, Kreatinin, Asam Urat)"
+      },
+      {
+        "id": "lab-6",
+        "info": "Profil Lemak ( Kolesterol Total, HDL, LDL, Trigliseride)"
+      },
+      {
+        "id": "lab-7",
+        "info": "Serologi Darah (VDRL, TPHA, CEA, Ca 19-9, AFP, PSA (Pria), Ca 125 ( Wanita), Hepatitis (Hbs Ag, Anti Hbs, Anti HCV)"
+      },
+      {
+        "id": "lab-8",
+        "info": "Faeces Lengkap Makroskopik (Warna, Konsistensi, Lendir, Pus, Darah); Mikroskopik (Eritrosit, Lekosit, Amuba, Telur Cacing), Tumbuhan Amilum, Lemak + Darah Samar (Benzidin/Feaces)"
+      },
+      {
+        "id": "lab-9",
+        "info": "Fibrinogen"
+      },
+      {
+        "id": "lab-10",
+        "info": "hs-CRP"
+      },
+      {
+        "id": "lab-11",
+        "info": "Micro Albumin Urin"
+      }
+    ]
+  },
+  {
+    "id": "pak-7",
+    "title": "Paket Pra Nikah",
+    "price": "Pria : Rp. 2.800.000, Wanita : Rp. 3.300.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax"
+    ],
+
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah lengkap (Hemoglobin , Hematokrit, Lekosit, Trombosit, Eritrosit, LED, Retikulosit, Diff, MCV, MCH, MCHC)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Urine lengkap(Protein, Glukosa, Bilirubin, Urobilin, Sedimen,Reduksi, Urobilinogen, Warna, Kejernihan, Berat Jenis, Darah Samar, PH, Nitrit)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Gula darah (Puasa dan 2 Jam setelah makan)"
+      },
+
+      {
+        "id": "lab-4",
+        "info": "Serologi Darah (VDRL, TPHA, CEA, Ca 19-9, AFP, PSA (Pria), Ca 125 ( Wanita), Hepatitis (Hbs Ag, Anti Hbs, Anti HCV)"
+      },
+      {
+        "id": "lab-5",
+        "info": "Analisa Sperma(pria)"
+      }
+    ]
+  },
+  {
+    "id": "pak-8",
+    "title": "Paket Kesehatan Jantung",
+    "price": "Rp.3.600.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+      "Foto dada/thorax",
+      "EKG",
+      "Treadmill",
+      "Ekhokardiography"
+    ],
+
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah Rutin(Hemoglobin, Hematokrit, Lekosit, Trombosit,Eritrosit, LED)"
+      },
+
+      {
+        "id": "lab-2",
+        "info": "Gula darah (Puasa dan 2 Jam setelah makan)"
+      },
+
+      {
+        "id": "lab-3",
+        "info": "Fungsi Ginjal (Ureum, Kreatinin, Asam Urat)"
+      },
+      {
+        "id": "lab-4",
+        "info": "Profil Lemak ( Kolesterol Total, HDL, LDL, Trigliseride)"
+      },
+
+      {
+        "id": "lab-5",
+        "info": "Fibrinogen"
+      },
+      {
+        "id": "lab-6",
+        "info": "hs-CRP"
+      }
+    ]
+  },
+  {
+    "id": "pak-9",
+    "title": "Paket Kesehatan Hati & Saluran Cerna",
+    "price": "Rp. 5.600.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah",
+
+      "USG Abdomen khusus hati"
+    ],
+
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah Rutin(Hemoglobin, Hematokrit, Lekosit, Trombosit,Eritrosit, LED)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Fungsi Hati (SGOT, SGPT, Gamma GT, Alkali Fosfatase, Protein total, Albumin, Globulin, Bilirubin Total – direk – indirek)"
+      },
+      {
+        "id": "lab-3",
+        "info": "Gula darah (Puasa dan 2 Jam setelah makan)"
+      },
+
+      {
+        "id": "lab-4",
+        "info": "Serologi Darah (AFP, HBsAg, Anti HBs, Anti HCV)"
+      },
+      {
+        "id": "lab-5",
+        "info": "Gastroscopy"
+      }
+    ]
+  },
+  {
+    "id": "pak-10",
+    "title": "Paket Sexual Transmitted Disease",
+    "price": "Rp. 2.350.000",
+    "pemeriksaan": [
+      "Riwayat kesehatan",
+      "Pemeriksaan fisik, visus, buta warna, indeks massa tubuh, tekanan darah"
+    ],
+    "laboratorium": [
+      {
+        "id": "lab-1",
+        "info": "Darah lengkap (Hemoglobin , Hematokrit, Lekosit, Trombosit, Eritrosit, LED, Retikulosit, Diff, MCV, MCH, MCHC)"
+      },
+      {
+        "id": "lab-2",
+        "info": "Serologi Darah :    VDRL, TPHA, Gonorhe, Jmur, Herpes type I IgG, Herpes type I, Igm, Herves type II IgG, Herves II IgM, anti HIV, HBaAg, AntiHbs, Anti HCV"
+      }
+    ]
+  }
+]

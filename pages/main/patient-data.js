@@ -19,9 +19,10 @@ const PatientData = () => {
     msg: "alert",
     color: "",
   });
+
   const dispatch = useDispatch();
   const route = useRouter();
-  const { status, data } = useSelector((state) => state.patients.login);
+  const { login } = useSelector((state) => state.patients);
 
   const handleLogout = () => {
     dispatch(setlogout());
@@ -44,15 +45,15 @@ const PatientData = () => {
       <div className="main-page">
         {/* ---------------------------- header ---------------------------- */}
 
-        {status && <WelcomePatient />}
-        {!status && <WelcomeGuest />}
+        {login.status && <WelcomePatient />}
+        {!login.status && <WelcomeGuest />}
         {/* ---------------------------- header ---------------------------- */}
         <div className="px-0 md:px-10 ">
           {/*  -------------------------- Option Access -------------------------- */}
           <PatientHeader />
           {/*  -------------------------- intermezzo -------------------------- */}
           {/* ----------------------------- form ----------------------------- */}
-          {!status && (
+          {!login.status && (
             <div className="w-full ">
               <div className=" bg-clrBaseLightHover mx-auto p-5 pb-1 rounded-sm shadow-sm  sm:w-9/12 md:w-7/12 ">
                 <div className="block mb-5 ">
@@ -74,7 +75,7 @@ const PatientData = () => {
             </div>
           )}
           {/* ----------------------------- form ----------------------------- */}
-          {status && (
+          {login.status && (
             <div className="flex items-center justify-center w-full ">
               <button
                 onClick={() => handleLogout()}
@@ -98,7 +99,10 @@ export default PatientData;
 const WelcomePatient = () => {
   const { datapatient } = useSelector((state) => state.patients.login);
   return (
-    <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
+    <div
+      id="login-welcome"
+      className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark"
+    >
       <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder ">
         Informasi Pasien
       </h2>
@@ -114,7 +118,10 @@ const WelcomePatient = () => {
 
 const WelcomeGuest = () => {
   return (
-    <div className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark">
+    <div
+      id="login-welcome"
+      className="w-fit my-3 md:my-5 px-5 md:px-10 text-clrTextDark"
+    >
       <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder">
         Login Pasien
       </h2>

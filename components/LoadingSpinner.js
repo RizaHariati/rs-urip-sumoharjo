@@ -2,7 +2,10 @@ import React from "react";
 
 const LoadingSpinner = () => {
   return (
-    <div className=" w-full flex items-center justify-center my-20 gap-5">
+    <div
+      id="loading-spinner"
+      className=" w-full flex items-center justify-center my-20 gap-5"
+    >
       <h2>Loading...</h2>
       <svg
         role="status"

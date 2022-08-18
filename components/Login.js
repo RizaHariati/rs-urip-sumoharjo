@@ -6,12 +6,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { MyTextInput } from "./AppointmentFormInputs";
 import * as Yup from "yup";
 import { handleRequestRegister, setlogin } from "../slice/patientSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import LoadingSpinner from "./LoadingSpinner";
 
 const URL_PATIENT =
   "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/patient/";
@@ -26,9 +27,11 @@ const validationSchema = Yup.object({
 });
 
 const Login = ({ setOpenRegister, setOpenAlert }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
   const handleLogin = async (values) => {
+    setLoading(true);
     dispatch(
       handleRequestRegister({
         name: "",
@@ -57,84 +60,97 @@ const Login = ({ setOpenRegister, setOpenAlert }) => {
         setTimeout(() => {
           router.reload();
         }, 2000);
+        setLoading(false);
         return;
       } else {
         setOpenAlert({ status: true, msg, color: "bg-pink-300" });
         dispatch(handleRequestRegister(values));
+
         setTimeout(() => {
           setOpenAlert({ status: false, msg: "", color: "bg-pink-300" });
         }, 2000);
+        setLoading(false);
+        return;
       }
     } catch (error) {
       console.log(error);
     }
   };
-  return (
-    <>
-      <div className="w-full flex justify-center ">
-        <p className="mr-1">Belum ada akun? silahkan</p>
-        <button
-          type="button"
-          className="underline underline-offset-4 text-clrPrimaryMedium transition-all hover:text-clrPrimaryDark "
-          onClick={() => setOpenRegister(true)}
-        >
-          register
-        </button>
-      </div>
-      <div className="sub-form px-0 py-7 mt-5">
-        <div className="form-title">
-          <h5>Login</h5>
-        </div>
-        <Formik
-          initialValues={initialValues}
-          validateOnBlur={true}
-          validateOnChange={false}
-          validationSchema={validationSchema}
-          onSubmit={async (values, { setSubmitting }) => {
-            await handleLogin(values);
-            setTimeout(() => {
-              setSubmitting(false);
-            }, 400);
-          }}
-        >
-          <Form id="login-form">
-            <div className="form-input-container">
-              <div className="form-input-item" id="login-form">
-                <MyTextInput
-                  label="Email Pasien"
-                  id="email"
-                  name="email"
-                  placeholder="Masukkan email"
-                  type="email"
-                  icon={faEnvelope}
-                />
-              </div>
 
-              <div className="form-input-item" id="login-form">
-                <MyTextInput
-                  label="Password"
-                  id="password"
-                  name="password"
-                  placeholder="Masukkan password"
-                  type="password"
-                  icon={faLock}
-                />
-              </div>
-            </div>
-            <div className="flex space-x-5 my-3 w-full justify-center">
-              <button
-                type="submit"
-                className=" bg-clrPrimaryDark  logo-btn h-7 px-3"
-              >
-                <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
-                Login
-              </button>
-            </div>
-          </Form>
-        </Formik>
+  if (loading) {
+    return (
+      <div>
+        <LoadingSpinner />
       </div>
-    </>
-  );
+    );
+  } else {
+    return (
+      <div id="login-container">
+        <div className="w-full flex justify-center ">
+          <p className="mr-1">Belum ada akun? silahkan</p>
+          <button
+            type="button"
+            className="underline underline-offset-4 text-clrPrimaryMedium transition-all hover:text-clrPrimaryDark "
+            onClick={() => setOpenRegister(true)}
+          >
+            register
+          </button>
+        </div>
+        <div className="sub-form px-0 py-7 mt-5">
+          <div className="form-title">
+            <h5>Login</h5>
+          </div>
+          <Formik
+            initialValues={initialValues}
+            validateOnBlur={true}
+            validateOnChange={false}
+            validationSchema={validationSchema}
+            onSubmit={async (values, { setSubmitting }) => {
+              await handleLogin(values);
+              setTimeout(() => {
+                setSubmitting(false);
+              }, 400);
+            }}
+          >
+            <Form id="login-form">
+              <div className="form-input-container">
+                <div className="form-input-item" id="login-form">
+                  <MyTextInput
+                    label="Email Pasien"
+                    id="email"
+                    name="email"
+                    placeholder="Masukkan email"
+                    type="email"
+                    icon={faEnvelope}
+                  />
+                </div>
+
+                <div className="form-input-item" id="login-form">
+                  <MyTextInput
+                    label="Password"
+                    id="password"
+                    name="password"
+                    placeholder="Masukkan password"
+                    type="password"
+                    icon={faLock}
+                  />
+                </div>
+              </div>
+              <div className="flex space-x-5 my-3 w-full justify-center">
+                <button
+                  type="submit"
+                  className=" bg-clrPrimaryDark  logo-btn h-7 px-3"
+                >
+                  <FontAwesomeIcon icon={faRightToBracket} className="mr-3" />
+                  Login
+                </button>
+              </div>
+            </Form>
+          </Formik>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Login;

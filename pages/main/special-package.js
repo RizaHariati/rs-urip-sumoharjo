@@ -11,19 +11,15 @@ import SideMenu from "../../components/SideMenu";
 import data_paket from "../../data/data_paketkesehatan.json";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import {
-  handleReferenceApplication,
-  handleRequestApplication,
-} from "../../slice/patientSlice";
+import { handleReferenceApplication } from "../../slice/patientSlice";
 import Head from "next/head";
 const SpecialPackage = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [openInfo, setOpenInfo] = useState("");
-  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleClick = (id) => {
-    if (id === selectedIndex) {
+    if (id === null) {
       setOpenInfo(true);
     } else {
       setOpenInfo(id);
@@ -61,12 +57,13 @@ const SpecialPackage = () => {
             <h2 className="mb-5 border-b-2 border-b-clrBorder text-right mx-5 md:mx-0">
               Pilihan Paket
             </h2>
-            <div className="">
+            <div id="packages-container">
               {data_paket.map((item_paket) => {
                 const { id, title, price, pemeriksaan, laboratorium } =
                   item_paket;
                 return (
                   <div
+                    id={`packages-${id}`}
                     key={id}
                     className="w-full mb-1 md:mb-5 bg-clrBaseLightHover px-5 rounded-sm shadow-sm "
                   >
@@ -92,7 +89,7 @@ const SpecialPackage = () => {
                         />
                         {`Harga : ${price}`}
                       </p>
-                      <p
+                      <button
                         className="text-right w-full text-md cursor-pointer"
                         onClick={() => handleClick(id)}
                       >
@@ -107,10 +104,10 @@ const SpecialPackage = () => {
                             className="text-clrPrimaryMedium text-md "
                           />
                         )}
-                      </p>
+                      </button>
                     </div>
                     {openInfo === id && (
-                      <>
+                      <div id={`packages-${id}-info`}>
                         <div
                           className="w-full border-b-clrBorder py-5"
                           style={{ borderBottomWidth: "1px" }}
@@ -169,7 +166,7 @@ const SpecialPackage = () => {
                             Mendaftar
                           </button>
                         </div>
-                      </>
+                      </div>
                     )}
                   </div>
                 );

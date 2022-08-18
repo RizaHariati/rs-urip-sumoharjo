@@ -16,7 +16,7 @@ const gender = [
   { id: 1, label: "Male", value: "male" },
 ];
 
-describe("empty spec", () => {
+describe("Schedule Appointment", () => {
   beforeEach(() => {
     cy.visit("/main/schedule-appointment");
     cy.fixture("login").then(function (data) {

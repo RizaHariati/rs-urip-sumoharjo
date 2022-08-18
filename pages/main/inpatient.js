@@ -78,11 +78,18 @@ const Inpatient = () => {
             <h2 className="border-b-2 mb-2 md:mb-5 border-b-clrBorder text-right px-5 md:px-0">
               Pilihan Kamar
             </h2>
-            <div className="flex flex-col gap-3 md:gap-5 items-center bg-clrBaseLight justify-center">
+            <div
+              className="flex flex-col gap-3 md:gap-5 items-center bg-clrBaseLight justify-center"
+              id="inpatient-class-container"
+            >
               {data_inap.map((room) => {
                 const { id, kelas, pasien, harga, img, fasilitas } = room;
                 return (
-                  <div key={id} onClick={() => handleClick(id)}>
+                  <div
+                    key={id}
+                    onClick={() => handleClick(id)}
+                    id={`inpatient-${id}`}
+                  >
                     <div className="inpatient-room">
                       <div className="inpatient-room-info">
                         <h4>{kelas}</h4>
@@ -125,6 +132,7 @@ const Inpatient = () => {
                       </div>
                       {openInfo === id && (
                         <div
+                          id={`inpatient-${id}-facility`}
                           className="sm:col-span-2 grid grid-cols-2 gap-0 sm:gap-3 px-2 sm:px-10 py-2 sm:py-5 w-full  "
                           style={{ borderTop: "1px solid lightGray" }}
                         >
