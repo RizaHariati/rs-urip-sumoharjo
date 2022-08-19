@@ -11,6 +11,7 @@ describe("MenuItems.cy.js", () => {
   });
 
   it.only("test this menuitems", () => {
+    cy.mount(<Wrapper Component={MenuButton} />);
     cy.get("#navbar-dropdown-menu").then(($div) => {
       if ($div.hasClass("menu h-0 py-0")) {
         cy.get("#navbar-dropdown-menu").should("not.be.visible");
@@ -24,5 +25,11 @@ describe("MenuItems.cy.js", () => {
         .should("have.text", menu_item[index].title)
         .and("be.visible");
     });
+
+    cy.get("#menu-item-container")
+      .children()
+      .each(($div, index) => {
+        cy.wrap($div).should("have.text", menu_item[index].title);
+      });
   });
 });

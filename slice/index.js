@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import layoutSlice from "./layoutSlice";
 import patientSlice from "./patientSlice";
+import doctorSlice from "./doctorSlice";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
@@ -22,6 +23,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   patients: patientSlice.reducer,
   layout: layoutSlice.reducer,
+  doctor: doctorSlice.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

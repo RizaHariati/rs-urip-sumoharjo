@@ -10,7 +10,7 @@ describe("Find Doctor", () => {
     });
   });
 
-  it("should change placeholder when clicked", () => {
+  it("should change placeholder and empty keywords when clicked", () => {
     cy.get("#name-search-btn").click();
     cy.get("#search-doctor").should(
       "have.attr",

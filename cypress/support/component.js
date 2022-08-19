@@ -19,29 +19,31 @@ import "./commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 require("../../styles/globals.css");
-import { mount } from "cypress/react";
-const { Provider, useDispatch } = require("react-redux");
-const { store } = require("../../slice");
-// import "../../styles/globals.css";
-// import Layout from "../../components/Layout";
-import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
-import { config } from "@fortawesome/fontawesome-svg-core";
-import { resetLayout } from "../../slice/layoutSlice";
-
-// import { PersistGate } from "redux-persist/integration/react";
+const { mount } = require("cypress/react");
+const { Provider } = require("react-redux");
+const { store, persistor } = require("../../slice");
+require("@fortawesome/fontawesome-svg-core/styles.css"); // import Font Awesome CSS
+const { config } = require("@fortawesome/fontawesome-svg-core");
+const { default: Layout } = require("../../components/Layout");
 config.autoAddCss = false;
 export function Wrapper({ Component, pageProps }) {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(resetLayout());
-  // }, []);
-
   return (
     <Provider store={store}>
       <Component {...pageProps} />
     </Provider>
   );
 }
+
+export function WrapperLayout({ Component, pageProps }) {
+  return (
+    <Provider store={store}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
+  );
+}
+
 Cypress.Commands.add("mount", mount);
 
 // Example use:
