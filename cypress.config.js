@@ -4,12 +4,6 @@ module.exports = defineConfig({
   viewportWidth: 900,
   viewportHeight: 720,
 
-  // component: {
-  //   devServer: {
-  //     framework: "create-react-app",
-  //     bundler: "webpack",
-  //   },
-  // },
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.

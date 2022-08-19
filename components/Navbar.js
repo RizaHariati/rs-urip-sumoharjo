@@ -68,19 +68,26 @@ const Navbar = () => {
           </a>
         </Link>
 
-        <div className="relative">
-          <button
-            id="navbar-dropdown"
-            className="link-light"
-            onClick={() => dispatch(toggleDropMenu())}
-          >
-            <FontAwesomeIcon icon={faBars} className=" text-3xl " />
-          </button>
-          <MenuItems />
-        </div>
+        <MenuButton />
       </div>
     </div>
   );
 };
 
 export default Navbar;
+
+export const MenuButton = () => {
+  const dispatch = useDispatch();
+  return (
+    <div className="relative">
+      <button
+        id="navbar-dropdown"
+        className="link-light"
+        onClick={() => dispatch(toggleDropMenu())}
+      >
+        <FontAwesomeIcon icon={faBars} className=" text-3xl " />
+      </button>
+      <MenuItems />
+    </div>
+  );
+};

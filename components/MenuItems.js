@@ -15,6 +15,7 @@ export const MenuItems = () => {
   const dispatch = useDispatch();
   return (
     <div
+      data-testid="navbar-dropdown-menu"
       id="navbar-dropdown-menu"
       className={dropMenu ? "menu h-fit" : "menu h-0 py-0"}
     >
