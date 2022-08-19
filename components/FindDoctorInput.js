@@ -42,7 +42,6 @@ const FindDoctorInput = ({ female, male }) => {
           setLoading(false);
           return;
         } else {
-          dispatch(resetDoctors());
           setLoading(false);
           return;
         }
