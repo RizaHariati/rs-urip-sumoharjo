@@ -19,9 +19,18 @@ const layoutSlice = createSlice({
     closeAdBlock: (state) => {
       state.adBlock = false;
     },
+    resetLayout: (state) => {
+      state.dropMenu = false;
+      state.adBlock = false;
+    },
   },
 });
 
-export const { toggleAdBlock, closeAdBlock, toggleDropMenu, closeDropMenu } =
-  layoutSlice.actions;
+export const {
+  toggleAdBlock,
+  closeAdBlock,
+  toggleDropMenu,
+  closeDropMenu,
+  resetLayout,
+} = layoutSlice.actions;
 export default layoutSlice;

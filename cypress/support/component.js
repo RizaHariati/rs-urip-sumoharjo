@@ -20,20 +20,25 @@ import "./commands";
 // require('./commands')
 require("../../styles/globals.css");
 import { mount } from "cypress/react";
-const { Provider } = require("react-redux");
+const { Provider, useDispatch } = require("react-redux");
 const { store } = require("../../slice");
 // import "../../styles/globals.css";
 // import Layout from "../../components/Layout";
-// import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
-// import { config } from "@fortawesome/fontawesome-svg-core";
-// import { Provider } from "react-redux";
-// import { persistor, store } from "../../slice/";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+import { config } from "@fortawesome/fontawesome-svg-core";
+import { resetLayout } from "../../slice/layoutSlice";
+
 // import { PersistGate } from "redux-persist/integration/react";
-// config.autoAddCss = false;
-export function Wrapper({ Component }) {
+config.autoAddCss = false;
+export function Wrapper({ Component, pageProps }) {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(resetLayout());
+  // }, []);
+
   return (
     <Provider store={store}>
-      <Component />
+      <Component {...pageProps} />
     </Provider>
   );
 }

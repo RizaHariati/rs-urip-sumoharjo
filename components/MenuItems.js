@@ -19,12 +19,13 @@ export const MenuItems = () => {
       id="navbar-dropdown-menu"
       className={dropMenu ? "menu h-fit" : "menu h-0 py-0"}
     >
-      <div>
-        {menu_item.map((item) => {
+      <div id="menu-item-container">
+        {menu_item.map((item, index) => {
           const { id, title, href, icon } = item;
           return (
             <Link href={href} key={id}>
               <button
+                id={`menu-item-${index}`}
                 className="menu-item"
                 style={{
                   borderBottomWidth: "1px",

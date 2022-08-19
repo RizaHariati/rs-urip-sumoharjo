@@ -1,16 +1,28 @@
 /// <reference types="Cypress" />
 
-const { default: Layout } = require("../../components/Layout");
-const { default: MenuItems } = require("../../components/MenuItems");
 const { default: Navbar, MenuButton } = require("../../components/Navbar");
+const { menu_item } = require("../../data/data_menu");
 
 const { Wrapper } = require("../support/component");
 
 describe("MenuItems.cy.js", () => {
-  it("mount menuitems", () => {
+  beforeEach(() => {
     cy.mount(<Wrapper Component={MenuButton} />);
-    cy.get("#navbar-dropdown").click();
-    // cy.contains("Tentang RS Urip Sumoharjo").should("exist");
-    cy.contains("Tentang RS Urip Sumoharjo").click();
+  });
+
+  it.only("test this menuitems", () => {
+    cy.get("#navbar-dropdown-menu").then(($div) => {
+      if ($div.hasClass("menu h-0 py-0")) {
+        cy.get("#navbar-dropdown-menu").should("not.be.visible");
+        cy.get("#navbar-dropdown").click();
+      }
+    });
+
+    cy.get("#navbar-dropdown-menu").should("be.visible");
+    menu_item.forEach((_, index) => {
+      cy.get(`#menu-item-${index}`)
+        .should("have.text", menu_item[index].title)
+        .and("be.visible");
+    });
   });
 });

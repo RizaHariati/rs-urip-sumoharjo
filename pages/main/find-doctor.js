@@ -254,7 +254,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
 
 export default FindDoctor;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(
     "https://randomuser.me/api/?gender=female&inc=picture&results=100"
   );
