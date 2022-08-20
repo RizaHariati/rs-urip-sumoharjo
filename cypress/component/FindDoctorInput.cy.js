@@ -1,5 +1,6 @@
 import FindDoctorInput from "../../components/FindDoctorInput";
 import { WrapperLayout } from "../support/component";
+const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 
 describe("FindDoctorInput.cy.js", () => {
   beforeEach(function () {
@@ -9,7 +10,7 @@ describe("FindDoctorInput.cy.js", () => {
     });
   });
 
-  it.only("should be visible", () => {
+  it("should be visible", () => {
     const searchFormContainer = "[data-testid='search-doctor-form-container']";
     cy.get(searchFormContainer).should("be.visible");
     cy.get("#search-doctor").focus();
@@ -20,12 +21,20 @@ describe("FindDoctorInput.cy.js", () => {
     const data = this.data;
     const searchKey = "Bedah";
     const status = "poli";
-    let response = {
-      msg: "Data successfully fetched",
-      total: 5,
-      allDoctors: data,
-    };
+
     let keyword = "";
+    cy.intercept("GET", URL, {
+      msg: "Data successfully fetched",
+      total: data.length,
+      allDoctors: data,
+    }).as(`response`);
+
+    // cy.intercept("GET", URL, {
+    //   msg: "Data successfully fetched",
+    //   total: data.length,
+    //   allDoctors: data,
+    // }).as(`response`);
+
     searchKey.split("").forEach((item, index) => {
       if (index < searchKey.length) {
         keyword = keyword + item;
@@ -34,13 +43,13 @@ describe("FindDoctorInput.cy.js", () => {
         });
 
         cy.intercept("GET", `${URL}${status}=${keyword}`, {
-          ...response,
+          msg: "Data successfully fetched",
           total: doctorFiltered.length,
           allDoctors: doctorFiltered,
         }).as(`response${index}`);
       }
     });
 
-    // cy.get("#search-doctor").type(searchKey);
+    cy.get("#search-doctor").type(searchKey);
   });
 });
