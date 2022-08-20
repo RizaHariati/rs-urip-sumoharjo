@@ -12,7 +12,6 @@ import {
   setCategories,
   setKeywords,
 } from "../../slice/doctorSlice";
-const a = { b: { a: "helpme", "right-now": "no way", "la-ter": "helping" } };
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 
 const FindDoctor = ({ female, male, doctordb }) => {
@@ -25,7 +24,6 @@ const FindDoctor = ({ female, male, doctordb }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(a.b["a"]);
   const { categories, keywords } = useSelector((state) => state.doctor);
 
   const dispatch = useDispatch();
