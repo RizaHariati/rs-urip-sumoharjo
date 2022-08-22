@@ -27,6 +27,9 @@ const Services = ({ data }) => {
     }
   }, [facilities]);
 
+  //
+  // This is the normal fetch inside the client I successfully intercept
+  //
   const fetchData = async (key) => {
     setLoading(true);
     try {
@@ -44,6 +47,10 @@ const Services = ({ data }) => {
       console.log({ error });
     }
   };
+
+  //
+  // This is the normal fetch inside the client I successfully intercept
+  //
   useEffect(() => {
     if (facility) {
       fetchData(facility);
@@ -188,6 +195,9 @@ const FacilityButton = ({ item, setOpenModal }) => {
   );
 };
 
+//
+// This is the getStaticprops I tried to intercept
+//
 export const getStaticProps = async () => {
   const res = await fetch(`${URL}/facilities`);
   const data = await res.json();

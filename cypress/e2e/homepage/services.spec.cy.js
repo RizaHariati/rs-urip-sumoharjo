@@ -1,10 +1,37 @@
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1";
 describe("Facility", () => {
   beforeEach(() => {
-    cy.visit("/main/services");
+    // cy.visit("/main/services");
     cy.fixture("services").then(function (data) {
       this.data = Object.values(data);
     });
+  });
+
+  // fixture fetching only works using function and not arrow function
+  it.only("should be able to intercept getStaticProps", function () {
+    cy.task("clearNock");
+    // This is the fixture data to intercept the getStaticProps request
+
+    const data = this.data;
+    let response = {
+      msg: "Data successfully fetched",
+      total: 4,
+      facilities: data,
+    };
+    // This is the fixture data to intercept the getStaticProps request
+
+    cy.task("nock", {
+      hostname: `${URL}/facilities`,
+      method: "GET",
+      path: "/main/services",
+      statusCode: 200,
+      body: {
+        response,
+        status: 200,
+      },
+    });
+
+    cy.visit("/main/services");
   });
 
   it("should show all the data on loading page and fetch data as typing", function () {
