@@ -70,7 +70,6 @@ describe("Find Doctor", () => {
     });
     cy.get("#specialization-search-btn").click();
     cy.get("#search-doctor").type(searchKey);
-    cy.wait(500);
     cy.get("#specialization-list").should("not.exist");
     cy.contains(
       "#doctor-list-not-exist",
@@ -78,7 +77,7 @@ describe("Find Doctor", () => {
     ).should("be.visible");
   });
 
-  it("should show list of filtered items when typed and show doctor cards when item clicked", function () {
+  it.only("should show list of filtered items when typed and show doctor cards when item clicked", function () {
     const data = this.data;
     const searchKey = "Bedah";
     const status = "poli";
@@ -106,10 +105,8 @@ describe("Find Doctor", () => {
     cy.get("#search-doctor").type(searchKey);
 
     cy.get("#specialization-list").should("be.visible");
-    cy.wait(1000);
     cy.contains("#specialization-item", searchKey).should("be.visible");
     cy.contains("#specialization-item", searchKey).click();
-    cy.wait(1000);
     cy.get("#doctor-card-container").should("be.visible");
   });
 

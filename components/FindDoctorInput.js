@@ -164,7 +164,7 @@ const FindDoctorInput = () => {
           </div>
         )}
 
-        {!OpenList && doctorList.length > 0 && <DoctorList />}
+        {!OpenList && keywords.key && doctorList.length > 0 && <DoctorList />}
 
         {!loading && keywords.key && doctorList.length < 1 && (
           <div className="w-full text-center mt-5" id="doctor-list-not-exist">

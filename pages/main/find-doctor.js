@@ -6,73 +6,34 @@ import SideMenu from "../../components/SideMenu";
 
 import FindDoctorInput from "../../components/FindDoctorInput";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  resetDoctors,
-  setDoctor,
-  setGender,
-  setKeywords,
-} from "../../slice/doctorSlice";
+import { resetDoctors, setDoctor, setKeywords } from "../../slice/doctorSlice";
 import LoadingSpinner from "../../components/LoadingSpinner";
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 
 const FindDoctor = () => {
-  const [loading, setLoading] = useState(false);
-  const { female, male, doctordb, keywords } = useSelector(
-    (state) => state.doctor
-  );
+  const { doctordb, keywords } = useSelector((state) => state.doctor);
 
   const dispatch = useDispatch();
 
-  const fetchGender = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(
-        "https://randomuser.me/api/?gender=female&inc=picture&results=71"
-      );
-      const dataFemale = await res.json();
-
-      const res2 = await fetch(
-        "https://randomuser.me/api/?gender=male&inc=picture&results=71"
-      );
-      const dataMale = await res2.json();
-
-      if (dataFemale && dataMale) {
-        const female = dataFemale.results;
-        const male = dataMale.results;
-        dispatch(setGender({ female, male }));
-        setLoading(false);
-        return;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-    setLoading(false);
-    return;
-  };
-
   const fetchDoctor = async () => {
-    setLoading(true);
     try {
       const res3 = await fetch(URL);
       const doctordb = await res3.json();
       if (doctordb) {
         dispatch(setDoctor(doctordb.allDoctors));
-        setLoading(false);
+
         return;
       }
     } catch (error) {
       console.log(error);
     }
-    setLoading(false);
+
     return;
   };
 
   useEffect(() => {
     let isMount = true;
     if (isMount) {
-      if (male.length < 1 || female.length < 1) {
-        fetchGender();
-      }
       if (doctordb.length < 1) {
         fetchDoctor();
       }
@@ -83,7 +44,7 @@ const FindDoctor = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading) {
+  if (doctordb.length < 1) {
     return (
       <div>
         <LoadingSpinner />

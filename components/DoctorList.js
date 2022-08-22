@@ -7,8 +7,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setGender } from "../slice/doctorSlice";
 import { handleReferenceApplication } from "../slice/patientSlice";
 import LoadingSpinner from "./LoadingSpinner";
 
@@ -16,6 +17,46 @@ const DoctorList = () => {
   const { doctorList, male, female } = useSelector((state) => state.doctor);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const fetchGender = async () => {
+    try {
+      const res = await fetch(
+        "https://randomuser.me/api/?gender=female&inc=picture&results=71"
+      );
+      const dataFemale = await res.json();
+
+      const res2 = await fetch(
+        "https://randomuser.me/api/?gender=male&inc=picture&results=71"
+      );
+      const dataMale = await res2.json();
+
+      if (dataFemale && dataMale) {
+        const female = dataFemale.results;
+        const male = dataMale.results;
+        dispatch(setGender({ female, male }));
+
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    return;
+  };
+
+  useEffect(() => {
+    let isMount = true;
+    if (isMount) {
+      if (male.length < 1 || female.length < 1) {
+        console.log({ male: male.length });
+        fetchGender();
+      }
+    }
+    return () => {
+      isMount = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [male, female]);
 
   if (male.length < 1 || female.length < 1)
     return (
