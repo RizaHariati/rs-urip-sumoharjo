@@ -3,5 +3,6 @@
   "editor.snippetSuggestions": "top",
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   "path-intellisense.autoTriggerNextSuggestion": true,
-  "debug.console.acceptSuggestionOnEnter": "on"
+  "debug.console.acceptSuggestionOnEnter": "on",
+  "editor.suggestSelection": "recentlyUsed"
 }

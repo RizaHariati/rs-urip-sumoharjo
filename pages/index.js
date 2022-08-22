@@ -10,10 +10,16 @@ import Slogan from "../components/componenthomepage/Slogan";
 import Rules from "../components/componenthomepage/Rules";
 import Footer from "../components/Footer";
 import SideMenu from "../components/SideMenu";
+import { closeDropMenu } from "../slice/layoutSlice";
+import { resetAll } from "../slice/doctorSlice";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
   const [showTitle, setShowTitle] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(closeDropMenu());
+    dispatch(resetAll());
     setTimeout(() => {
       setShowTitle(true);
     }, 500);

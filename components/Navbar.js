@@ -14,6 +14,7 @@ import { closeDropMenu, toggleDropMenu } from "../slice/layoutSlice";
 import { setlogout } from "../slice/patientSlice";
 import { useRouter } from "next/router";
 import MenuItems from "./MenuItems";
+import { resetAll } from "../slice/doctorSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,10 @@ const Navbar = () => {
       <div className="flex space-x-2 md:space-x-5 items-center">
         <div
           className="flex flex-col border-r-2 border-clrBaseLight px-3 md:px-5 "
-          onClick={() => dispatch(closeDropMenu())}
+          onClick={() => {
+            dispatch(closeDropMenu());
+            dispatch(resetAll());
+          }}
         >
           <button
             type="button"
@@ -61,7 +65,10 @@ const Navbar = () => {
         <Link href="/">
           <a
             className="link-light"
-            onClick={() => dispatch(closeDropMenu())}
+            onClick={() => {
+              dispatch(closeDropMenu());
+              dispatch(resetAll());
+            }}
             id="navbar-home"
           >
             <FontAwesomeIcon icon={faHomeAlt} className="text-2xl" />

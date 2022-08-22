@@ -1,37 +1,92 @@
 import { faCircle, faCircleDot } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SideMenu from "../../components/SideMenu";
 
 import FindDoctorInput from "../../components/FindDoctorInput";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  resetAll,
   resetDoctors,
-  setCategories,
+  setDoctor,
+  setGender,
   setKeywords,
 } from "../../slice/doctorSlice";
+import LoadingSpinner from "../../components/LoadingSpinner";
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 
-const FindDoctor = ({ female, male, doctordb }) => {
-  useEffect(() => {
-    dispatch(resetAll());
-
-    if (doctordb.length > 0) {
-      dispatch(setCategories(doctordb));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const { categories, keywords } = useSelector((state) => state.doctor);
+const FindDoctor = () => {
+  const [loading, setLoading] = useState(false);
+  const { female, male, doctordb, keywords } = useSelector(
+    (state) => state.doctor
+  );
 
   const dispatch = useDispatch();
 
-  if (!categories || categories.length < 1) {
+  const fetchGender = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(
+        "https://randomuser.me/api/?gender=female&inc=picture&results=71"
+      );
+      const dataFemale = await res.json();
+
+      const res2 = await fetch(
+        "https://randomuser.me/api/?gender=male&inc=picture&results=71"
+      );
+      const dataMale = await res2.json();
+
+      if (dataFemale && dataMale) {
+        const female = dataFemale.results;
+        const male = dataMale.results;
+        dispatch(setGender({ female, male }));
+        setLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+    return;
+  };
+
+  const fetchDoctor = async () => {
+    setLoading(true);
+    try {
+      const res3 = await fetch(URL);
+      const doctordb = await res3.json();
+      if (doctordb) {
+        dispatch(setDoctor(doctordb.allDoctors));
+        setLoading(false);
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+    return;
+  };
+
+  useEffect(() => {
+    let isMount = true;
+    if (isMount) {
+      if (male.length < 1 || female.length < 1) {
+        fetchGender();
+      }
+      if (doctordb.length < 1) {
+        fetchDoctor();
+      }
+    }
+    return () => {
+      isMount = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (loading) {
     return (
       <div>
-        <p>loading</p>
+        <LoadingSpinner />
       </div>
     );
   } else {
@@ -108,7 +163,7 @@ const FindDoctor = ({ female, male, doctordb }) => {
                 Berdasarkan Nama
               </button>
             </div>
-            <FindDoctorInput female={female} male={male} />
+            <FindDoctorInput />
           </div>
         </div>
 
@@ -119,25 +174,3 @@ const FindDoctor = ({ female, male, doctordb }) => {
 };
 
 export default FindDoctor;
-
-export const getServerSideProps = async () => {
-  const res = await fetch(
-    "https://randomuser.me/api/?gender=female&inc=picture&results=100"
-  );
-  const female = await res.json();
-
-  const res2 = await fetch(
-    "https://randomuser.me/api/?gender=male&inc=picture&results=100"
-  );
-  const male = await res2.json();
-
-  const res3 = await fetch(`${URL}`);
-  const doctordb = await res3.json();
-  return {
-    props: {
-      female,
-      male,
-      doctordb: doctordb.allDoctors,
-    },
-  };
-};

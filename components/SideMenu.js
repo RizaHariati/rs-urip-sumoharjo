@@ -4,6 +4,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { closeDropMenu } from "../slice/layoutSlice.js";
 import { data_menu } from "../data/data_menu";
+import { resetAll } from "../slice/doctorSlice.js";
 const SideMenu = () => {
   const dispatch = useDispatch();
 
@@ -16,7 +17,10 @@ const SideMenu = () => {
             <a
               id={`side-menu-item-${id}`}
               className="side-menu-item "
-              onClick={() => dispatch(closeDropMenu())}
+              onClick={() => {
+                dispatch(closeDropMenu());
+                dispatch(resetAll());
+              }}
             >
               <div className="side-menu-title">
                 <FontAwesomeIcon icon={icon} className="side-menu-icon " />

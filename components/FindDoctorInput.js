@@ -13,7 +13,7 @@ import {
 import DoctorList from "./DoctorList";
 import LoadingSpinner from "./LoadingSpinner";
 const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
-const FindDoctorInput = ({ female, male }) => {
+const FindDoctorInput = () => {
   const { doctorList, OpenList, specializationList, keywords, categories } =
     useSelector((state) => state.doctor);
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const FindDoctorInput = ({ female, male }) => {
       const data = await response.json();
 
       if (data.total && data.total > 0) {
-        const { total, allDoctors } = data;
+        const { allDoctors } = data;
         dispatch(setDoctorList(allDoctors));
         if (status === "poli") {
           if (!OpenList) {
@@ -164,9 +164,7 @@ const FindDoctorInput = ({ female, male }) => {
           </div>
         )}
 
-        {!OpenList && doctorList.length > 0 && (
-          <DoctorList male={male} female={female} />
-        )}
+        {!OpenList && doctorList.length > 0 && <DoctorList />}
 
         {!loading && keywords.key && doctorList.length < 1 && (
           <div className="w-full text-center mt-5" id="doctor-list-not-exist">

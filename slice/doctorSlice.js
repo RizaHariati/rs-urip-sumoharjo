@@ -2,9 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const doctorSlice = createSlice({
   name: "doctor",
+
   initialState: {
     categories: [],
     doctorList: [],
+    doctordb: [],
+    male: [],
+    female: [],
     OpenList: false,
     specializationList: [],
     keywords: {
@@ -14,8 +18,9 @@ const doctorSlice = createSlice({
     },
   },
   reducers: {
-    setCategories: (state, action) => {
+    setDoctor: (state, action) => {
       const doctordb = action.payload;
+      state.doctordb = doctordb;
       state.categories = [...new Set(doctordb.map((doctor) => doctor.poli))];
     },
     setOpenList: (state, action) => {
@@ -43,6 +48,7 @@ const doctorSlice = createSlice({
         key: "",
       };
     },
+
     resetAll: (state) => {
       state.OpenList = false;
       state.specializationList = [];
@@ -56,6 +62,12 @@ const doctorSlice = createSlice({
     setResultList: (state, action) => {
       console.log(action.payload);
     },
+    setGender: (state, action) => {
+      const { male, female } = action.payload;
+
+      state.male = male;
+      state.female = female;
+    },
   },
 });
 
@@ -66,8 +78,9 @@ export const {
   resetDoctors,
   setKeywords,
   setResultList,
-  setCategories,
+  setDoctor,
   resetKeywords,
   resetAll,
+  setGender,
 } = doctorSlice.actions;
 export default doctorSlice;
