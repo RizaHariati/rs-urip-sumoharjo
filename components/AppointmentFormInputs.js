@@ -11,7 +11,7 @@ export const MyTextInput = ({ label, icon, ...props }) => {
         <FontAwesomeIcon icon={icon} className="form-icon" />
         {label}
       </label>
-      <input className="form-input" {...field} {...props} />
+      <input autoComplete="off" className="form-input" {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}
