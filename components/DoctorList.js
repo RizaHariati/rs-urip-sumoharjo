@@ -48,7 +48,6 @@ const DoctorList = () => {
     let isMount = true;
     if (isMount) {
       if (male.length < 1 || female.length < 1) {
-        console.log({ male: male.length });
         fetchGender();
       }
     }

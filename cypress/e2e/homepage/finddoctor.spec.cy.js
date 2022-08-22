@@ -8,6 +8,22 @@ describe("Find Doctor", () => {
     cy.fixture("doctordb").then(function (data) {
       this.data = Object.values(data);
     });
+    cy.intercept(
+      "GET",
+      "https://randomuser.me/api/?gender=female&inc=picture&results=71",
+      {
+        statusCode: 200,
+        fixture: "female",
+      }
+    ).as("responseFemale");
+    cy.intercept(
+      "GET",
+      "https://randomuser.me/api/?gender=male&inc=picture&results=71",
+      {
+        statusCode: 200,
+        fixture: "male",
+      }
+    ).as("responseMale");
   });
 
   it("should change placeholder and empty keywords when clicked", () => {
@@ -77,7 +93,7 @@ describe("Find Doctor", () => {
     ).should("be.visible");
   });
 
-  it.only("should show list of filtered items when typed and show doctor cards when item clicked", function () {
+  it("should show list of filtered items when typed and show doctor cards when item clicked", function () {
     const data = this.data;
     const searchKey = "Bedah";
     const status = "poli";

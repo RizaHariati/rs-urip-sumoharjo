@@ -32,9 +32,6 @@ const FindDoctorInput = () => {
         const { allDoctors } = data;
         dispatch(setDoctorList(allDoctors));
         if (status === "poli") {
-          if (!OpenList) {
-            dispatch(setOpenList(true));
-          }
           const filteredCategories = [
             ...new Set(allDoctors.map((doctor) => doctor.poli)),
           ];
@@ -57,35 +54,17 @@ const FindDoctorInput = () => {
     }
   };
 
+  const handleSearch = async (item) => {
+    dispatch(setKeywords({ ...keywords, key: item }));
+    dispatch(setOpenList(false));
+  };
+
   useEffect(() => {
     if (keywords.key) {
       fetchName(keywords.key, keywords.status);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keywords.key]);
-
-  const handleSearch = async (item) => {
-    dispatch(setOpenList(false));
-    setLoading(true);
-    try {
-      const response = await fetch(`${URL}poli=${item}`);
-      const data = await response.json();
-      const { allDoctors, total } = data;
-      if (total > 0) {
-        dispatch(setDoctorList(allDoctors));
-        setLoading(false);
-        return;
-      } else {
-        setDoctorList([]);
-        setLoading(false);
-        return;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-    setLoading(false);
-    return;
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
