@@ -18,6 +18,10 @@ const Home = () => {
   const [showTitle, setShowTitle] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
+    window.onbeforeunload = function () {
+      localStorage.clear();
+    };
+
     dispatch(closeDropMenu());
     dispatch(resetAll());
     setTimeout(() => {

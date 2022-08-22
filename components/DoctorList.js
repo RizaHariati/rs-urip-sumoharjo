@@ -19,29 +19,32 @@ const DoctorList = () => {
   const dispatch = useDispatch();
 
   const fetchGender = async () => {
-    try {
-      const res = await fetch(
-        "https://randomuser.me/api/?gender=female&inc=picture&results=71"
-      );
-      const dataFemale = await res.json();
+    if (doctorList.length < 1) return;
+    else {
+      try {
+        const res = await fetch(
+          "https://randomuser.me/api/?gender=female&inc=picture&results=71"
+        );
+        const dataFemale = await res.json();
 
-      const res2 = await fetch(
-        "https://randomuser.me/api/?gender=male&inc=picture&results=71"
-      );
-      const dataMale = await res2.json();
+        const res2 = await fetch(
+          "https://randomuser.me/api/?gender=male&inc=picture&results=71"
+        );
+        const dataMale = await res2.json();
 
-      if (dataFemale && dataMale) {
-        const female = dataFemale.results;
-        const male = dataMale.results;
-        dispatch(setGender({ female, male }));
+        if (dataFemale && dataMale) {
+          const female = dataFemale.results;
+          const male = dataMale.results;
+          dispatch(setGender({ female, male }));
 
-        return;
+          return;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
 
-    return;
+      return;
+    }
   };
 
   useEffect(() => {
