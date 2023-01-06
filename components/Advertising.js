@@ -68,7 +68,7 @@ const Advertising = () => {
                 className={
                   parseInt(id) === index
                     ? "ad-slides-container "
-                    : "ad-slides-container opacity-0 left-0"
+                    : "ad-slides-container opacity-0 right-0"
                 }
                 key={id}
               >

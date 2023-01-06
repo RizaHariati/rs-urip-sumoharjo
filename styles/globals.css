@@ -70,7 +70,8 @@
     @apply main-title left-5 xl:left-14 opacity-100;
   }
   .main-page {
-    @apply relative w-full bg-clrBaseLight md:overflow-y-scroll h-screen;
+    height: calc(100vh - 129px);
+    @apply absolute top-32 sm:top-24 md:top-40 lg:relative lg:top-0 w-full bg-clrBaseLight overflow-y-scroll col-span-1 lg:col-span-8 pb-10;
   }
   .main-page-index {
     height: calc(100vh - 129px);
