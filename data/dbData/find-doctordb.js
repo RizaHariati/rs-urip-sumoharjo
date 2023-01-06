@@ -3,12 +3,12 @@ import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import SideMenu from "../../components/SideMenu";
-import doctor_db from "../../data/doctordb.json";
+
 import FindDoctorInput from "../../components/FindDoctorInput";
 import { useDispatch, useSelector } from "react-redux";
 import { resetDoctors, setDoctor, setKeywords } from "../../slice/doctorSlice";
 import LoadingSpinner from "../../components/LoadingSpinner";
-// const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
+const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 
 const FindDoctor = () => {
   const { doctordb, keywords } = useSelector((state) => state.doctor);
@@ -16,12 +16,17 @@ const FindDoctor = () => {
   const dispatch = useDispatch();
 
   const fetchDoctor = async () => {
-    dispatch(setDoctor(doctor_db));
-    // if (doctor_db.length > 0) {
-    //   dispatch(setDoctor(doctor_db));
-    // } else {
-    //   console.log(error);
-    // }
+    try {
+      const res3 = await fetch(URL);
+      const doctordb = await res3.json();
+      if (doctordb) {
+        dispatch(setDoctor(doctordb.allDoctors));
+
+        return;
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
     return;
   };

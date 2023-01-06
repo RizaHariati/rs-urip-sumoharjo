@@ -65,7 +65,9 @@
       {
         "text": "Menyediakan Ahli bedah umum dapat mendiagnosa beberapa jenis penyakit, terkait dengan perut dan organ-organ yang terhubung. "
       },
-      { "text": "Juga mengobati pasien luka bakar" }
+      {
+        "text": "Juga mengobati pasien luka bakar"
+      }
     ],
     "category": "rawat-jalan"
   },
@@ -149,7 +151,6 @@
     ],
     "category": "poliklinik"
   },
-
   {
     "id": "fas14",
     "title": "Echo Cardiogram (USG Jantung)",
@@ -161,7 +162,6 @@
     ],
     "category": "poliklinik"
   },
-
   {
     "id": "fas15",
     "title": "Farmasi",
@@ -173,7 +173,6 @@
     ],
     "category": "penunjang-klinik"
   },
-
   {
     "id": "fas16",
     "title": "Instalasi Gizi",
@@ -185,7 +184,6 @@
     ],
     "category": "penunjang-klinik"
   },
-
   {
     "id": "fas17",
     "title": "Ruang Operasi",
@@ -193,17 +191,6 @@
     "info": [
       {
         "text": "Ruang Operasi RS Urip Sumoharjo adalah salah satu fasilitas rumah sakit yg dirancang sesuai dengan standar akreditasi RS dengan konsep lingkungan yg aman dan nyaman yang dilengkapi dengan fasilitas modern serta tim dokter dan tenaga paramedis yg profesional dan kompeten."
-      }
-    ],
-    "category": "penunjang-klinik"
-  },
-  {
-    "id": "fas17",
-    "title": "Laboratorium",
-    "img": "laboratorium",
-    "info": [
-      {
-        "text": "Laboratorium Urip Sumoharjo merupakan fasilitas pelayanan kesehatan yang melaksanakan pengukuran, penetapan dan pengujian untuk penentuan jenis penyakit, penyebab penyakit, dan kondisi kesehatan. Unit laboratorium RS Urip Sumoharjo memberikan pelayanan 24 jam dan sudah mendapatkan sertifikasi international, ISO 9002."
       }
     ],
     "category": "penunjang-klinik"

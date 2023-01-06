@@ -1,7 +1,6 @@
 import {
   faFacebook,
   faInstagram,
-  faTelegram,
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +15,7 @@ const Footer = ({ color }) => {
     <div
       className={`w-full  px-10 sm:px-20 md:px-5 lg:px-32 py-3 text-clrBaseLight text-sm leading-6 md:leading-8 ${color}`}
     >
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 items-start">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-3 items-start ">
         <div>
           <h2 className="font-thin mb-4">RS.Urip Sumoharjo</h2>
           <p>Jl. Urip Sumoharjo no. 200 Gn. Sulah</p>

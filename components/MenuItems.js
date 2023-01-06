@@ -27,19 +27,10 @@ export const MenuItems = () => {
               <button
                 id={`menu-item-${index}`}
                 className="menu-item"
-                style={{
-                  borderBottomWidth: "1px",
-                  gridTemplateColumns: "1fr 8fr",
-                }}
                 onClick={() => dispatch(closeDropMenu())}
               >
                 <FontAwesomeIcon icon={icon} className=" menu-item-icon " />
-                <p
-                  className="menu-item-text"
-                  style={{ borderBottomWidth: "1px" }}
-                >
-                  {title}
-                </p>
+                <p className="menu-item-text">{title}</p>
               </button>
             </Link>
           );

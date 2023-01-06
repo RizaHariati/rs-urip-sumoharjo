@@ -36,20 +36,14 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="main-pages-container home-background">
-        <div className="main-page-index main-grid-background">
-          <div
-            className={
-              showTitle
-                ? "absolute bottom-24 md:bottom-12 left-5 xl:left-14 text-clrBaseLight pr-20 transition-all opacity-100"
-                : "absolute bottom-24 md:bottom-12 left-32 xl:left-52 text-clrBaseLight pr-20 transition-all opacity-0"
-            }
-          >
-            <h1 className="text-3xl lg:text-4xl 2xl:text-5xl leading-7 mb-2">
+      <div className="main-pages-container">
+        <div className="main-page-index home-background">
+          <div className={showTitle ? "main-title-show" : "main-title-hide"}>
+            <h1 className="text-3xl leading-6 md:text-4xl md:leading-7 2xl:text-5xl mb-1 md:mb-2">
               Rs Urip Sumoharjo
             </h1>
 
-            <h2 className="text-lg lg:text-2xl  2xl:text-3xl leading-5">
+            <h2 className="text-xl leading-5 md:text-2xl  md:leading-7  2xl:text-3xl ">
               Memberikan Pelayanan yang Profesional dan Prima kepada Seluruh
               Masyarakat
             </h2>

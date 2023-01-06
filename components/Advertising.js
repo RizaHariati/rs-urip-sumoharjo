@@ -39,7 +39,7 @@ const Advertising = () => {
 
   return (
     <div className="w-full bg-clrBaseLight ">
-      <div className="h-12 border-b border-b-clrBorder px-5 md:px-10 lg:px-20 flex items-center justify-between">
+      <div className="h-12 border-b border-b-clrBorder px-2 md:px-5 lg:px-10 flex items-center justify-between">
         <div className="flex space-x-2 text-clrPrimaryDark">
           <FontAwesomeIcon icon={faHandHoldingHeart} className="text-2xl" />
           <h3 className="text-xl font-semibold">Kepedulian Kami</h3>
@@ -82,7 +82,7 @@ const Advertising = () => {
                   />
                 </button>
                 <div className="h-full overflow-hidden">
-                  <div className="object-cover object-left-top w-full">
+                  <div className="object-cover object-left-top">
                     <Image
                       src={`/images/slides/${image}`}
                       width={420}

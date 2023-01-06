@@ -2,7 +2,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import doctor_db from "../data/doctordb.json";
 import {
   resetDoctors,
   resetKeywords,
@@ -10,10 +9,10 @@ import {
   setKeywords,
   setOpenList,
   setspecializationList,
-} from "../slice/doctorSlice";
-import DoctorList from "./DoctorList";
-import LoadingSpinner from "./LoadingSpinner";
-// const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
+} from "../../slice/doctorSlice";
+import DoctorList from "../../components/DoctorList";
+import LoadingSpinner from "../../components/LoadingSpinner";
+const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/doctors/?";
 const FindDoctorInput = () => {
   const { doctorList, OpenList, specializationList, keywords, categories } =
     useSelector((state) => state.doctor);
@@ -23,21 +22,18 @@ const FindDoctorInput = () => {
   const fetchName = async (key, status) => {
     if (!key) {
       return dispatch(resetDoctors());
-    } else {
-      setLoading(true);
-      const filterDoctor = doctor_db.filter((doctor) => {
-        if (status === "poli") {
-          return doctor.poli.toLowerCase().includes(key.toLowerCase());
-        } else {
-          return doctor.nama.toLowerCase().includes(key.toLowerCase());
-        }
-      });
+    }
+    setLoading(true);
+    try {
+      const response = await fetch(`${URL}${status}=${key}`);
+      const data = await response.json();
 
-      if (filterDoctor.length > 0) {
-        dispatch(setDoctorList(filterDoctor));
+      if (data.total && data.total > 0) {
+        const { allDoctors } = data;
+        dispatch(setDoctorList(allDoctors));
         if (status === "poli") {
           const filteredCategories = [
-            ...new Set(filterDoctor.map((doctor) => doctor.poli)),
+            ...new Set(allDoctors.map((doctor) => doctor.poli)),
           ];
           dispatch(setspecializationList(filteredCategories));
           setLoading(false);
@@ -51,6 +47,10 @@ const FindDoctorInput = () => {
         setLoading(false);
         return;
       }
+    } catch (error) {
+      console.log(error);
+
+      return;
     }
   };
 
@@ -161,32 +161,3 @@ const FindDoctorInput = () => {
 };
 
 export default FindDoctorInput;
-
-// try {
-//   const response = await fetch(`${URL}${status}=${key}`);
-//   const data = await response.json();
-
-//   if (data.total && data.total > 0) {
-//     const { allDoctors } = data;
-//     dispatch(setDoctorList(allDoctors));
-//     if (status === "poli") {
-//       const filteredCategories = [
-//         ...new Set(allDoctors.map((doctor) => doctor.poli)),
-//       ];
-//       dispatch(setspecializationList(filteredCategories));
-//       setLoading(false);
-//       return;
-//     } else {
-//       setLoading(false);
-//       return;
-//     }
-//   } else {
-//     dispatch(resetDoctors());
-//     setLoading(false);
-//     return;
-//   }
-// } catch (error) {
-//   console.log(error);
-
-//   return;
-// }

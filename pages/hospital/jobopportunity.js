@@ -5,24 +5,25 @@ import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-const url = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/jobs";
+// const url = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1/jobs";
 
 const JobOpportunity = ({ jobs }) => {
   const [showLoker, setShowLoker] = useState(false);
   const [dataLoker, setDataLoker] = useState("");
 
-  const setTanggal = (tanggal) => {
-    return `${tanggal.slice(8, 10)}-${tanggal.slice(5, 7)}-${tanggal.slice(
-      0,
-      4
-    )}`;
-  };
+  // const setTanggal = (tanggal) => {
+  //   return tanggal;
+  //   // return `${tanggal.slice(8, 10)}-${tanggal.slice(5, 7)}-${tanggal.slice(
+  //   //   0,
+  //   //   4
+  //   // )}`;
+  // };
 
   const handleClick = (id) => {
     setShowLoker(true);
-    let newData = jobs.find((item) => item._id === id);
-    const tanggalPosting = setTanggal(newData.tanggal || 0);
-    newData = { ...newData, tanggal: tanggalPosting };
+    let newData = loker.find((item) => item.id === id);
+    // const tanggalPosting = setTanggal(newData.tanggal || 0);
+    // newData = { ...newData, tanggal: tanggalPosting };
     setDataLoker(newData);
   };
 
@@ -40,9 +41,8 @@ const JobOpportunity = ({ jobs }) => {
       <div className=" bg-clrBorder mb-5 " style={{ height: "1px" }}></div>
       <div className="job-container bg-clrBaseLight">
         <div className="flex flex-row md:flex-col overflow-x-scroll md:overflow-y-scroll h-44 md:h-full gap-2 bg-clrBaseLight p-3 ">
-          {jobs.map((item) => {
-            const { _id: id, pengalaman, tanggal, title } = item;
-            const tanggalPost = setTanggal(tanggal);
+          {loker.map((item) => {
+            const { id, pengalaman, tanggal, title } = item;
             return (
               <div
                 key={id}
@@ -58,7 +58,7 @@ const JobOpportunity = ({ jobs }) => {
                 ) : (
                   <p className=" capitalize text-sm">Menerima Fresh Graduate</p>
                 )}
-                <p className="text-sm">posting: {tanggalPost}</p>
+                <p className="text-sm">posting: {tanggal}</p>
               </div>
             );
           })}
@@ -125,17 +125,17 @@ export const Loker = ({ data }) => {
           );
         })}
       </ul>
-      <Link href="/">
+      {/* <Link href="/">
         <button className="btn bg-clrPrimaryDark">Read More</button>
-      </Link>
+      </Link> */}
     </div>
   );
 };
 
-export const getStaticProps = async () => {
-  console.log("get static props");
-  const res = await fetch(url);
-  const data = await res.json();
-  const { vacancies: jobs } = data;
-  return { props: { jobs } };
-};
+// export const getStaticProps = async () => {
+
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   const { vacancies: jobs } = data;
+//   return { props: { jobs } };
+// };

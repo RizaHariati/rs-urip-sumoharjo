@@ -49,19 +49,40 @@
   }
 }
 @layer components {
+  /* -------------------------- main pages -------------------------- */
+
   .main-pages-container {
-    display: grid;
-    grid-template-columns: 5fr 2fr;
-    height: calc(100vh - 128px);
-    @apply bg-clrBaseLightActive;
+    height: calc(100vh - 129px);
+    @apply bg-clrBaseLightActive grid grid-cols-1 relative lg:grid-cols-12;
   }
+
   .home-background {
     background-image: url("/images/mainimage.jpg");
     background-position: center;
     background-size: cover;
+    @apply absolute top-32 sm:top-24 md:top-0;
   }
-  .main-grid-background {
-    background-image: none;
+
+  .main-title {
+    @apply absolute bottom-44 sm:bottom-32 md:bottom-24 text-clrBaseLight pr-20 transition-all;
+  }
+  .main-title-show {
+    @apply main-title left-5 xl:left-14 opacity-100;
+  }
+  .main-page {
+    @apply relative w-full bg-clrBaseLight md:overflow-y-scroll h-screen;
+  }
+  .main-page-index {
+    height: calc(100vh - 129px);
+    @apply w-full relative col-span-1 lg:col-span-8;
+  }
+
+  .care-items-container {
+    @apply grid grid-cols-1 lg:grid-cols-3 lg:gap-5 text-left mt-3 border-clrBorder lg:border-0;
+    border-width: 0px;
+  }
+  .main-title-hide {
+    @apply main-title left-32 xl:left-52 opacity-0;
   }
   .btn {
     @apply text-clrBaseLight px-3 py-1 rounded-full hover:bg-opacity-90 active:bg-opacity-80 text-center text-xs uppercase;
@@ -78,39 +99,7 @@
   }
 
   /* -------------------------- main pages -------------------------- */
-  .main-page {
-    @apply relative w-full bg-clrBaseLight md:overflow-y-scroll;
-    height: calc(100vh - 128px);
-  }
-  .main-page-index {
-    @apply w-full relative;
-    height: calc(100vh - 128px);
-  }
-  .care-items-container {
-    @apply grid grid-cols-1 lg:grid-cols-3 lg:gap-5 text-left mt-3 border-clrBorder lg:border-0;
-    border-width: 0px;
-  }
-  /* -------------------------- main pages -------------------------- */
   @media (max-width: 1024px) {
-    .main-pages-container {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr;
-      height: calc(100vh - 128px);
-      @apply bg-clrBaseLightActive;
-    }
-    .home-background {
-      background-image: none;
-    }
-    .main-page-index {
-      @apply w-full relative;
-      height: calc(100vh - 264px);
-    }
-    .main-grid-background {
-      background-image: url("/images/mainimage.jpg");
-      background-position: center;
-      background-size: cover;
-    }
     .care-items-container {
       @apply p-5 rounded-sm;
       border-width: 1px;
@@ -132,12 +121,12 @@
   /* -------------------------- advertising ------------------------- */
 
   .ad-container {
-    @apply w-full flex items-center justify-center transition-all overflow-hidden;
+    @apply w-full max-w-2xl  mx-auto flex items-center justify-center transition-all rounded-md overflow-hidden;
   }
   .ad-slides-container {
-    @apply rounded-md shadow-md border-clrBorder bg-clrBaseLightHover overflow-hidden absolute opacity-100;
-    width: 700px;
-    height: 260px;
+    @apply rounded-md shadow-md border-clrBorder bg-clrBaseLightHover overflow-hidden absolute opacity-100 w-full;
+
+    height: 240px;
     display: grid;
     grid-template-columns: 3fr 2fr;
     left: 50%;
@@ -149,7 +138,7 @@
     .ad-slides-container {
       @apply rounded-md shadow-md border-clrBorder bg-clrBaseLightHover overflow-hidden absolute opacity-100;
       width: 300px;
-      height: 260px;
+      height: 240px;
       display: grid;
       grid-template-columns: 1fr;
     }
@@ -186,13 +175,13 @@
     @apply absolute w-screen md:w-80 -right-5 rounded-sm shadow-md shadow-clrBorder bg-clrBaseLight top-12 md:top-16 md:right-0 px-7 py-5 z-30 font-medium transition-all overflow-hidden text-center;
   }
   .menu-item {
-    @apply grid space-x-3 w-full border-b-clrPrimaryDark hover:border-clrBorder py-2 transition-all cursor-pointer;
+    @apply grid grid-cols-7 space-x-3 w-full  hover:border-clrBorder py-2 transition-all cursor-pointer items-center border-b border-b-stone-400;
   }
   .menu-item-text {
-    @apply text-clrTextDark text-left transition-all font-semibold hover:font-medium border-b-0;
+    @apply text-clrTextDark text-left transition-all font-semibold hover:font-medium border-b-0 col-span-6;
   }
   .menu-item-icon {
-    @apply text-xl text-clrPrimaryMedium mr-2 transition-all;
+    @apply text-xl text-clrPrimaryMedium mr-2 transition-all grid col-span-1;
   }
 
   .menu-item:hover .menu-item-text {
@@ -216,27 +205,25 @@
 
   /* --------------------------- side menu -------------------------- */
   .side-menu-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    place-items: center;
-    @apply w-full h-full;
+    @apply w-full grid grid-cols-3 grid-rows-1 absolute lg:relative h-32 sm:h-24 md:h-40 lg:h-full lg:grid-cols-2 col-span-1 lg:col-span-4 lg:grid-rows-3;
   }
   .side-menu-item {
-    border: 1px solid;
-    @apply w-full h-full flex flex-col items-center justify-center rounded-sm cursor-pointer p-2  bg-clrBaseLight bg-opacity-80 hover:bg-opacity-90 active:bg-clrBaseLightActive transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400 text-center leading-5;
+    @apply w-full flex flex-col  items-center justify-center rounded-sm cursor-pointer p-2  bg-clrBaseLight bg-opacity-80 hover:bg-opacity-90 active:bg-clrBaseLightActive transition-all shadow-stone-300 shadow-sm overflow-hidden border-stone-400 text-center leading-5 border h-16 sm:h-12 md:h-20 lg:h-full;
+  }
+  .text-side-menu {
+    @apply text-base leading-4 sm:text-lg md:text-xl md:font-semibold 2xl:text-2xl;
   }
   .side-menu-title {
-    @apply w-full flex flex-col gap-1 md:gap-2  items-center justify-center;
+    @apply text-side-menu flex flex-col sm:flex-row lg:flex-col items-center justify-center sm:gap-2 md:gap-3 lg:gap-0;
   }
   .side-menu-icon {
-    @apply text-lg md:text-xl lg:text-2xl 2xl:text-3xl;
+    @apply text-side-menu text-stone-500 lg:text-2xl 2xl:text-3xl leading-5;
   }
   .side-menu-text {
-    @apply font-semibold text-base  md:text-lg 2xl:text-xl text-center leading-3;
+    @apply text-side-menu;
   }
   .side-menu-info {
-    @apply text-sm  text-clrTextMedium text-center leading-3 lg:leading-3 xl:leading-4 transition-all opacity-0 h-0 hidden sm:block;
+    @apply text-base font-medium text-clrTextMedium text-center leading-3 lg:leading-4 transition-all opacity-0 h-0 hidden md:block;
   }
 
   .side-menu-item:hover .side-menu-info {
@@ -244,43 +231,6 @@
   }
   .side-menu-item:active .side-menu-info {
     @apply opacity-100 h-8;
-  }
-
-  @media (max-width: 1024px) {
-    .side-menu-container {
-      grid-row: 1;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      @apply h-40;
-    }
-
-    .side-menu-title {
-      @apply w-full flex flex-row gap-2 items-center justify-center;
-    }
-    .side-menu-icon {
-      @apply text-lg;
-    }
-    .side-menu-text {
-      @apply text-sm leading-4;
-    }
-    .side-menu-info {
-      @apply text-sm leading-3;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .side-menu-title {
-      @apply w-full flex flex-col gap-0 items-center justify-center;
-    }
-    .side-menu-icon {
-      @apply text-lg mb-1 text-stone-700;
-    }
-    .side-menu-text {
-      @apply text-base leading-4 font-medium;
-    }
-    .side-menu-info {
-      @apply text-sm leading-3;
-    }
   }
 
   /* --------------------------- side menu -------------------------- */

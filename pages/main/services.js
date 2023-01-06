@@ -4,14 +4,15 @@ import Image from "next/image";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
+import sourceFacilities from "../../data/facility.json";
 // import facilities from "../../data/facility.json";
 import Modal from "../../components/Modal";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
-const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1";
+// const URL = "https://rs-urip-sumoharjo-api.herokuapp.com/api/v1";
 
 const Services = ({ data }) => {
-  const { facilities: sourceFacilities } = data;
+  // const { facilities: sourceFacilities } = data;
   const [facilities, setFacilities] = useState(sourceFacilities);
   const [facilityCategories, setFacilityCategories] = useState([]);
   const [facility, setFacility] = useState("");
@@ -172,20 +173,20 @@ export default Services;
 
 const FacilityButton = ({ item, setOpenModal }) => {
   const { _id, title, img } = item;
-  const { cloud_image } = img;
+  // const { cloud_image } = img;
   return (
     <button
       key={_id}
       className="facility-list-btn"
       onClick={() => setOpenModal({ opened: true, facility: item })}
     >
-      <div className="absolute w-full h-full top-0 left-0">
+      <div className="absolute w-full h-full top-0 left-0 ">
         <Image
           loading="eager"
-          src={cloud_image}
-          width={300}
+          src={`/images/pelayanan-fasilitas/small/${img}.jpg`}
+          width={320}
           height={200}
-          className=" object-cover object-center"
+          className=" object-cover object-center mx-auto"
           alt="cloud image"
         />
       </div>
@@ -198,9 +199,9 @@ const FacilityButton = ({ item, setOpenModal }) => {
 //
 // This is the getStaticprops I tried to intercept
 //
-export const getStaticProps = async () => {
-  const res = await fetch(`${URL}/facilities`);
-  const data = await res.json();
+// export const getStaticProps = async () => {
+//   const res = await fetch(`${URL}/facilities`);
+//   const data = await res.json();
 
-  return { props: { data } };
-};
+//   return { props: { data } };
+// };

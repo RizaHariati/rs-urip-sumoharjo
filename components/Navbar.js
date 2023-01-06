@@ -30,7 +30,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="w-full h-16 md:h-20 bg-clrPrimaryDark flex justify-between items-center px-5 md:px-10 lg:px-20 text-clrBaseLight sticky top-0 z-30">
+    <div className="w-full h-16 md:h-20 bg-clrPrimaryDark flex justify-between items-center px-2 md:px-5 lg:px-10 text-clrBaseLight sticky top-0 z-30">
       <div className="link-icon" onClick={() => dispatch(closeDropMenu())}>
         <div className="navbar-comment">
           <p className=" text-clrTextDark ">Home</p>
