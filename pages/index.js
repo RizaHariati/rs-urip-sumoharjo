@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className=" bg-clrBaseLight">
       <Head>
-        <title>rs-uripsumoharjo || Home</title>
+        <title>rs-uripsumoharjo | Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

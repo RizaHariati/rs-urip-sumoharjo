@@ -19,7 +19,7 @@ const About = () => {
   return (
     <div className="about-container">
       <Head>
-        <title>rs-uripsumoharjo || About</title>
+        <title>rs-uripsumoharjo | About</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="absolute top-0 right-0 bg-hospital w-full h-full opacity-90 mix-blend-overlay -z-20 bg-cover bg-top transition-all"></div>

@@ -30,7 +30,7 @@ const JobOpportunity = ({ jobs }) => {
   return (
     <div className="w-full h-fit p-5 bg-clrBaseLightActive">
       <Head>
-        <title>rs-uripsumoharjo || Jobs</title>
+        <title>rs-uripsumoharjo | Jobs</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h4 className="uppercase text-center max-w-xl mx-auto mb-5 ">

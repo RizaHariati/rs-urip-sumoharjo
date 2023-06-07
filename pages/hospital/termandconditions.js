@@ -20,7 +20,7 @@ const TermAndConditions = () => {
   return (
     <div className=" bg-clrBaseLightActive w-full py-5 ">
       <Head>
-        <title>rs-uripsumoharjo || Hak Kewajiban</title>
+        <title>rs-uripsumoharjo | Hak Kewajiban</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {hak.map((pasal) => {

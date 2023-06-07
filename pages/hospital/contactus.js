@@ -12,7 +12,7 @@ const ContactUs = () => {
   return (
     <div className=" bg-clrBaseLightActive w-full pt-5 ">
       <Head>
-        <title>rs-uripsumoharjo || Contact Us</title>
+        <title>rs-uripsumoharjo | Contact Us</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="mx-auto w-full md:w-4/5 py-5 px-10  md:px-5">
